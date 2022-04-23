@@ -1,17 +1,14 @@
 import React from "react";
-import "../assets/styles/containers/LoginContainer.css";
-import { LoginForm } from "../components/LoginForm.jsx";
+import { Header } from "../components/Header.jsx";
 import { LoadingPage } from "../components/LoadingPage.jsx";
 import { AlertMessage } from "../components/AlertMessage.jsx";
 
-export const LoginContainer = () => {
-
-
+export const WelcomeContainer = () => {
     return (
-        <div className="login-container">
+        <div className="welcome-container">
             <LoadingPage />
             <AlertMessage />
-            <LoginForm />
+            <Header />
         </div>
     );
 }
