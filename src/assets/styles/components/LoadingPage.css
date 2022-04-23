@@ -1,0 +1,24 @@
+.loading-page {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 10000; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s ease-in-out;
+    flex-direction: column;
+}
+
+.loading-page span {
+    margin-top: 20px;
+    font-size: 28px;
+    color: gray;
+    font-weight: bold;
+}
+
+.loading-page-hided {
+    opacity: 0;
+    z-index: -1
+}
