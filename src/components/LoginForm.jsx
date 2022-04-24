@@ -4,6 +4,9 @@ import firebaseApp from "../firebase/credentials";
 import { getAuth,  } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { action } from "../actions/action.js";
+import { FaUser, FaLock } from "react-icons/fa";
+import { BiLogIn } from "react-icons/bi";
+import ClassGateLogo from "../assets/imgs/class-gate.png";
 
 const auth = getAuth(firebaseApp);
 
@@ -21,15 +24,25 @@ export const LoginForm = () => {
     }
 
     return (
-        <form className="login-form-container" onSubmit={ submitHandler }>
-            <div className="title-container">
-                <h1>Login</h1>
-            </div>
-            <label htmlFor="inputUsername">Usuario</label>
-            <input id="inputUsername" type="text" placeholder="Ingresa tu usuario..." required />
-            <label htmlFor="inputPassword">Contraseña</label>
-            <input id="inputPassword" type="password" placeholder="Ingresa tu contraseña..." required />
-            <button type="submit" className="login-button">Ingresar a la plataforma</button>
-        </form>
+        <>
+            <img src={ClassGateLogo} alt="" />
+            <form className="login-form-container" onSubmit={ submitHandler }>
+                <div className="title-container">
+                    <h1>Login</h1>
+                </div>
+                <label htmlFor="inputUsername">Usuario</label>
+                <div className="input-container">
+                    <FaUser className="input-icon" /> 
+                    <input id="inputUsername" type="text" placeholder="Ingresa tu usuario..." required />
+                </div>
+                <label htmlFor="inputPassword">Contraseña</label>
+                <div className="input-container">
+                    <FaLock className="input-icon" />
+                    <input id="inputPassword" type="password" placeholder="Ingresa tu contraseña..." required />
+                </div>
+                <button type="submit"><BiLogIn className="button-icon button-icon-login" /> Ingresar a la plataforma</button>
+            </form>
+        </>
+        
     );
 }

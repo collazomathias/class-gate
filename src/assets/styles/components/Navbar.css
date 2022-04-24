@@ -53,12 +53,25 @@
     text-decoration: none;
     color: white;
     font-size: 18px;
-    padding: 10px 25px;
+    padding: 5px 10px 5px 5px;
     margin: 5px;
     background-color: #FF7400;
     transition: 0.3s ease-in-out;
     border-radius: 6px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.button-icon {
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    background-color: none;
+    color: white;
+    border-radius: 4px;
+    margin-right: 10px;
 }
 
 .navigation-links-container a:hover {
@@ -66,37 +79,57 @@
 }
 
 .navbar-login-container {
-    width: 550px;
     display: flex;
     align-items: center;
     justify-content: right;
 }
 
 .navbar-login-container input {
-    width: 240px;
+    width: 200px;   
     height: 40px;
-    border-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
     border: none;
     padding-left: 10px;
     font-size: 18px;
     color: gray;
     margin-right: 15px;
-    outline: 1px solid #FF7400;
+    outline: none;
+    border: 0.3px solid lightgray;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar-input-icon {
+    width: calc(40px - 20px);
+    height: calc(40px - 20px);
+    padding: 10px;
+    border-top: 1px solid #FF7400;
+    border-bottom: 1px solid #FF7400;
+    border-left: 1px solid #FF7400;
+    background-color: #FF7400;
+    color: white;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    transition: 0.3s ease-in-out;
 }
 
 .navbar-login-container input:focus {
-    outline: 2px solid #FF7400;
+    border-right: 5px solid #FF7400;
 }
 
 .navbar-login-container button {
-    width: 120px;
-    height: 40px;
+    text-decoration: none;
     color: white;
     font-size: 18px;
+    padding: 5px 10px 5px 5px;
+    margin: 5px;
     background-color: #FF7400;
     transition: 0.3s ease-in-out;
     border-radius: 6px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: left;
     border: none;
 }
 
@@ -114,14 +147,18 @@
 }
 
 .logout-container button {
-    width: 120px;
-    height: 40px;
+    text-decoration: none;
     color: white;
     font-size: 18px;
+    padding: 5px 10px 5px 5px;
+    margin: 5px;
     background-color: #FF7400;
     transition: 0.3s ease-in-out;
     border-radius: 6px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: left;
     border: none;
 }
 
