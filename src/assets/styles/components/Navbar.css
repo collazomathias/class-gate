@@ -10,6 +10,7 @@
     background-color: white;    
     padding: 0 30px;
     border-bottom: 1px solid #FF7400;
+    z-index: 9999;
 }
 
 .navbar-title-container {
@@ -19,6 +20,10 @@
     display: flex;
     align-items: center;
     justify-content: left;
+}
+
+.navbar-title-container img {
+    width: 200px;
 }
 
 .navbar-title-container h1 {

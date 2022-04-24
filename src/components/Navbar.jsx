@@ -5,6 +5,7 @@ import { action } from "../actions/action.js";
 import firebaseApp from "../firebase/credentials";
 import { getAuth, signOut } from "firebase/auth";
 import "../assets/styles/components/Navbar.css";
+import ClassGateLogo from "../assets/imgs/class-gate.png";
 
 const auth = getAuth(firebaseApp);
 
@@ -26,7 +27,7 @@ export const Navbar = (props) => {
     return (
         <div className="navbar-container">
             <div className="navbar-title-container">
-                <h1 className="navbar-title">CLASS<span>gate</span></h1>
+                <img src={ClassGateLogo} alt="" />
             </div>
             { 
                 location.pathname === "/dashboard" ? null :

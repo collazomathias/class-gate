@@ -5,7 +5,7 @@ import { LoginContainer } from "./containers/LoginContainer.jsx";
 import { DashboardContainer } from "./containers/DashboardContainer.jsx";
 import { Routes, Route, useLocation  } from "react-router-dom";
 import { useNavigate } from "react-router";
-import { WelcomeContainer } from "./containers/WelcomeContainer.jsx";
+import { LandingPageContainer } from "./containers/LandingPageContainer.jsx";
 import { Navbar } from "./components/Navbar.jsx";
 
 const auth = getAuth(firebaseApp);
@@ -40,7 +40,7 @@ export function App() {
         <>
             <Navbar user={user} />
             <Routes>
-                <Route path="/" element={<WelcomeContainer />} />
+                <Route path="/" element={<LandingPageContainer />} />
                 <Route path="/login" element={<LoginContainer />} />
                 <Route path="/dashboard" element={<DashboardContainer />} />
             </Routes>

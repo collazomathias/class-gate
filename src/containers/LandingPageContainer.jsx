@@ -1,14 +1,14 @@
 import React from "react";
-import { Header } from "../components/Header.jsx";
+import { Presentation } from "../components/Presentation.jsx";
 import { LoadingPage } from "../components/LoadingPage.jsx";
 import { AlertMessage } from "../components/AlertMessage.jsx";
 
-export const WelcomeContainer = () => {
+export const LandingPageContainer = () => {
     return (
-        <div className="welcome-container">
+        <div className="landing-page-container">
             <LoadingPage />
             <AlertMessage />
-            <Header />
+            <Presentation />
         </div>
     );
 }
