@@ -1,9 +1,14 @@
+
 import { TeacherForm } from "../components/TeacherForm";
 import TeacherList from "../components/TeacherList";
 
 
 export const TeacherRegister = () => {
 
+   
+    /* const btnRegister =()=>{
+        
+    } */
 
     return (<>
     
@@ -15,7 +20,7 @@ export const TeacherRegister = () => {
             
             
             
-            {/* <TeacherList/> */}
+            <TeacherList/>
             <TeacherForm/>
             </div>
             </div>
