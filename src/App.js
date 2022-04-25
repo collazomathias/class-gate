@@ -7,8 +7,10 @@ import { Routes, Route, useLocation  } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { LandingPageContainer } from "./containers/LandingPageContainer.jsx";
 import { Navbar } from "./components/Navbar.jsx";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 const auth = getAuth(firebaseApp);
+const firestore = getFirestore(firebaseApp);
 
 export function App() {
 
@@ -16,10 +18,24 @@ export function App() {
     const location = useLocation();
     const [ user, setUser ] = useState(null);
 
+    async function getRole(uid) {
+        const docRef = doc(firestore, `users/${uid}`);
+        const docEncrypted = await getDoc(docRef);
+        const docInfo = docEncrypted.data().role;
+        return docInfo;
+    }
+
     useEffect(() => {
         onAuthStateChanged(auth, (firebaseUser) => {
             if(firebaseUser) {
-                setUser(firebaseUser);
+                getRole(firebaseUser.uid).then((role) => {
+                    const userData = {
+                        uid: firebaseUser.uid,
+                        email: firebaseUser.email,
+                        role: role
+                    };
+                    setUser(userData);
+                });
             } else {
                 setUser(null);
             }
@@ -42,7 +58,7 @@ export function App() {
             <Routes>
                 <Route path="/" element={<LandingPageContainer />} />
                 <Route path="/login" element={<LoginContainer />} />
-                <Route path="/dashboard" element={<DashboardContainer />} />
+                <Route path="/dashboard" element={<DashboardContainer role={user ? user.role : null } />} />
             </Routes>
         </>
     );
