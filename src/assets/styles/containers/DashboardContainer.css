@@ -1,0 +1,12 @@
+.dashboard-container {
+    margin-top: 100px;
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard-actions-container {
+    width: 100%;
+    padding: 20px;
+}

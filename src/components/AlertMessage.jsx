@@ -2,14 +2,14 @@ import React, { Fragment, useState, useEffect } from "react";
 import "../assets/styles/components/AlertMessage.css";
 import { FaExclamationCircle, FaTimes } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import { action } from "../actions/action.js";
+import { loginAction } from "../actions/loginAction.js";
 
 export const AlertMessage = () => {
     
     const { alertMessage } = useSelector(state => state.loginReducer);
     
     const dispatch = useDispatch();
-    const { actionCloseAlertMessage } = action();
+    const { actionCloseAlertMessage } = loginAction();
 
     const [ error, setError ] = useState("");
     const [ message, setMessage ] = useState("");

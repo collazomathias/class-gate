@@ -21,6 +21,6 @@ const actionCloseAlertMessage = () => async(dispatch) => {
     })
 }
 
-export const action = () => {
+export const loginAction = () => {
     return { actionLogin, actionCloseAlertMessage };
 }

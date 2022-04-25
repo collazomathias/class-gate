@@ -1,0 +1,104 @@
+.group-form-container {
+    width: 400px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+    border: 0.3px solid lightgray;
+    color: gray;
+}
+
+.group-form-container .group-title-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: 15px;
+}
+
+.group-form-container .group-title-container h1 {
+    font-size: 40px;
+    color: gray;
+}
+
+.group-form-container label {
+    width: 350px;
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.group-form-container .input-container {
+    display: flex;
+}
+
+.group-form-container input {
+    height: 50px;
+    width: 390px;
+    margin-bottom: 10px;
+    border: 0.3px solid lightgray;
+    border-radius: 6px;
+    padding-left: 10px;
+    font-size: 20px;
+    transition: 0.2s ease-in-out;
+    margin-bottom: 20px;
+    border-left: none;
+    transition: 0.2s ease-in-out;
+}
+
+.group-form-container input:focus {
+    outline: none;
+    border-right: 5px solid #FF7400;
+}
+
+.group-input-icon {
+    width: calc(50px - 20px);
+    height: calc(50px - 20px);
+    padding: 10px;
+    border-top: 1px solid #FF7400;
+    border-bottom: 1px solid #FF7400;
+    border-left: 1px solid #FF7400;
+    background-color: #FF7400;
+    color: white;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    transition: 0.3s ease-in-out;
+}
+
+.group-form-container select {
+    width: 55px;
+    height: 50px;
+    padding-left: 10px;
+    font-size: 22px;
+    color: gray;
+    border-radius: 6px;
+    border: 0.3px solid lightgray;
+    margin-bottom: 20px;
+}
+
+.group-form-container select:focus {
+    outline: none;
+}
+
+.group-form-container button {
+    width: 100%;
+    height: 50px;
+    border-radius: 6px;
+    border: none;
+    background-color: #FF7400;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-icon-add {
+    width: 40px !important;
+    height: 40px !important;
+    background-color: #FF7400 !important;
+    color: white !important;
+}
