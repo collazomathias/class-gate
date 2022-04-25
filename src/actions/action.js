@@ -15,6 +15,12 @@ const actionLogin = (auth, email, password) => async(dispatch) => {
     }
 }
 
+const actionCloseAlertMessage = () => async(dispatch) => {
+    dispatch({
+        type: "closeAlertMessage"
+    })
+}
+
 export const action = () => {
-    return { actionLogin };
+    return { actionLogin, actionCloseAlertMessage };
 }
