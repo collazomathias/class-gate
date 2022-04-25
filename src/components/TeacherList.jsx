@@ -2,6 +2,8 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import DataTable from 'react-data-table-component';
 
+const url="";
+
 const teachList = [{
     nombre: "         masmalsmda carlos"
 },
@@ -75,17 +77,19 @@ const teachList = [{
     nombre: "robert"
 }
 ]
+const fetchTeachers = async(dispatch)=>{
+    await fetch(url)
+        .then(response => response.json())
+        .then((data)=>{
+         
+        }).catch(error=> console.log(error))
+
+}
+
 
 const TeacherList = () => {
-    // const put = useRef(null);
-    //teachList.map(a=> put.current.innerHTML += `<li>${a.nombre}</li>`)
-    //console.log(teachList.map(a=> `<h1>${a.nombre}</h1>`))
-
-
-
+    
     return (<>
-
-
         <p>Listado de Maestros:</p>
         <div className="col-5">
 
@@ -93,11 +97,10 @@ const TeacherList = () => {
                 columns={[{
                     name: "Maestros",
                     selector: "nombre"
-
                 },
                 {
                     name: "",
-                    selector: "_id",
+                    selector: "id",
                     cell: (a) => (
                         <>
                             <button >Editar</button>
@@ -109,11 +112,8 @@ const TeacherList = () => {
                 pagination
             />
         </div>
-
-
     </>
     )
-
 }
 
 export default TeacherList;
