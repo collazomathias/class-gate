@@ -25,7 +25,7 @@ const actionTeacherPost = (teacherPost) => async (dispatch) => {
 
 const actionTeacherGetDoc = (documento) => async (dispatch) => {
     try {
-        await fetch("https://classgate.herokuapp.com/searchMaestro/" + documento + "", {
+        await fetch("https://classgate.herokuapp.com/searchMaestro/" + documento, {
             method: "GET",
             headers: {
                 'Content-Type': 'aplication/json'

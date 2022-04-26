@@ -6,25 +6,29 @@ import TeacherList from "../components/TeacherList";
 import { Teacher } from "../components/Teacher";
 import { useRef, useState } from "react";
 
-export const TeacherRegister = () => {
+export const TeacherContainer = () => {
     //state para mostrar input
     const [showMsg, setShowMsg] = useState(false)
+   
 
     const dispatch = useDispatch();
 
     const { actionTeacherGetDoc } = teacherAction();
 
-    const teacher = useSelector(state => state.comprobationTeachReducer.teachDocum)
-    console.log(teacher)
+    let teacher = useSelector(state => state.comprobationTeachReducer.teachDocum)
+
     const docInput = useRef(null);
 
     //boton registrar chequea por documento si existe maestro
     const btnRegister = () => {
+        console.log(docInput.current.value)
         dispatch(actionTeacherGetDoc(docInput.current.value))
-        }
+        
+    }
     //retorno un input para consulta por documento
     const retInput = () => {
-        showMsg === false ? setShowMsg(true) : setShowMsg(false);
+        showMsg === false ? setShowMsg(true) : <></>;
+      
     }
 
     return (<>
@@ -33,12 +37,12 @@ export const TeacherRegister = () => {
             <TeacherList />
             <p>Bienvenido</p>
             <button onClick={retInput}>Registrar Maestro</button>
+
             {showMsg ? <>
-                <input type="number" ref={docInput} />
+                <input type="number" ref={docInput} required/>
                 <button onClick={btnRegister}>Comprobar</button></> : <></>}
-
-            {teacher === ""?<TeacherForm docInput={docInput.current.value}/>: <Teacher teacher={teacher}/>}
-
+                
+            {teacher === "" ? <TeacherForm docInput={docInput.current.value} /> : (teacher.nombre ? <Teacher teacher={teacher} /> : <></>)}
 
         </div>
     </>

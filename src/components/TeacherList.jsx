@@ -23,8 +23,7 @@ const TeacherList = () => {
     //arreglo que contiene maestros
     const arrTeachers = useSelector((state) => state.getAllTeacherReducer.teacherGetAll)
     arrTeachers.length ===0? dispatch(actionTeacherGetAll()): <></>
-    
-    console.log(arrTeachers)
+
 
 
     //traduce el pie de tabla:
