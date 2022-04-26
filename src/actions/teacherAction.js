@@ -40,7 +40,7 @@ const actionTeacherGetDoc = (documento) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: "teacherGetDoc",
-            payload: ""
+            payload: documento
         });
     }
 }

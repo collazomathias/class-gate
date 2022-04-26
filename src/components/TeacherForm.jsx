@@ -7,6 +7,7 @@ export const TeacherForm = ({ docInput }) => {
 
     const dispatch = useDispatch();
     const { actionTeacherPost } = teacherAction();
+    const { actionTeacherGetDoc } = teacherAction();
     //ref al select de materias
     const matSelect = useRef(null)
     //almacena en el array lista de materias
@@ -19,7 +20,7 @@ export const TeacherForm = ({ docInput }) => {
     }
 
     const submitHandler = async (e) => {
-        
+        e.preventDefault()
         const document = docInput;
         const name = e.target.elements.name.value;
         const email = e.target.elements.email.value;
@@ -52,7 +53,8 @@ export const TeacherForm = ({ docInput }) => {
         }
 
         dispatch(actionTeacherPost(teacherPost))
-        
+        dispatch(actionTeacherGetDoc(docInput))
+        alert("Registro Exitoso!!")
     }
 
     return (<>
