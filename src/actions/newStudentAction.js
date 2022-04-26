@@ -9,12 +9,18 @@ const actionAcudienteVerifier = (docId) => async (dispatch) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data) {
-          dispatch({
+        if (data.documentoIdentidad) {
+          return dispatch({
             type: "stateAcudiente",
             payload: data,
           });
         }
+        
+        alert("No se encontro el acudiente");
+        dispatch({
+          type: "AcudienteNotFound",
+          payload: null,
+        });
       });
   } catch (error) {
     dispatch({

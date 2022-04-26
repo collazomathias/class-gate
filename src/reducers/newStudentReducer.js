@@ -8,6 +8,8 @@ export const newStudentReducer = (state = initialState, action) => {
     switch(action.type){
         case "stateAcudiente":
             return { ...state, acudiente: action.payload, estudiantes: action.payload.estudiantes, alertMessage: "" }
+        case "AcudienteNotFound":
+            return { ...state, acudiente: null }
         case "stateNewAcudiente":
             return { ...state, acudiente: action.payload, alertMessage: "" }
         case "stateNewStudent":

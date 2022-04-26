@@ -92,7 +92,7 @@ export const NewStudentForm = () => {
           placeholder="Número de identificación"
         />
         <button type="submit" className="btn btn-primary">Verificar</button>
-        {/* {!acudiente ? (
+        {!acudiente === null ? (
           <>
             <label htmlFor="acudienteName">Nombre completo</label>
             <input
@@ -137,7 +137,7 @@ export const NewStudentForm = () => {
               Guardar
             </button>
           </>
-        ) : null} */}
+        ) : null}
       </form>
       {acudiente ? (
         <>
