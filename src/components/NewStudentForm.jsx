@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { action } from "../actions/newStudentAction";
 
-export const NewStudentContainer = () => {
+export const NewStudentForm = () => {
   const acudiente = useSelector((state) => state.newStudentReducer.acudiente);
 
   const estudiantes = useSelector(
@@ -80,7 +80,7 @@ export const NewStudentContainer = () => {
     <>
       <h1>Registro de nuevo estudiante</h1>
       <h2>Datos acudiente</h2>
-      <form onSubmit={submitAcudienteHandler}>
+      <form onSubmit={documentHandler}>
         <label htmlFor="acudienteDocId">Número de identificación</label>
         <input
           required
@@ -91,8 +91,8 @@ export const NewStudentContainer = () => {
           aria-describedby="Número de identificación"
           placeholder="Número de identificación"
         />
-        {/* <button type="submit" className="btn btn-primary">Verificar</button> */}
-        {!acudiente ? (
+        <button type="submit" className="btn btn-primary">Verificar</button>
+        {/* {!acudiente ? (
           <>
             <label htmlFor="acudienteName">Nombre completo</label>
             <input
@@ -137,7 +137,7 @@ export const NewStudentContainer = () => {
               Guardar
             </button>
           </>
-        ) : null}
+        ) : null} */}
       </form>
       {acudiente ? (
         <>

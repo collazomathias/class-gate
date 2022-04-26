@@ -5,6 +5,7 @@ import { GroupForm } from "../components/GroupForm.jsx";
 import "../assets/styles/containers/DashboardContainer.css";
 import { DashboardMenu } from "../components/DashboardMenu.jsx";
 import { GroupList } from "../components/GroupList.jsx";
+import { NewStudentForm } from "../components/NewStudentForm.jsx";
 
 export const DashboardContainer = (props) => {
 
@@ -55,7 +56,7 @@ export const DashboardContainer = (props) => {
                                                 setGroupEditingCourse={setGroupEditingCourse} 
                                             />
                                         </> : null }
-                                    { newStudent ? "Nuevo estudiante" : null }
+                                    { newStudent ? <NewStudentForm/> : null }
                                 </>
                             ) : null
                         
