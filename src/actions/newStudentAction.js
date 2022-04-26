@@ -1,21 +1,21 @@
 const actionAcudienteVerifier = (docId) => async (dispatch) => {
   try {
-    fetch('https://class-gate.herokuapp.com/searchAcudiente/'+docId, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
+    fetch("https://class-gate.herokuapp.com/searchAcudiente/" + docId, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-        if(data) {
-            dispatch({
-                type: "stateAcudiente",
-                payload: data
-            })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          dispatch({
+            type: "stateAcudiente",
+            payload: data,
+          });
         }
-    })
+      });
   } catch (error) {
     dispatch({
       type: "alertMessage",
@@ -25,18 +25,18 @@ const actionAcudienteVerifier = (docId) => async (dispatch) => {
 };
 
 const actionNewAcudiente = (acudiente) => async (dispatch) => {
-    dispatch({
-        type: "stateNewAcudiente",
-        payload: acudiente
-    })
-}
+  dispatch({
+    type: "stateNewAcudiente",
+    payload: acudiente,
+  });
+};
 
 const actionNewStudent = (estudiante) => async (dispatch) => {
-    dispatch({
-        type: "stateNewStudent",
-        payload: estudiante
-    })
-}
+  dispatch({
+    type: "stateNewStudent",
+    payload: estudiante,
+  });
+};
 
 const actionCloseAlertMessage = () => async (dispatch) => {
   dispatch({
@@ -44,28 +44,55 @@ const actionCloseAlertMessage = () => async (dispatch) => {
   });
 };
 
-const actionSaveAcudiente = (saveacudiente) => async (dispatch) => {
-    console.log("hola")
-    try {
-      fetch('https://class-gate.herokuapp.com/addAcudiente', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(saveacudiente)
-      })
-      .then(res => res.json())
-      .then(data => {
-          console.log(data)
-      })
-    } catch (error) {
-      dispatch({
-        type: "alertMessage",
-        payload: error.message,
+const actionSaveAcudiente = (saveAcudiente) => async (dispatch) => {
+  try {
+    fetch("https://class-gate.herokuapp.com/addAcudiente", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(saveAcudiente),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
       });
-    }
-  };
+  } catch (error) {
+    dispatch({
+      type: "alertMessage",
+      payload: error.message,
+    });
+  }
+};
+
+const actionSaveEstudiante = (saveEstudiante) => async (dispatch) => {
+  try {
+    fetch("https://class-gate.herokuapp.com/addEstudiante", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(saveEstudiante),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  } catch (error) {
+    dispatch({
+      type: "alertMessage",
+      payload: error.message,
+    });
+  }
+};
 
 export const action = () => {
-  return { actionAcudienteVerifier, actionNewAcudiente, actionNewStudent, actionSaveAcudiente, actionCloseAlertMessage };
+  return {
+    actionAcudienteVerifier,
+    actionNewAcudiente,
+    actionNewStudent,
+    actionSaveAcudiente,
+    actionSaveEstudiante,
+    actionCloseAlertMessage,
+  };
 };
