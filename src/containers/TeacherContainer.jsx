@@ -9,7 +9,7 @@ import { useRef, useState } from "react";
 export const TeacherContainer = () => {
     //state para mostrar input
     const [showMsg, setShowMsg] = useState(false)
-   
+
 
     const dispatch = useDispatch();
 
@@ -21,14 +21,16 @@ export const TeacherContainer = () => {
 
     //boton registrar chequea por documento si existe maestro
     const btnRegister = () => {
-        console.log(docInput.current.value)
+        if (docInput.current.value === "") {
+            alert("Ingrese un documento!");
+            return;
+        }
         dispatch(actionTeacherGetDoc(docInput.current.value))
-        
     }
     //retorno un input para consulta por documento
     const retInput = () => {
         showMsg === false ? setShowMsg(true) : <></>;
-      
+
     }
 
     return (<>
@@ -39,9 +41,9 @@ export const TeacherContainer = () => {
             <button onClick={retInput}>Registrar Maestro</button>
 
             {showMsg ? <>
-                <input type="number" ref={docInput} required/>
+                <input type="number" ref={docInput} required />
                 <button onClick={btnRegister}>Comprobar</button></> : <></>}
-                
+
             {teacher === "" ? <TeacherForm docInput={docInput.current.value} /> : (teacher.nombre ? <Teacher teacher={teacher} /> : <></>)}
 
         </div>
