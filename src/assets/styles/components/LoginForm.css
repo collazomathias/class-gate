@@ -1,12 +1,11 @@
 .login-form-container {
     width: 450px;
-    height: 400px;
     border-radius: 6px;
     background-color: white;
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.10);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.15);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: space-between;
     color: gray;
     z-index: 1;
@@ -15,7 +14,6 @@
 .title-container {
     width: 100%;
     height: 90px;
-    /*background-color: rgb(255, 240, 213);*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,7 +22,7 @@
 .title-container h1 {
     font-size: 55px;
     font-weight: bold;
-    color: #FF7400;
+    color: #FF7E06;
 }
 
 .login-form-container label {
@@ -32,6 +30,7 @@
     font-size: 20px;
     margin-top: 5px;
     font-weight: bold;
+    margin-left: 30px;
 }
 
 .input-container {
@@ -40,33 +39,35 @@
 
 .login-form-container input {
     height: 50px;
-    width: 290px;
-    margin-bottom: 10px;
+    width: 100%;
     border: 0.3px solid lightgray;
     border-radius: 6px;
     padding-left: 10px;
     font-size: 20px;
     transition: 0.2s ease-in-out;
+    margin-right: 30px;
     margin-bottom: 30px;
+    border-left: none;
+    transition: 0.3s ease-in-out;
 }
 
 .login-form-container input:focus {
     outline: none;
-    border-right: 5px solid #FF7400;
+    border-right: 5px solid #FF7E06;
 }
 
 .input-icon {
     width: calc(50px - 30px);
     height: calc(50px - 30px);
     padding: 15px;
-    border-top: 1px solid #FF7400;
-    border-bottom: 1px solid #FF7400;
-    border-left: 1px solid #FF7400;
-    background-color: #FF7400;
+    border-top: 1px solid #FF7E06;
+    border-bottom: 1px solid #FF7E06;
+    border-left: 1px solid #FF7E06;
+    background-color: #FF7E06;
     color: white;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
-    transition: 0.3s ease-in-out;
+    margin-left: 30px;
 }
 
 .login-form-container button {
@@ -75,7 +76,7 @@
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     border: none;
-    background-color: #FF7400;
+    background-color: #FF7E06;
     color: white;
     font-weight: bold;
     font-size: 30px;
@@ -88,7 +89,7 @@
 .button-icon-login {
     width: 50px !important;
     height: 50px !important;
-    background-color: #FF7400 !important;
+    background-color: #FF7E06 !important;
     color: white !important;
 }
 

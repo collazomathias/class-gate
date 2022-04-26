@@ -3,7 +3,7 @@ import "../assets/styles/components/LoginForm.css";
 import firebaseApp from "../firebase/credentials";
 import { getAuth,  } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { action } from "../actions/action.js";
+import { loginAction } from "../actions/loginAction.js";
 import { FaUser, FaLock } from "react-icons/fa";
 import { BiLogIn } from "react-icons/bi";
 import ClassGateLogo from "../assets/imgs/class-gate.png";
@@ -12,7 +12,7 @@ const auth = getAuth(firebaseApp);
 
 export const LoginForm = () => {
 
-    const { actionLogin } = action();
+    const { actionLogin } = loginAction();
 
     const dispatch = useDispatch();
 

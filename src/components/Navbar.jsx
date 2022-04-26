@@ -1,7 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { action } from "../actions/action.js";
 import firebaseApp from "../firebase/credentials";
 import { getAuth, signOut } from "firebase/auth";
 import "../assets/styles/components/Navbar.css";
@@ -10,6 +9,7 @@ import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { AiFillHome } from "react-icons/ai";
 import { FaUser, FaLock } from "react-icons/fa";
 import { HiOutlinePresentationChartBar } from "react-icons/hi";
+import { loginAction } from "../actions/loginAction.js";
 
 const auth = getAuth(firebaseApp);
 
@@ -17,7 +17,7 @@ export const Navbar = (props) => {
 
     const location = useLocation();
 
-    const { actionLogin } = action();
+    const { actionLogin } = loginAction();
 
     const dispatch = useDispatch();
 
