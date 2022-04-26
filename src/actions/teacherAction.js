@@ -24,7 +24,7 @@ const actionTeacherPost = (teacherPost) => async (dispatch) => {
 
 const actionTeacherGetDoc = (documento) => async (dispatch) => {
     try {
-        fetch("https://classgate.herokuapp.com/searchMaestro/"+documento, {
+        await fetch("https://classgate.herokuapp.com/searchMaestro/"+documento+"", {
             method: "GET",
             headers: {
                 'Content-Type': 'aplication/json'
@@ -46,7 +46,7 @@ const actionTeacherGetDoc = (documento) => async (dispatch) => {
 
 const actionTeacherGetAll = () => async (dispatch) => {
     try {
-        fetch("https://classgate.herokuapp.com/allMaestro", {
+       await fetch("https://classgate.herokuapp.com/allMaestro", {
             method: "GET",
             headers: {
                 'Content-Type': 'aplication/json'

@@ -1,6 +1,8 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import DataTable from 'react-data-table-component';
+import { useDispatch, useSelector } from 'react-redux';
+import { teacherAction } from '../actions/teacherAction';
 
 
 const teachList = [{
@@ -79,6 +81,8 @@ const teachList = [{
 }
 ]
 
+
+
 //columnas de la tabla:
 const columns = [{
     name: "Maestros",
@@ -92,6 +96,16 @@ const columns = [{
     
 }]
 const TeacherList = () => {
+    
+    const {actionTeacherGetAll} = teacherAction();
+    const dispatch = useDispatch();
+    
+    const arrTeachers = useSelector((state) => state.getAllTeacherReducer.teacherGetAll)
+    arrTeachers.length ===0? dispatch(actionTeacherGetAll()): <></>
+    
+    console.log(arrTeachers)
+
+
     //traduce el pie de tabla:
     const paginationComponentOptions = {
         rowsPerPageText: 'Filas por página',
@@ -99,7 +113,7 @@ const TeacherList = () => {
         selectAllRowsItem: true,
         selectAllRowsItemText: 'Todos',
     };
-
+    
     return (<>
         <p>Listado de Maestros:</p>
         <div className="col-5">
@@ -107,7 +121,7 @@ const TeacherList = () => {
             <DataTable
                 title="Listado de Maestros"
                 columns={columns}
-                data={teachList}
+                data={arrTeachers}
                 pagination
                 dense
                 paginationComponentOptions={paginationComponentOptions}

@@ -2,15 +2,15 @@
 
 
 const initialState = {
-    teachDocum: []
+    teacherGetAll: []
 }
 
-export const teacherGetAll = (state = initialState, action) => {
+export const  getAllTeacherReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case "teacherGetAll":
-            const teacherGetAll = ([...state.teachDocum, action.payload])
-            return { ...state, teacherGetAll: teacherGetAll }
+           // const teacherGetAll = ([...state.teacherGetAll, action.payload])
+            return { ...state, teacherGetAll: action.payload }
 
         default:
             return state;
