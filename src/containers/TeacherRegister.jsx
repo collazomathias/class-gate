@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { teacherAction } from "../actions/teacherAction";
 import { TeacherForm } from "../components/TeacherForm";
 import TeacherList from "../components/TeacherList";
+import { Teacher } from "../components/Teacher";
 import { useRef, useState } from "react";
 
 export const TeacherRegister = () => {
@@ -20,8 +21,7 @@ export const TeacherRegister = () => {
     //boton registrar chequea por documento si existe maestro
     const btnRegister = () => {
         dispatch(actionTeacherGetDoc(docInput.current.value))
-        
-    }
+        }
     //retorno un input para consulta por documento
     const retInput = () => {
         showMsg === false ? setShowMsg(true) : setShowMsg(false);
@@ -37,7 +37,7 @@ export const TeacherRegister = () => {
                 <input type="number" ref={docInput} />
                 <button onClick={btnRegister}>Comprobar</button></> : <></>}
 
-            {teacher[0].documentoIdentidad === docInput.current.value? <TeacherForm /> : <></>}
+            {teacher === ""?<TeacherForm docInput={docInput.current.value}/>: <Teacher teacher={teacher}/>}
 
 
         </div>

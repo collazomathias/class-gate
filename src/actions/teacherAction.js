@@ -6,7 +6,8 @@ const actionTeacherPost = (teacherPost) => async (dispatch) => {
             method: "POST",
             body: JSON.stringify(teacherPost),
             headers: {
-                'Content-Type': 'aplication/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             }
         })
             .then(response => response.json())
@@ -24,7 +25,7 @@ const actionTeacherPost = (teacherPost) => async (dispatch) => {
 
 const actionTeacherGetDoc = (documento) => async (dispatch) => {
     try {
-        await fetch("https://classgate.herokuapp.com/searchMaestro/"+documento+"", {
+        await fetch("https://classgate.herokuapp.com/searchMaestro/" + documento + "", {
             method: "GET",
             headers: {
                 'Content-Type': 'aplication/json'
@@ -35,18 +36,18 @@ const actionTeacherGetDoc = (documento) => async (dispatch) => {
                 type: "teacherGetDoc",
                 payload: data
             }))
-            
+
     } catch (error) {
         dispatch({
-            type: "alertMessage",
-            payload: error.message
+            type: "teacherGetDoc",
+            payload: ""
         });
     }
 }
 
 const actionTeacherGetAll = () => async (dispatch) => {
     try {
-       await fetch("https://classgate.herokuapp.com/allMaestro", {
+        await fetch("https://classgate.herokuapp.com/allMaestro", {
             method: "GET",
             headers: {
                 'Content-Type': 'aplication/json'
@@ -57,7 +58,7 @@ const actionTeacherGetAll = () => async (dispatch) => {
                 type: "teacherGetAll",
                 payload: data
             }))
-            
+
     } catch (error) {
         dispatch({
             type: "alertMessage",
@@ -67,5 +68,5 @@ const actionTeacherGetAll = () => async (dispatch) => {
 }
 
 export const teacherAction = () => {
-    return { actionTeacherPost, actionTeacherGetDoc , actionTeacherGetAll };
+    return { actionTeacherPost, actionTeacherGetDoc, actionTeacherGetAll };
 }
