@@ -18,6 +18,26 @@ const actionNewGroup = (newGroup) => async(dispatch) => {
     }
 }
 
+const actionEditGroup = (editedGroup) => async(dispatch) => {
+    try {
+        fetch("", {
+            method: "PUT",
+            body: JSON.stringify(editedGroup),
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.json())
+        .then(data => dispatch({
+            type: "editGroup",
+            payload: data
+        }));
+    } catch (error) {
+        dispatch({
+            type: "alertMessage",
+            payload: error.message
+        });
+    }
+}
+
 const actionGetGroups = () => async(dispatch) => {
     try {
         fetch("")
@@ -34,6 +54,10 @@ const actionGetGroups = () => async(dispatch) => {
     }
 }
 
+const actionDeleteGroup = (id) => async(dispatch) => {
+    return;
+}
+
 export const actionGroup = () => {
-    return { actionNewGroup, actionGetGroups };
+    return { actionNewGroup, actionGetGroups, actionDeleteGroup, actionEditGroup };
 }
