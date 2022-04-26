@@ -8,7 +8,7 @@ export const LoadingPage = () => {
     useEffect(() => {
         setTimeout(() => {
             setLoading(false);
-        }, 1500);
+        }, 1900);
     }, []);
 
     return (

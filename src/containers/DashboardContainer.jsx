@@ -4,6 +4,7 @@ import { AlertMessage } from "../components/AlertMessage.jsx";
 import { GroupForm } from "../components/GroupForm.jsx";
 import "../assets/styles/containers/DashboardContainer.css";
 import { DashboardMenu } from "../components/DashboardMenu.jsx";
+import { GroupList } from "../components/GroupList.jsx";
 
 export const DashboardContainer = (props) => {
 
@@ -20,7 +21,10 @@ export const DashboardContainer = (props) => {
                         {
                             props.role === "administrativo" ? (
                                 <>
-                                    { newGroup ? <GroupForm /> : null }
+                                    { newGroup ? <>
+                                            <GroupForm />
+                                            <GroupList />
+                                        </> : null }
                                     { newStudent ? "Nuevo estudiante" : null }
                                 </>
                             ) : null

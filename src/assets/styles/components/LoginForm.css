@@ -2,10 +2,10 @@
     width: 450px;
     border-radius: 6px;
     background-color: white;
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.10);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.15);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: space-between;
     color: gray;
     z-index: 1;
@@ -30,6 +30,7 @@
     font-size: 20px;
     margin-top: 5px;
     font-weight: bold;
+    margin-left: 30px;
 }
 
 .input-container {
@@ -38,12 +39,13 @@
 
 .login-form-container input {
     height: 50px;
-    width: 290px;
+    width: 100%;
     border: 0.3px solid lightgray;
     border-radius: 6px;
     padding-left: 10px;
     font-size: 20px;
     transition: 0.2s ease-in-out;
+    margin-right: 30px;
     margin-bottom: 30px;
     border-left: none;
     transition: 0.3s ease-in-out;
@@ -65,6 +67,7 @@
     color: white;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
+    margin-left: 30px;
 }
 
 .login-form-container button {

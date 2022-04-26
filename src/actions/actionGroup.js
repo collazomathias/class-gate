@@ -5,19 +5,35 @@ const actionNewGroup = (newGroup) => async(dispatch) => {
             body: JSON.stringify(newGroup),
             headers: { "Content-Type": "application/json" }
         })
-            .then(response => response.json())
-            .then(data => dispatch({
-                type: "addGroup",
-                payload: data
-            }));
+        .then(response => response.json())
+        .then(data => dispatch({
+            type: "addGroup",
+            payload: data
+        }));
     } catch (error) {
         dispatch({
             type: "alertMessage",
             payload: error.message
-        })
+        });
+    }
+}
+
+const actionGetGroups = () => async(dispatch) => {
+    try {
+        fetch("")
+        .then(response => response.json())
+        .then(data => dispatch({
+            type: "getGroups",
+            payload: data
+        }));
+    } catch(error) {
+        dispatch({
+            type: "alertMessage",
+            payload: error.message
+        });
     }
 }
 
 export const actionGroup = () => {
-    return { actionNewGroup };
+    return { actionNewGroup, actionGetGroups };
 }
