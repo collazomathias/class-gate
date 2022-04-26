@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
 import { LandingPageContainer } from "./containers/LandingPageContainer.jsx";
 import { Navbar } from "./components/Navbar.jsx";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { GroupDirectorForm } from "./components/GroupDirectorForm.jsx";
 
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
@@ -43,22 +44,23 @@ export function App() {
     }, []);
 
     useEffect(() => {
-        if(user) {
-            navigate("/dashboard");
-        } else {
-            if(location.pathname === "/dashboard") {
-                navigate("/login");
-            }
-        }
+        // if(user) {
+        //     navigate("/dashboard");
+        // } else {
+        //     if(location.pathname === "/dashboard") {
+        //         navigate("/login");
+        //     }
+        // }
     }, [location.pathname, navigate, user]);
 
     return (
         <>
-            <Navbar user={user} />
+            {/* <Navbar user={user} /> */}
             <Routes>
                 <Route path="/" element={<LandingPageContainer />} />
                 <Route path="/login" element={<LoginContainer />} />
                 <Route path="/dashboard" element={<DashboardContainer role={user ? user.role : null } />} />
+                <Route path="/group-director-form" element={<GroupDirectorForm />} />
             </Routes>
         </>
     );
