@@ -10,12 +10,12 @@ export const TeacherForm = ({ docInput }) => {
 
     //ref al select de materias
     const matSelect = useRef(null)
-    let mat = [];
     //almacena en el array lista de materias
+    let mat = [];
     const addMat = (e) => {
         e.preventDefault();
-        let check = mat.find(a=>a===matSelect.current.value);
-        check === undefined?mat.push(matSelect.current.value):<></>
+        let check = mat.find(a => a === matSelect.current.value);
+        check === undefined ? mat.push(matSelect.current.value) : <></>
         console.log(mat)
     }
 
@@ -29,6 +29,23 @@ export const TeacherForm = ({ docInput }) => {
         const spec = e.target.elements.spec.value;
         const mate = mat;
         const state = e.target.elements.state.value;
+        //validaciones
+        if (!name) {
+            alert('No has escrito nada en el usuario');
+            return;
+        }
+
+        if (typeof dir !== "string") {
+            alert('Error en la direccion');
+            return;
+        }
+
+        if (!(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i).test(email)) {
+            alert("La dirección de email es incorrecta.");
+            return;
+        }
+
+        //creacion objeto para el post
         const teacherPost = {
             documentoIdentidad: document,
             nombre: name,
@@ -44,19 +61,23 @@ export const TeacherForm = ({ docInput }) => {
     }
 
     return (<>
-
         <div className='row justify-content-center'>
             <div className="col-5 ">
                 <form action="" onSubmit={submitHandler}>
                     <p>{docInput}</p>
                     <label htmlFor="name">Nombre</label>
-                    <input type="text" id='name' placeholder='Ingrese Nombre' required />
+                    <input type="text" id='name' placeholder='Ingrese Nombre' required
+                        minLength="4" maxLength="12" />
+
                     <label htmlFor="email">Correo</label>
                     <input type="text" id='email' placeholder='Ingrese Correo' required />
+
                     <label htmlFor="dir">Dirección</label>
                     <input type="text" id='dir' placeholder='Ingrese Direccion' />
+
                     <label htmlFor="cel">Celular</label>
                     <input type="number" id='cel' placeholder='Ingrese Celular' />
+
                     <label htmlFor="spec">Especialidad</label>
                     <input type="text" id='spec' placeholder='Ingrese Especialidad' />
 
@@ -72,14 +93,13 @@ export const TeacherForm = ({ docInput }) => {
                         <option value="Quimica">Quimica</option>
                     </select>
                     <button onClick={addMat}>Agregar materia</button>
+
                     <label htmlFor="state">Estado</label>
                     <select name="Estado" id="state">
                         <option value={true}>Activo</option>
                         <option value={false}>Inactivo</option>
                     </select>
-
-
-                    <button type='submit' className='btn btn-outline-secondary'>Guardar Maestro</button>
+                    <button type='submit'>Guardar Maestro</button>
                 </form>
             </div>
         </div>

@@ -5,84 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { teacherAction } from '../actions/teacherAction';
 
 
-const teachList = [{
-    nombre: "         masmalsmda carlos",
-    especialidad: "matematicas"
-},
-{
-    nombre: "robert",
-    especialidad: "matematicas"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-},
-{
-    nombre: "robert"
-}
-]
-
-
-
 //columnas de la tabla:
 const columns = [{
     name: "Maestros",
@@ -96,10 +18,9 @@ const columns = [{
     
 }]
 const TeacherList = () => {
-    
     const {actionTeacherGetAll} = teacherAction();
     const dispatch = useDispatch();
-    
+    //arreglo que contiene maestros
     const arrTeachers = useSelector((state) => state.getAllTeacherReducer.teacherGetAll)
     arrTeachers.length ===0? dispatch(actionTeacherGetAll()): <></>
     
