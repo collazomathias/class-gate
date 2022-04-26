@@ -20,6 +20,7 @@ export const TeacherForm = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
+        const document = 123456789;
         const name = e.target.elements.name.value;
         const email = e.target.elements.email.value;
         const dir = e.target.elements.dir.value;
@@ -28,6 +29,7 @@ export const TeacherForm = () => {
         const mate = mat;
         const state = e.target.elements.state.value;
         const teacherPost = {
+            documentoIdentidad: document,
             nombre: name,
             correo: email,
             direccion: dir,
@@ -38,7 +40,7 @@ export const TeacherForm = () => {
         }
 
         dispatch(actionTeacherPost(teacherPost))
-        console.log(name, email, dir, cel, spec, mate, state)
+        console.log(teacherPost, state)
     }
 
     return (<>

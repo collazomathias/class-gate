@@ -2,13 +2,14 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import DataTable from 'react-data-table-component';
 
-const url="";
 
 const teachList = [{
-    nombre: "         masmalsmda carlos"
+    nombre: "         masmalsmda carlos",
+    especialidad: "matematicas"
 },
 {
-    nombre: "robert"
+    nombre: "robert",
+    especialidad: "matematicas"
 },
 {
     nombre: "robert"
@@ -77,39 +78,39 @@ const teachList = [{
     nombre: "robert"
 }
 ]
-const fetchTeachers = async(dispatch)=>{
-    await fetch(url)
-        .then(response => response.json())
-        .then((data)=>{
-         
-        }).catch(error=> console.log(error))
 
-}
-
-
-const TeacherList = () => {
+//columnas de la tabla:
+const columns = [{
+    name: "Maestros",
+    selector: row => row.nombre,
+    sortable: true,
+},
+{
+    name: "Especialidad",
+    selector: row => row.especialidad,
+    sortable: true,
     
+}]
+const TeacherList = () => {
+    //traduce el pie de tabla:
+    const paginationComponentOptions = {
+        rowsPerPageText: 'Filas por página',
+        rangeSeparatorText: 'de',
+        selectAllRowsItem: true,
+        selectAllRowsItemText: 'Todos',
+    };
+
     return (<>
         <p>Listado de Maestros:</p>
         <div className="col-5">
 
             <DataTable
-                columns={[{
-                    name: "Maestros",
-                    selector: "nombre"
-                },
-                {
-                    name: "",
-                    selector: "id",
-                    cell: (a) => (
-                        <>
-                            <button >Editar</button>
-
-                        </>
-                    )
-                }]}
+                title="Listado de Maestros"
+                columns={columns}
                 data={teachList}
                 pagination
+                dense
+                paginationComponentOptions={paginationComponentOptions}
             />
         </div>
     </>
