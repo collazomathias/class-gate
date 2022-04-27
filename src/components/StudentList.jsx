@@ -108,7 +108,7 @@ export const StudentList = ({ isManagementStudents,
                                 paginationComponentOptions={paginationLangConfig}
                             /> : 
                             <div className="empty-table">
-                                <h1>Estudiante del grupo {managementStudentsGroupData ? managementStudentsGroupData.groupName: null}</h1>
+                                <h1>Estudiante del grupo {managementStudentsGroupData ? managementStudentsGroupData.groupName : null}</h1>
                                 <p>No hay estudiantes asignados a este grupo.</p>
                             </div>
                         }
@@ -127,7 +127,7 @@ export const StudentList = ({ isManagementStudents,
                             /> : 
                             <div className="empty-table">
                                 <h1>Estudiantes sin grupo asignado</h1>
-                                <p>No hay estudiantes sin grupo.</p>
+                                <p>No hay estudiantes sin grupo en {managementStudentsGroupData ? managementStudentsGroupData.groupGrade : null}° grado.</p>
                             </div>
                         }
                     </div>
