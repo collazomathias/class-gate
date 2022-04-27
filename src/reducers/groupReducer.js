@@ -19,7 +19,7 @@ export const groupReducer = (state = initialState, action) => {
         case "deleteGroup":
             return { ...state, groups: state.groups.filter(group => group.id !== action.payload.id) }
         case "removeStudentFromGroup":
-            return { ...state, groupStudents: state.groupStudents.filter(student => student.id !== action.payload.id) }
+            return { ...state, studentsWithOutGroup: [...state.studentsWithOutGroup, action.payload], groupStudents: state.groupStudents.filter(student => student.id !== action.payload.id) }
         case "addStudentToGroup":
             return { ...state, groupStudents: [...state.groupStudents, action.payload], studentsWithOutGroup: state.studentsWithOutGroup.filter(student => student.id !== action.payload.id) }
         default:

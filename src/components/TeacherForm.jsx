@@ -16,7 +16,6 @@ export const TeacherForm = ({ docInput }) => {
         e.preventDefault();
         let check = mat.find(a => a === matSelect.current.value);
         check === undefined ? mat.push(matSelect.current.value) : <></>
-        console.log(mat)
     }
 
     const submitHandler = async (e) => {

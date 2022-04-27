@@ -19,7 +19,7 @@ export const StudentList = ({ isManagementStudents,
 
     useEffect(() => {
         if(managementStudentsGroupData) dispatch(actionGetGroupStudents(managementStudentsGroupData.groupId));
-        if(managementStudentsGroupData) dispatch(actionGetStudentsWithOutGroup(managementStudentsGroupData.groupCourse));
+        if(managementStudentsGroupData) dispatch(actionGetStudentsWithOutGroup(managementStudentsGroupData.groupGrade));
     }, [actionGetGroupStudents, actionGetStudentsWithOutGroup, dispatch, managementStudentsGroupData]);
 
     const columns_group_students = [
@@ -71,6 +71,7 @@ export const StudentList = ({ isManagementStudents,
     ]
 
     const removeStudentFromGroup = (studentId) => {
+        console.log("Estudiante ID: ", studentId);
         dispatch(actionRemoveStudentFromGroup(studentId, managementStudentsGroupData.groupId));
     }
 
