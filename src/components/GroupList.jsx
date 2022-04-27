@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import "../assets/styles/components/GroupList.css";
 import DataTable from "react-data-table-component";
 import { actionGroup } from "../actions/actionGroup";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaUserTie } from "react-icons/fa";
 import { RiGroupFill } from "react-icons/ri";
-import { GrUserManager } from 'react-icons/gr'
 
 export const GroupList = ({ setEditGroupData, 
                             setIsEditingGroup,
@@ -75,7 +74,7 @@ export const GroupList = ({ setEditGroupData,
         {
             id: "columnAction",
             cell: row => <div className="option-button-container">
-                {row.maestro === null ? <button onClick={() => console.log("Ver maestros")} title="Ver los maestros" className="view-students-button"><GrUserManager /></button> : null}
+                {row.maestro === null ? <button onClick={() => console.log("Ver maestros")} title="Ver los maestros" className="view-students-button"><FaUserTie /></button> : null}
                 <button onClick={() => manageStudents(row.id, row.nombre, row.grado, row.curso, row.estudiantes)} title="Gestionar estudiantes" className="view-students-button"><RiGroupFill /></button>
                 <button onClick={() => editGroup(row.id, row.nombre, row.grado, row.curso)} title="Editar grupo" className="edit-button"><FaEdit /></button>
                 <button onClick={() => deleteGroup(row.id)} title="Eliminar grupo" className="delete-button"><FaTrash /></button>
