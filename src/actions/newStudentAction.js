@@ -30,13 +30,6 @@ const actionAcudienteVerifier = (docId) => async (dispatch) => {
   }
 };
 
-const actionNewAcudiente = (acudiente) => async (dispatch) => {
-  dispatch({
-    type: "stateNewAcudiente",
-    payload: acudiente,
-  });
-};
-
 const actionNewStudent = (estudiante) => async (dispatch) => {
   dispatch({
     type: "stateNewStudent",
@@ -52,8 +45,8 @@ const actionCloseAlertMessage = () => async (dispatch) => {
 
 const actionSaveAcudiente = (saveAcudiente) => async (dispatch) => {
   try {
-    fetch("https://class-gate.herokuapp.com/addAcudiente", {
-      method: "POST",
+    fetch("https://class-gate.herokuapp.com/updateAcudiente/"+saveAcudiente.id, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -98,7 +91,6 @@ const actionSaveEstudiante = (saveEstudiante) => async (dispatch) => {
 export const action = () => {
   return {
     actionAcudienteVerifier,
-    actionNewAcudiente,
     actionNewStudent,
     actionSaveAcudiente,
     actionSaveEstudiante,

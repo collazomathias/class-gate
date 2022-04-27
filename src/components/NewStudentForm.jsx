@@ -11,7 +11,6 @@ export const NewStudentForm = () => {
 
   const {
     actionAcudienteVerifier,
-    actionNewAcudiente,
     actionNewStudent,
     actionSaveAcudiente,
     actionSaveEstudiante,
@@ -40,25 +39,6 @@ export const NewStudentForm = () => {
       estado: true,
     };
     dispatch(actionNewStudent(newStudent));
-    event.target.reset();
-  };
-
-  const submitAcudienteHandler = async (event) => {
-    event.preventDefault();
-    const docId = event.target.elements.acudienteDocId.value;
-    const name = event.target.elements.acudienteName.value;
-    const correo = event.target.elements.acudienteEmail.value;
-    const direccion = event.target.elements.acudienteAddress.value;
-    const celular = event.target.elements.acudientePhone.value;
-    const newAcudiente = {
-      documentoIdentidad: docId,
-      nombre: name,
-      correo: correo,
-      direccion: direccion,
-      celular: celular,
-      estudiantes: [],
-    };
-    dispatch(actionNewAcudiente(newAcudiente));
     event.target.reset();
   };
 
