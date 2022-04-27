@@ -20,7 +20,7 @@ const TeacherList = () => {
     const {actionTeacherGetAll} = teacherAction();
     const dispatch = useDispatch();
     //arreglo que contiene maestros
-    const arrTeachers = useSelector((state) => state.getAllTeacherReducer.teacherGetAll)
+    const arrTeachers = useSelector((state) => state.teacherReducer.teacherGetAll)
     arrTeachers.length ===0? dispatch(actionTeacherGetAll()): <></>
 
 
