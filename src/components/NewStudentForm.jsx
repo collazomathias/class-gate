@@ -87,6 +87,7 @@ export const NewStudentForm = () => {
             <input
               required
               type="text"
+              minLength="2"
               maxLength="12"
               pattern="[0-9]+"
               className="form-estudianteDocId"
@@ -98,6 +99,7 @@ export const NewStudentForm = () => {
             <input
               required
               type="text"
+              minLength="2"
               maxLength="255"
               pattern="[a-zA-Z ]+"
               className="form-estudianteName"
