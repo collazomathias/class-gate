@@ -1,8 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import firebaseApp from "../firebase/credentials";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { getAuth,  } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { action } from "../actions/newStudentAction";
 
 const auth = getAuth(firebaseApp);
