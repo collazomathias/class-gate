@@ -1,6 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import firebaseApp from "../firebase/credentials";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth,  } from "firebase/auth";
 import { action } from "../actions/newStudentAction";
+
+const auth = getAuth(firebaseApp);
 
 export const NewStudentForm = () => {
   const acudiente = useSelector((state) => state.newStudentReducer.acudiente);
@@ -59,6 +64,9 @@ export const NewStudentForm = () => {
       estudiantes: [],
     };
     dispatch(actionNewAcudiente(newAcudiente));
+    await createUserWithEmailAndPassword(auth, correo, docId).catch(function (error) {
+      alert(error.message);
+    });
     event.target.reset();
   };
 
