@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
 import { LandingPageContainer } from "./containers/LandingPageContainer.jsx";
 import { Navbar } from "./components/Navbar.jsx";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { RegisterContainer } from "./containers/RegisterContainer.jsx";
 
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
@@ -59,6 +60,7 @@ export function App() {
                 <Route path="/" element={<LandingPageContainer />} />
                 <Route path="/login" element={<LoginContainer />} />
                 <Route path="/dashboard" element={<DashboardContainer role={user ? user.role : null } />} />
+                <Route path="/register-teacher" element={<RegisterContainer />} />
             </Routes>
         </>
     );
