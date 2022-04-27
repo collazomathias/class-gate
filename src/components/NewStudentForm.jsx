@@ -80,7 +80,7 @@ export const NewStudentForm = () => {
     <>
       <h1>Registro de nuevo estudiante</h1>
       <h2>Datos acudiente</h2>
-      <form onSubmit={documentHandler}>
+      <form onSubmit={submitAcudienteHandler}>
         <label htmlFor="acudienteDocId">Número de identificación</label>
         <input
           required
@@ -91,8 +91,8 @@ export const NewStudentForm = () => {
           aria-describedby="Número de identificación"
           placeholder="Número de identificación"
         />
-        <button type="submit" className="btn btn-primary">Verificar</button>
-        {!acudiente === null ? (
+        <button onClick={(e) => documentHandler(e)} className="btn btn-primary">Buscar</button>
+        {acudiente === null ? (
           <>
             <label htmlFor="acudienteName">Nombre completo</label>
             <input
@@ -137,7 +137,8 @@ export const NewStudentForm = () => {
               Guardar
             </button>
           </>
-        ) : null}
+        ) : null
+        }
       </form>
       {acudiente ? (
         <>
