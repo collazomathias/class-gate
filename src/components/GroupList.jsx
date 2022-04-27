@@ -75,6 +75,7 @@ export const GroupList = ({ setEditGroupData,
         {
             id: "columnAction",
             cell: row => <div className="option-button-container">
+                {row.maestro === null ? <button onClick={() => console.log("Ver maestros")} title="Ver los maestros" className="view-students-button"><GrUserManager /></button> : null}
                 <button onClick={() => manageStudents(row.id, row.nombre, row.grado, row.curso, row.estudiantes)} title="Gestionar estudiantes" className="view-students-button"><RiGroupFill /></button>
                 <button onClick={() => editGroup(row.id, row.nombre, row.grado, row.curso)} title="Editar grupo" className="edit-button"><FaEdit /></button>
                 <button onClick={() => deleteGroup(row.id)} title="Eliminar grupo" className="delete-button"><FaTrash /></button>
