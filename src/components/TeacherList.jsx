@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'
 import DataTable from 'react-data-table-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { teacherAction } from '../actions/teacherAction';
@@ -36,7 +35,7 @@ const TeacherList = () => {
     
     return (<>
         <p>Listado de Maestros:</p>
-        <div className="col-5">
+        <div>
 
             <DataTable
                 title="Listado de Maestros"

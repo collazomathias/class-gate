@@ -34,12 +34,10 @@ export const TeacherForm = ({ docInput }) => {
             alert('No has escrito nada en el usuario');
             return;
         }
-
         if (!(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i).test(email)) {
             alert("La dirección de email es incorrecta.");
             return;
         }
-
         //creacion objeto para el post
         const teacherPost = {
             documentoIdentidad: document,
