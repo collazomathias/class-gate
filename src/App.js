@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
 import { LandingPageContainer } from "./containers/LandingPageContainer.jsx";
 import { Navbar } from "./components/Navbar.jsx";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { TeacherContainer } from "./containers/TeacherContainer.jsx";
 
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
