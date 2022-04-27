@@ -1,8 +1,16 @@
 import React from "react";
+import { getAuth } from "@firebase/auth";
+import { createUserWithEmailAndPassword } from "@firebase/auth";
+import { doc, setDoc, getFirestore } from "firebase/firestore";
+import firebaseApp from "../firebase/credentials";
+
+const firestore = getFirestore(firebaseApp);
+
+const auth = getAuth();
 
 export const NewAcudienteForm = () => {
 
-    const acudienteHandler = (event) => {
+    const acudienteHandler = async (event) => {
         event.preventDefault();
         const docId = event.target.elements.acudienteDocumento.value;
         const nombre = event.target.elements.acudienteNombre.value;
@@ -18,6 +26,13 @@ export const NewAcudienteForm = () => {
             estudiantes: [],
         };
         console.log(newAcudiente);
+        const acudienteRegister = await createUserWithEmailAndPassword(auth, correo, docId)
+        .catch(function (error) {
+            alert(error.message);
+        });
+
+        const docRef = doc(firestore, `users/${acudienteRegister.user.uid}`);
+        setDoc(docRef, { email: correo, role: "acudiente" });
     };
 
     return (<>
