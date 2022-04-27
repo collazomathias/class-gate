@@ -94,6 +94,7 @@ export const NewStudentForm = () => {
           required
           type="text"
           maxLength="12"
+          pattern="[0-9]+"
           className="form-acudienteDocId"
           id="acudienteDocId"
           aria-describedby="Número de identificación"
@@ -107,6 +108,7 @@ export const NewStudentForm = () => {
               required
               type="text"
               maxLength="255"
+              pattern="[a-zA-Z ]+"
               className="form-acudienteName"
               id="acudienteName"
               aria-describedby="Nombre completo"
@@ -161,6 +163,7 @@ export const NewStudentForm = () => {
               required
               type="text"
               maxLength="12"
+              pattern="[0-9]+"
               className="form-estudianteDocId"
               id="estudianteDocId"
               aria-describedby="Número de identificación"
@@ -171,6 +174,7 @@ export const NewStudentForm = () => {
               required
               type="text"
               maxLength="255"
+              pattern="[a-zA-Z ]+"
               className="form-estudianteName"
               id="estudianteName"
               aria-describedby="Nombre completo"
