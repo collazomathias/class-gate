@@ -1,0 +1,16 @@
+.dashboard-container {
+    margin-top: 100px;
+    width: 100%;
+    height: calc(100vh - 100px);
+    display: flex;
+}
+
+.dashboard-actions-container {
+    width: 100%;
+    padding: 20px;
+    background: rgb(201,201,201);
+    background: linear-gradient(106deg, rgba(216,216,216,1) 0%, rgb(241, 241, 241) 15%, rgb(233, 233, 233) 100%);
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}

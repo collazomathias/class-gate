@@ -1,0 +1,135 @@
+.group-list-container {
+    width: 100%;
+    max-height: 100%;
+    margin-left: 20px;
+}
+
+[data-column-id="columnId"].rdt_TableCol {
+    font-size: 26px;
+    background-color: #FF7E06;
+    color: white;
+    font-weight: bold;
+}
+
+[data-column-id="columnGroup"].rdt_TableCol {
+    font-size: 26px;
+    background-color: #FF7E06;
+    color: white;
+    font-weight: bold;
+    min-width: 130px;
+}
+
+[data-column-id="columnAction"].rdt_TableCol {
+    font-size: 26px;
+    background-color: #FF7E06;
+    color: white;
+    font-weight: bold;
+}
+
+[data-column-id="columnDirector"].rdt_TableCol {
+    font-size: 26px;
+    background-color: #FF7E06;
+    color: white;
+    font-weight: bold;
+}
+
+.group-list-container nav {
+    font-size: 16px !important;
+    color: gray !important;
+    font-weight: bold;
+}
+
+.datatable-container {
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+}
+
+.group-list-container nav select:focus {
+    outline: 1px solid gray;
+}
+
+.view-students-button {
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 100%;
+    background-color: #050531;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: 0.3s ease-in-out;
+}
+
+.view-students-button:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+}
+
+.edit-button {
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 100%;
+    background-color: #FF7E06;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: 0.3s ease-in-out;
+    margin-left: 10px;
+}
+
+.edit-button:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+}
+
+.delete-button {
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 100%;
+    background-color: gray;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: 0.3s ease-in-out;
+    margin-left: 10px;
+}
+
+.delete-button:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+}
+
+.option-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-table h1 {
+    font-size: 26px;
+    background-color: #FF7E06;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    min-width: 310px;
+}
+
+.empty-table p {
+    font-size: 20px;
+    color: gray;
+    padding: 10px;
+    width: calc(100% - 20px);
+    text-align: center;
+}
+
+.empty-table {
+    background-color: white;
+}

@@ -1,7 +1,9 @@
 //import { actionTeacherPost } from "../actions/teacherAction"
 
 const initialState = {
-    teachers: []
+    teachers: [],
+    teacherGetAll: [],
+    teachDocum: []
 }
 
 export const teacherReducer = (state = initialState, action) => {
@@ -11,8 +13,17 @@ export const teacherReducer = (state = initialState, action) => {
             const teachers = ([...state.teachers, action.payload])
             return { ...state, teachers: teachers }
 
+            case "teacherGetAll":
+            return { ...state, teacherGetAll: action.payload }
+
+            case "teacherGetDoc":
+            return { ...state, teachDocum: action.payload }
+
         default:
             return state;
 
     }
 }
+
+
+

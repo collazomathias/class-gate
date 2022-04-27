@@ -43,7 +43,6 @@ export const TeacherContainer = () => {
 
         <div>
             <TeacherList />
-            <p>Bienvenido</p>
             <button onClick={retInput}>Registrar Maestro</button>
 
             {showMsg ? <>
