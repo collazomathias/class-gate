@@ -5,6 +5,7 @@ import DataTable from "react-data-table-component";
 import { actionGroup } from "../actions/actionGroup";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { RiGroupFill } from "react-icons/ri";
+import { GrUserManager } from 'react-icons/gr'
 
 export const GroupList = ({ setGroupEditingId, setGroupEditingName, setIsEditingGroup, setGroupEditingGrade, setGroupEditingCourse }) => {
     
@@ -38,7 +39,7 @@ export const GroupList = ({ setGroupEditingId, setGroupEditingName, setIsEditing
             nombre: "1A",
             grado: "1",
             curso: "A",
-            director: "Alejandro Pérez"
+            director: null
         },
         {
             id: 2,
@@ -52,7 +53,7 @@ export const GroupList = ({ setGroupEditingId, setGroupEditingName, setIsEditing
             nombre: "2A",
             grado: "2",
             curso: "A",
-            director: "Martín López"
+            director: null
         },
         {
             id: 4,
@@ -147,6 +148,7 @@ export const GroupList = ({ setGroupEditingId, setGroupEditingName, setIsEditing
         {
             id: "columnAction",
             cell: row => <div className="option-button-container">
+                {row.director === null ? <button title="Ver los maestros" className="view-students-button"><GrUserManager /></button> : null}
                 <button title="Ver los estudiantes" className="view-students-button"><RiGroupFill /></button>
                 <button onClick={() => editGroup(row.id, row.nombre, row.grado, row.curso)} title="Editar grupo" className="edit-button"><FaEdit /></button>
                 <button onClick={() => deleteGroup(row.id)} title="Eliminar grupo" className="delete-button"><FaTrash /></button>
