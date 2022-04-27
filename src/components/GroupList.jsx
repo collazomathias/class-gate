@@ -6,7 +6,10 @@ import { actionGroup } from "../actions/actionGroup";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { RiGroupFill } from "react-icons/ri";
 
-export const GroupList = ({ setGroupEditingId, setGroupEditingName, setIsEditingGroup, setGroupEditingGrade, setGroupEditingCourse }) => {
+export const GroupList = ({ setEditGroupData, 
+                            setIsEditingGroup,
+                            setIsManagementStudents,
+                            setManagementStudentsGroupData }) => {
     
     const dispatch = useDispatch();
 
@@ -15,110 +18,33 @@ export const GroupList = ({ setGroupEditingId, setGroupEditingName, setIsEditing
     const { actionGetGroups, actionDeleteGroup } = actionGroup();
 
     useEffect(() => {
-        //dispatch(actionGetGroups());
+        dispatch(actionGetGroups());
     }, [actionGetGroups, dispatch]);
 
     const deleteGroup = (groupId) => {
-        console.log("ID Grupo: ", groupId);
-        //dispatch(actionDeleteGroup(groupId));
+        dispatch(actionDeleteGroup(groupId));
     }
 
     const editGroup = (groupId, groupName, groupGrade, groupCourse) => {
-        setGroupEditingId(groupId);
-        setGroupEditingName(groupName);
-        setGroupEditingGrade(groupGrade);
-        setGroupEditingCourse(groupCourse);
+        setEditGroupData({
+            groupId: groupId,
+            groupName: groupName,
+            groupGrade: groupGrade,
+            groupCourse: groupCourse
+        });
         setIsEditingGroup(true);
     }
 
-
-    const groups2 = [
-        {
-            id: 1,
-            nombre: "1A",
-            grado: "1",
-            curso: "A",
-            director: "Alejandro Pérez"
-        },
-        {
-            id: 2,
-            nombre: "1B",
-            grado: "1",
-            curso: "B",
-            director: "Fernanda Gonzáles"
-        },
-        {
-            id: 3,
-            nombre: "2A",
-            grado: "2",
-            curso: "A",
-            director: "Martín López"
-        },
-        {
-            id: 4,
-            nombre: "3A",
-            grado: "3",
-            curso: "A",
-            director: "Juan Pérez"
-        },
-        {
-            id: 5,
-            nombre: "4A",
-            grado: "4",
-            curso: "A",
-            director: "Leonardo López"
-        },
-        {
-            id: 6,
-            nombre: "4B",
-            grado: "4",
-            curso: "B",
-            director: "Cristian Jiménez"
-        },
-        {
-            id: 7,
-            nombre: "4C",
-            grado: "4",
-            curso: "C",
-            director: "Luis Hernández"
-        },
-        {
-            id: 8,
-            nombre: "5A",
-            grado: "5",
-            curso: "A",
-            director: "Daniela Rodríguez"
-        },
-        {
-            id: 9,
-            nombre: "6A",
-            grado: "6",
-            curso: "A",
-            director: "Héctor López"
-        },
-        {
-            id: 10,
-            nombre: "6B",
-            grado: "6",
-            curso: "B",
-            director: "Tomás Quiroga"
-        },
-        {
-            id: 11,
-            nombre: "6C",
-            grado: "6",
-            curso: "C",
-            director: "Luis Díaz"
-        },
-        {
-            id: 12,
-            nombre: "7A",
-            grado: "7",
-            curso: "A",
-            director: "Ricardo Torres"
-        },
-    ];
-
+    const manageStudents = (groupId, groupName, groupGrade, groupCourse, groupStudents) => {
+        setManagementStudentsGroupData({
+            groupId: groupId,
+            groupName: groupName,
+            groupGrade: groupGrade,
+            groupCourse: groupCourse,
+            groupStudents: groupStudents
+        });
+        setIsManagementStudents(true);
+    }
 
     const columns = [
         {
@@ -129,7 +55,8 @@ export const GroupList = ({ setGroupEditingId, setGroupEditingName, setIsEditing
             style: {
                 fontSize: 20,
                 fontWeight: "bold",
-                color: "gray"
+                color: "gray",
+                minWidth: "130px"
             }
         },
         {
@@ -147,7 +74,7 @@ export const GroupList = ({ setGroupEditingId, setGroupEditingName, setIsEditing
         {
             id: "columnAction",
             cell: row => <div className="option-button-container">
-                <button title="Ver los estudiantes" className="view-students-button"><RiGroupFill /></button>
+                <button onClick={() => manageStudents(row.id, row.nombre, row.grado, row.curso, row.estudiantes)} title="Gestionar estudiantes" className="view-students-button"><RiGroupFill /></button>
                 <button onClick={() => editGroup(row.id, row.nombre, row.grado, row.curso)} title="Editar grupo" className="edit-button"><FaEdit /></button>
                 <button onClick={() => deleteGroup(row.id)} title="Eliminar grupo" className="delete-button"><FaTrash /></button>
             </div>,
@@ -165,17 +92,24 @@ export const GroupList = ({ setGroupEditingId, setGroupEditingName, setIsEditing
 
     return (
         <div className="group-list-container">
-            <div className="datatable-container">
-                <DataTable className="group-list-table table-responsive"
-                    id={"tablita"}
-                    columns={columns}
-                    data={groups2 ? groups2 : null}
-                    pagination
-                    fixedHeader
-                    fixedHeaderScrollHeight="calc(100vh - 195px)"
-                    paginationComponentOptions={paginationLangConfig}
-                />
-            </div>
+            {
+                groups.length !== 0 ?
+                    <div className="datatable-container">
+                        <DataTable className="table-responsive"
+                            columns={columns}
+                            data={groups}
+                            pagination
+                            fixedHeader
+                            fixedHeaderScrollHeight="calc(100vh - 195px)"
+                            paginationComponentOptions={paginationLangConfig}
+                        />
+                    </div> : 
+                    <div className="empty-table">
+                        <h1>Grupos</h1>
+                        <p>No hay grupos agregados.</p>
+                    </div>
+            }
+            
         </div>
     );
 }
