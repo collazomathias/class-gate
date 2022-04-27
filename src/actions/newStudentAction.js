@@ -62,6 +62,9 @@ const actionSaveAcudiente = (saveAcudiente) => async (dispatch) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        dispatch({
+          type: "acudienteSaved",
+        });
       });
   } catch (error) {
     dispatch({

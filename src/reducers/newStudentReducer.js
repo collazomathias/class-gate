@@ -12,6 +12,8 @@ export const newStudentReducer = (state = initialState, action) => {
             return { ...state, acudiente: null }
         case "stateNewAcudiente":
             return { ...state, acudiente: action.payload, alertMessage: "" }
+        case "acudienteSaved":
+            return { ...state, acudiente: null, estudiantes: [] }
         case "stateNewStudent":
             return { ...state, estudiantes: [...state.estudiantes, action.payload], alertMessage: "" }
         case "alertMessage":

@@ -67,13 +67,13 @@ export const NewStudentForm = () => {
     const newAcudiente = acudiente;
     newAcudiente.estudiantes = estudiantes;
     
-    estudiantes.map((estudiante) => {
+    await estudiantes.map((estudiante) => {
         if (!estudiante.id) {
           dispatch(actionSaveEstudiante(estudiante));
         }        
     });
     
-    dispatch(actionSaveAcudiente(newAcudiente));
+    await dispatch(actionSaveAcudiente(newAcudiente));
   };
 
   return (
