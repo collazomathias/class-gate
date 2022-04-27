@@ -1,5 +1,6 @@
 .dashboard-menu-container {
     width: 300px;
+    min-width: 260px;
     display: flex;
     flex-direction: column;
     background-color: #FF7E06;

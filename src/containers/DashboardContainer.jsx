@@ -5,6 +5,7 @@ import { GroupForm } from "../components/GroupForm.jsx";
 import "../assets/styles/containers/DashboardContainer.css";
 import { DashboardMenu } from "../components/DashboardMenu.jsx";
 import { GroupList } from "../components/GroupList.jsx";
+import { StudentList } from "../components/StudentList.jsx";
 
 export const DashboardContainer = (props) => {
 
@@ -13,10 +14,10 @@ export const DashboardContainer = (props) => {
     const [ newStudent, setNewStudent ] = useState(false);
 
     const [ isEditingGroup, setIsEditingGroup ] = useState(false);
-    const [ groupEditingId, setGroupEditingId ] = useState(null);
-    const [ groupEditingName, setGroupEditingName ] = useState("");
-    const [ groupEditingGrade, setGroupEditingGrade ] = useState("");
-    const [ groupEditingCourse, setGroupEditingCourse ] = useState("");
+    const [ editGroupData, setEditGroupData ] = useState(null);
+
+    const [ isManagementStudents, setIsManagementStudents ] = useState(false);
+    const [ managementStudentsGroupData, setManagementStudentsGroupData ] = useState(null);
 
     return (
             <>
@@ -36,23 +37,22 @@ export const DashboardContainer = (props) => {
                                 <>
                                     { newGroup ? <>
                                             <GroupForm 
+                                                editGroupData={editGroupData}
                                                 isEditingGroup={isEditingGroup}
-                                                groupEditingId={groupEditingId}
-                                                groupEditingName={groupEditingName}
-                                                groupEditingGrade={groupEditingGrade}
-                                                groupEditingCourse={groupEditingCourse}
-                                                setIsEditingGroup={setIsEditingGroup} 
-                                                setGroupEditingId={setGroupEditingId} 
-                                                setGroupEditingName={setGroupEditingName}
-                                                setGroupEditingGrade={setGroupEditingGrade} 
-                                                setGroupEditingCourse={setGroupEditingCourse} 
+                                                setEditGroupData={setEditGroupData}
+                                                setIsEditingGroup={setIsEditingGroup}
                                             />
-                                            <GroupList 
-                                                setIsEditingGroup={setIsEditingGroup} 
-                                                setGroupEditingId={setGroupEditingId} 
-                                                setGroupEditingName={setGroupEditingName}
-                                                setGroupEditingGrade={setGroupEditingGrade} 
-                                                setGroupEditingCourse={setGroupEditingCourse} 
+                                            <GroupList
+                                                setEditGroupData={setEditGroupData}
+                                                setIsEditingGroup={setIsEditingGroup}
+                                                setIsManagementStudents={setIsManagementStudents}
+                                                setManagementStudentsGroupData={setManagementStudentsGroupData}
+                                            />
+                                            <StudentList
+                                                isManagementStudents={isManagementStudents}
+                                                managementStudentsGroupData={managementStudentsGroupData}
+                                                setIsManagementStudents={setIsManagementStudents}
+                                                setManagementStudentsGroupData={setManagementStudentsGroupData}
                                             />
                                         </> : null }
                                     { newStudent ? "Nuevo estudiante" : null }
