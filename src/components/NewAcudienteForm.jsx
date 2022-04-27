@@ -31,8 +31,10 @@ export const NewAcudienteForm = () => {
             alert(error.message);
         });
 
-        const docRef = doc(firestore, `users/${acudienteRegister.user.uid}`);
-        setDoc(docRef, { email: correo, role: "acudiente" });
+        const docRef = await doc(firestore, `users/${acudienteRegister.user.uid}`);
+        await setDoc(docRef, { email: correo, role: "acudiente" });
+
+        alert("Acudiente registrado con éxito");
     };
 
     return (<>
