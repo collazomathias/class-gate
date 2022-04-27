@@ -5,13 +5,13 @@ import { GroupForm } from "../components/GroupForm.jsx";
 import "../assets/styles/containers/DashboardContainer.css";
 import { DashboardMenu } from "../components/DashboardMenu.jsx";
 import { GroupList } from "../components/GroupList.jsx";
+import { NewStudentForm } from "../components/NewStudentForm.jsx";
 import { StudentList } from "../components/StudentList.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { teacherAction } from "../actions/teacherAction";
 import { TeacherForm } from "../components/TeacherForm";
 import TeacherList from "../components/TeacherList";
 import { Teacher } from "../components/Teacher";
-
 
 export const DashboardContainer = (props) => {
 
@@ -104,7 +104,7 @@ export const DashboardContainer = (props) => {
                                         setManagementStudentsGroupData={setManagementStudentsGroupData}
                                     />
                                 </> : null}
-                                {newStudent ? "Nuevo estudiante" : null}
+                                { newStudent ? <NewStudentForm/> : null }
                                 {newTeacher ?
                                     <div>
                                         <TeacherList />

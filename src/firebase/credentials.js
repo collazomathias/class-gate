@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyBe9mZ6un5ES6gAtSphM41a1wnMSftpszI",
   authDomain: "class-gate.firebaseapp.com",
   projectId: "class-gate",
