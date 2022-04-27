@@ -59,6 +59,7 @@ const actionGetGroupStudents = (groupId) => async(dispatch) => {
         fetch("https://class-gate.herokuapp.com/allEstudiantesFromGrupo/" + groupId)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             dispatch({
             type: "getGroupStudents",
             payload: data
@@ -71,9 +72,9 @@ const actionGetGroupStudents = (groupId) => async(dispatch) => {
     }
 }
 
-const actionGetStudentsWithOutGroup = (groupCourse) => async(dispatch) => {
+const actionGetStudentsWithOutGroup = (groupGrade) => async(dispatch) => {
     try {
-        fetch("https://class-gate.herokuapp.com/allEstudiantesSinGrupo/" + groupCourse)
+        fetch("https://class-gate.herokuapp.com/allEstudiantesSinGrupoByGrado/" + groupGrade)
         .then(response => response.json())
         .then(data => dispatch({
             type: "getStudentsWithOutGroup",
