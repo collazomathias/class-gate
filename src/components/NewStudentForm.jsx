@@ -1,10 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import firebaseApp from "../firebase/credentials";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { action } from "../actions/newStudentAction";
-
-const auth = getAuth(firebaseApp);
 
 export const NewStudentForm = () => {
   const acudiente = useSelector((state) => state.newStudentReducer.acudiente);
@@ -63,9 +59,6 @@ export const NewStudentForm = () => {
       estudiantes: [],
     };
     dispatch(actionNewAcudiente(newAcudiente));
-    await createUserWithEmailAndPassword(auth, correo, docId).catch(function (error) {
-      alert(error.message);
-    });
     event.target.reset();
   };
 
@@ -87,7 +80,7 @@ export const NewStudentForm = () => {
     <>
       <h1>Registro de nuevo estudiante</h1>
       <h2>Datos acudiente</h2>
-      <form onSubmit={submitAcudienteHandler}>
+      <form onSubmit={documentHandler}>
         <label htmlFor="acudienteDocId">Número de identificación</label>
         <input
           required
@@ -100,55 +93,7 @@ export const NewStudentForm = () => {
           aria-describedby="Número de identificación"
           placeholder="Número de identificación"
         />
-        <button onClick={(e) => documentHandler(e)} className="btn btn-primary">Buscar</button>
-        {acudiente === null ? (
-          <>
-            <label htmlFor="acudienteName">Nombre completo</label>
-            <input
-              required
-              type="text"
-              maxLength="255"
-              pattern="[a-zA-Z ]+"
-              className="form-acudienteName"
-              id="acudienteName"
-              aria-describedby="Nombre completo"
-              placeholder="Nombre completo"
-            />
-            <label htmlFor="acudienteEmail">Correo electrónico</label>
-            <input
-              required
-              type="email"
-              className="form-acudienteEmail"
-              id="acudienteEmail"
-              aria-describedby="Correo electrónico"
-              placeholder="Correo electrónico"
-            />
-            <label htmlFor="acudienteAddress">Dirección</label>
-            <input
-              type="text"
-              maxLength="255"
-              className="form-acudienteAddress"
-              id="acudienteAddress"
-              aria-describedby="Dirección"
-              placeholder="Dirección"
-            />
-            <label htmlFor="acudientePhone">Teléfono</label>
-            <input
-              required
-              type="tel"
-              maxLength="10"
-              pattern="[0-9]+"
-              className="form-acudientePhone"
-              id="acudientePhone"
-              aria-describedby="Teléfono"
-              placeholder="Teléfono"
-            />
-            <button type="submit" className="btn btn-primary">
-              Guardar
-            </button>
-          </>
-        ) : null
-        }
+        <button type="submit" className="btn btn-primary">Buscar</button>
       </form>
       {acudiente ? (
         <>
