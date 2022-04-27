@@ -19,7 +19,7 @@ export const StudentList = ({ isManagementStudents,
 
     useEffect(() => {
         if(managementStudentsGroupData) dispatch(actionGetGroupStudents(managementStudentsGroupData.groupId));
-        dispatch(actionGetStudentsWithOutGroup());
+        if(managementStudentsGroupData) dispatch(actionGetStudentsWithOutGroup(managementStudentsGroupData.groupCourse));
     }, [actionGetGroupStudents, actionGetStudentsWithOutGroup, dispatch, managementStudentsGroupData]);
 
     const columns_group_students = [

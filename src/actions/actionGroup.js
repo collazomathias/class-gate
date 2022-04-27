@@ -58,10 +58,11 @@ const actionGetGroupStudents = (groupId) => async(dispatch) => {
     try {
         fetch("https://class-gate.herokuapp.com/allEstudiantesFromGrupo/" + groupId)
         .then(response => response.json())
-        .then(data => dispatch({
+        .then(data => {
+            dispatch({
             type: "getGroupStudents",
             payload: data
-        }));
+        })});
     } catch(error) {
         dispatch({
             type: "alertMessage",
@@ -70,9 +71,9 @@ const actionGetGroupStudents = (groupId) => async(dispatch) => {
     }
 }
 
-const actionGetStudentsWithOutGroup = () => async(dispatch) => {
+const actionGetStudentsWithOutGroup = (groupCourse) => async(dispatch) => {
     try {
-        fetch("https://class-gate.herokuapp.com/allEstudiantesSinGrupo")
+        fetch("https://class-gate.herokuapp.com/allEstudiantesSinGrupo/" + groupCourse)
         .then(response => response.json())
         .then(data => dispatch({
             type: "getStudentsWithOutGroup",
@@ -93,10 +94,11 @@ const actionDeleteGroup = (id) => async(dispatch) => {
             headers: { "Content-Type": "application/json" }
         })
         .then(response => response.json())
-        .then(data => dispatch({
+        .then(data => {
+            dispatch({
             type: "deleteGroup",
             payload: data
-        }));
+        })});
     } catch (error) {
         dispatch({
             type: "alertMessage",
@@ -131,10 +133,11 @@ const actionAddStudentToGroup = (studentId, groupId) => async(dispatch) => {
             headers: { "Content-Type": "application/json" }
         })
         .then(response => response.json())
-        .then(data => dispatch({
+        .then(data => {
+            dispatch({
             type: "addStudentToGroup",
             payload: data
-        }));
+        })});
     } catch (error) {
         dispatch({
             type: "alertMessage",

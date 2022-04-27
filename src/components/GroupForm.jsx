@@ -30,7 +30,6 @@ export const GroupForm = ({ editGroupData,
                 curso: groupCourse
             }
             setIsEditingGroup(false);
-            console.log(editedGroup);
             dispatch(actionEditGroup(editedGroup));
         } else {
             const newGroup = {
@@ -38,7 +37,6 @@ export const GroupForm = ({ editGroupData,
                 grado: groupGrade,
                 curso: groupCourse
             }
-            console.log(newGroup);
             dispatch(actionNewGroup(newGroup));
         } 
         event.target.reset();

@@ -12,7 +12,9 @@ export const DashboardContainer = (props) => {
     //Hooks para mostrar contenidos del menú
     const [ newGroup, setNewGroup ] = useState(false);
     const [ newStudent, setNewStudent ] = useState(false);
+    //FIN Hooks para mostrar contenidos del menú
 
+    
     const [ isEditingGroup, setIsEditingGroup ] = useState(false);
     const [ editGroupData, setEditGroupData ] = useState(null);
 
