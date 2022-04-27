@@ -21,6 +21,7 @@ export const GroupForm = ({ editGroupData,
         const groupName = event.target.elements.inputGroupName.value;
         const groupGrade = event.target.elements.inputGroupGrade.value;
         const groupCourse = event.target.elements.selectGroupCourse.value;
+
         if(isEditingGroup) {
             const groupId = editGroupData.groupId;
             const editedGroup = {
@@ -60,7 +61,7 @@ export const GroupForm = ({ editGroupData,
             <label htmlFor="inputGroupGrade">Grado</label>
             <div className="input-container">
                 <MdDriveFileRenameOutline className="group-input-icon" /> 
-                <input id="inputGroupGrade" type="text" defaultValue={ isEditingGroup ? editGroupData.groupGrade : ""} placeholder="Ingresa el grado..." required />
+                <input id="inputGroupGrade" type="number" min="1" max="11" defaultValue={ isEditingGroup ? editGroupData.groupGrade : ""} placeholder="Ingresa el grado..." required />
             </div>
             <label htmlFor="selectGroupCourse">Curso</label>
             <select id="selectGroupCourse">

@@ -11,17 +11,17 @@ export const DashboardMenu = ({ role, newGroup, setNewGroup, newStudent, setNewS
                             setNewStudent(true);
                             setNewGroup(false);
                             setNewTeacher(false);
-                        }} className={newStudent ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Agregar estudiante</button>  
+                        }} className={newStudent ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Agregar estudiantes</button>  
                         <button onClick={() => {
                             setNewGroup(true);
                             setNewStudent(false);
                             setNewTeacher(false);
-                        }} className={newGroup ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Agregar grupo</button>  
+                        }} className={newGroup ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Gestionar grupos</button>  
                         <button onClick={() => {
                             setNewGroup(false);
                             setNewStudent(false);
                             setNewTeacher(true);
-                        }} className={newTeacher ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Agregar maestro</button>  
+                        }} className={newTeacher ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Gestionar maestros</button>  
                     </>
                 ) : null
             
