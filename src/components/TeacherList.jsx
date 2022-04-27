@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo, useEffect} from 'react';
 import DataTable from 'react-data-table-component';
 import { useDispatch, useSelector } from 'react-redux';
 import { teacherAction } from '../actions/teacherAction';
@@ -6,33 +6,33 @@ import { BsBook } from "react-icons/bs"
 
 
 //columnas de la tabla:
-const columns = [{
-    name: "Maestros",
-    selector: row => row.nombre,
-    sortable: true,
-},
-{
-    name: "Especialidad",
-    selector: row => row.especialidad,
-    sortable: true,
 
-},
-{
-    id: "columnAction",
-            cell: row => <div className="option-button-container">
-                <button title="Gestionar materias" className="view-students-button"><BsBook /></button>
-             </div>,
-            right: true,
-
-}]
-const TeacherList = () => {
+const TeacherList = ( {isManagementMaterias, setIsManagementMaterias}  ) => {
     const { actionTeacherGetAll } = teacherAction();
     const dispatch = useDispatch();
     //arreglo que contiene maestros
     const arrTeachers = useSelector((state) => state.teacherReducer.teacherGetAll)
     arrTeachers.length === 0 ? dispatch(actionTeacherGetAll()) : <></>
 
-
+    const columns = [{
+        name: "Maestros",
+        selector: row => row.nombre,
+        sortable: true,
+    },
+    {
+        name: "Especialidad",
+        selector: row => row.especialidad,
+        sortable: true,
+    
+    },
+    {
+        id: "columnAction",
+                cell: row => <div className="option-button-container">
+                    <button onClick={()=>setIsManagementMaterias(true)} title="Gestionar materias" className="view-students-button"><BsBook /></button>
+                 </div>,
+                right: true,
+    
+    }]
 
     //traduce el pie de tabla:
     const paginationComponentOptions = {
@@ -52,7 +52,6 @@ const TeacherList = () => {
                 id="search"
                 type="text"
                 placeholder="Filter By Name"
-                aria-label="Search Input"
                 value={filterText}
                 onChange={onFilter}
             />
@@ -61,14 +60,14 @@ const TeacherList = () => {
     );
 
 
-    const [filterText, setFilterText] = React.useState('');
-    const [resetPaginationToggle, setResetPaginationToggle] = React.useState(false);
+    const [filterText, setFilterText] = useState('');
+    const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
 
     const filteredItems = arrTeachers.filter(
         item => item.nombre && item.nombre.toLowerCase().includes(filterText.toLowerCase()),
     );
 
-    const subHeaderComponentMemo = React.useMemo(() => {
+    const subHeaderComponentMemo = useMemo(() => {
         const handleClear = () => {
             if (filterText) {
                 setResetPaginationToggle(!resetPaginationToggle);
@@ -94,7 +93,7 @@ const TeacherList = () => {
                 pagination
                 dense
                 paginationComponentOptions={paginationComponentOptions}
-                paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
+                paginationResetDefaultPage={resetPaginationToggle} 
                 subHeader
                 subHeaderComponent={subHeaderComponentMemo}
                 persistTableHead

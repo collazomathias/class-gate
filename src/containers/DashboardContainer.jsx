@@ -7,11 +7,8 @@ import { DashboardMenu } from "../components/DashboardMenu.jsx";
 import { GroupList } from "../components/GroupList.jsx";
 import { NewStudentForm } from "../components/NewStudentForm.jsx";
 import { StudentList } from "../components/StudentList.jsx";
-import { useDispatch, useSelector } from "react-redux";
-import { teacherAction } from "../actions/teacherAction";
-import { TeacherForm } from "../components/TeacherForm";
 import TeacherList from "../components/TeacherList";
-import { Teacher } from "../components/Teacher";
+import { MateriaList } from "../components/MateriaList.jsx";
 
 export const DashboardContainer = (props) => {
 
@@ -28,43 +25,13 @@ export const DashboardContainer = (props) => {
     const [isManagementStudents, setIsManagementStudents] = useState(false);
     const [managementStudentsGroupData, setManagementStudentsGroupData] = useState(null);
 
+    const [isManagementMaterias, setIsManagementMaterias] = useState(false);
+    
 
 
 
 
-
-    //teacher:
-
-    const [showMsg, setShowMsg] = useState(false)
-
-    const [reingresoDoc, setreingresoDoc] = useState("")
-
-
-    const dispatch = useDispatch();
-
-    const { actionTeacherGetDoc } = teacherAction();
-
-    let teacher = useSelector(state => state.teacherReducer.teachDocum)
-    const docInput = useRef(null);
-
-    //auxiliar para reingresar documento
-
-
-    //boton registrar chequea por documento si existe maestro
-    const btnRegister = () => {
-
-        if (docInput.current.value === "" || docInput.current.value.length !== 12) {
-            alert("Ingrese un documento numerico de 12 digitos!");
-            return;
-        }
-        setreingresoDoc(docInput.current.value)
-        dispatch(actionTeacherGetDoc(docInput.current.value))
-    }
-    //retorno un input para consulta por documento
-    const retInput = () => {
-        showMsg === false ? setShowMsg(true) : <></>;
-
-    }
+    
 
     return (
         <>
@@ -107,15 +74,9 @@ export const DashboardContainer = (props) => {
                                 { newStudent ? <NewStudentForm/> : null }
                                 {newTeacher ?
                                     <div>
-                                        <TeacherList />
-                                        <button onClick={retInput}>Registrar Maestro</button>
-
-                                        {showMsg ? <>
-                                            <input type="number" ref={docInput} required placeholder="Ingrese Documento" minLength="10" maxLength="12" />
-                                            <button onClick={btnRegister}>Comprobar</button></> : <></>}
-
-                                        {teacher === reingresoDoc ? <TeacherForm docInput={reingresoDoc} /> : (teacher.nombre ? <Teacher teacher={teacher} /> : <></>)}
-
+                                        <TeacherList isManagementMaterias={isManagementMaterias} setIsManagementMaterias={setIsManagementMaterias} />
+                                        <MateriaList isManagementMaterias={isManagementMaterias} setIsManagementMaterias={setIsManagementMaterias} />
+                                                           
                                     </div>
                                     : null}
                             </>
