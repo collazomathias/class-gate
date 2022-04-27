@@ -31,7 +31,7 @@ export const NewAcudienteForm = () => {
         <h2>Registro de acudiente</h2>
         <form onSubmit={acudienteHandler}>
             <label htmlFor="acudienteDocumento">Documento de identidad</label>
-            <input required type="text" pattern="[0-9]+" minLength="2" maxLength="12" className="form-control" id="acudienteDocumento" placeholder="Documento de identidad" />
+            <input required type="text" pattern="[0-9]+" minLength="6" maxLength="12" className="form-control" id="acudienteDocumento" placeholder="Documento de identidad" />
             <label htmlFor="acudienteNombre">Nombre completo</label>
             <input required type="text" pattern="[a-zA-Z ]+" minLength="2" maxLength="255" className="form-control" id="acudienteNombre" placeholder="Nombre completo" />
             <label htmlFor="acudienteCelular">Celular</label>
