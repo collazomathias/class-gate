@@ -1,0 +1,87 @@
+.modal-materia-list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-materia-list-hidden { 
+    display: none;
+}
+
+.modal-content {
+    position: absolute;
+    width: calc(60% - 60px);
+    min-width: 900px;
+    height: 50%;
+    background-color: white;
+    border-radius: 6px;
+    padding: 30px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.modal-tables-container {
+    width: 100%;
+    height: calc(100% - 115px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: gray;
+    font-size: 22px;
+    transition: 0.3s ease-in-out;
+}
+
+.modal-title {
+    margin-bottom: 20px;
+}
+
+.modal-tables-container nav {
+    font-size: 12px !important;
+    color: gray !important;
+    font-weight: bold;
+}
+
+.modal-tables-container nav select:focus {
+    outline: 1px solid gray;
+}
+
+.modal-button-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.modal-button-container button {
+    height: 40px;
+    width: 160px;
+    border: none;
+    border-radius: 4px;
+    background-color: #050531;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.modal-button-container button:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+}

@@ -7,6 +7,7 @@ import "../assets/styles/components/Navbar.css";
 import ClassGateLogo from "../assets/imgs/class-gate.png";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { AiFillHome } from "react-icons/ai";
+import { MdPersonAddAlt1 } from "react-icons/md";
 import { FaUser, FaLock } from "react-icons/fa";
 import { HiOutlinePresentationChartBar } from "react-icons/hi";
 import { loginAction } from "../actions/loginAction.js";
@@ -38,6 +39,8 @@ export const Navbar = (props) => {
                 <div className="navigation-links-container">
                     { location.pathname === "/" ? null : <a href="/"><HiOutlinePresentationChartBar className="button-icon" /> Landing Page</a> }
                     { location.pathname === "/login" ? null : <a href="/login"><AiFillHome className="button-icon" /> Ingresar a la plataforma</a> }
+                    { <a href="/register-teacher"><MdPersonAddAlt1 className="button-icon" /> Registrarme como maestro </a>  }
+                    { <a href="/register-attendant"><MdPersonAddAlt1 className="button-icon" /> Registrarme como acudiente </a>  }
                 </div>
             }   
             { 

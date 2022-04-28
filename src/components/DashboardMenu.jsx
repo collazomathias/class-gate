@@ -1,7 +1,7 @@
 import React from "react";
 import "../assets/styles/components/DashboardMenu.css";
 
-export const DashboardMenu = ({ role, newGroup, setNewGroup, newStudent, setNewStudent }) => {
+export const DashboardMenu = ({ role, newGroup, setNewGroup, newStudent, setNewStudent, newTeacher, setNewTeacher }) => {
     return (
         <div className="dashboard-menu-container">
             {
@@ -10,11 +10,18 @@ export const DashboardMenu = ({ role, newGroup, setNewGroup, newStudent, setNewS
                         <button onClick={() => {
                             setNewStudent(true);
                             setNewGroup(false);
-                        }} className={newStudent ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Agregar estudiante</button>  
+                            setNewTeacher(false);
+                        }} className={newStudent ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Agregar estudiantes</button>  
                         <button onClick={() => {
                             setNewGroup(true);
                             setNewStudent(false);
-                        }} className={newGroup ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Agregar grupo</button>  
+                            setNewTeacher(false);
+                        }} className={newGroup ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Gestionar grupos</button>  
+                        <button onClick={() => {
+                            setNewGroup(false);
+                            setNewStudent(false);
+                            setNewTeacher(true);
+                        }} className={newTeacher ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Gestionar maestros</button>  
                     </>
                 ) : null
             
