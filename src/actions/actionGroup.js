@@ -146,6 +146,43 @@ const actionAddStudentToGroup = (studentId, groupId) => async(dispatch) => {
     }
 }
 
+const actionGetAllHorariosGrupos = (idGrupo) => async(dispatch) => {
+    try {
+        fetch("https://class-gate.herokuapp.com/allHorariosGrupos/" + idGrupo)
+        .then(response => response.json())
+        .then(data => dispatch({
+            type: "allHorariosGrupos",
+            payload: data
+        }));
+    } catch(error) {
+        dispatch({
+            type: "alertMessage",
+            payload: error.message
+        });
+    }
+}
+
+const actionAddHorarioClase = (horarios, idGrupo, idProfesor, materia) => async(dispatch) => {
+    try {
+        fetch("https://class-gate.herokuapp.com/addHorarioClase/" + idGrupo + "/"+ idProfesor + "/"+ materia, {
+            method: "PUT",
+            body: JSON.stringify(horarios),
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.json())
+        .then(data => {
+            dispatch({
+            type: "horarioClase",
+            payload: data
+        })});
+    } catch (error) {
+        dispatch({
+            type: "alertMessage",
+            payload: error.message
+        });
+    }
+}
+
 export const actionGroup = () => {
     return { actionNewGroup,
             actionGetGroups, 
@@ -154,5 +191,8 @@ export const actionGroup = () => {
             actionGetGroupStudents, 
             actionGetStudentsWithOutGroup, 
             actionRemoveStudentFromGroup,
-            actionAddStudentToGroup };
+            actionAddStudentToGroup, 
+            actionGetAllHorariosGrupos,
+            actionAddHorarioClase
+         };
 }
