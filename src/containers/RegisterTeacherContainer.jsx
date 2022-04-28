@@ -4,9 +4,7 @@ import { LoadingPage } from "../components/LoadingPage.jsx";
 import { AlertMessage } from "../components/AlertMessage.jsx";
 import { RegisterTeacherForm } from "../components/RegisterTeacherForm.jsx";
 
-export const RegisterContainer = () => {
-
-
+export const RegisterTeacherContainer = () => {
     return (
         <div className="login-container">
             <LoadingPage />

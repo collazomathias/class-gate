@@ -59,7 +59,6 @@ const actionGetGroupStudents = (groupId) => async(dispatch) => {
         fetch("https://class-gate.herokuapp.com/allEstudiantesFromGrupo/" + groupId)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             dispatch({
             type: "getGroupStudents",
             payload: data

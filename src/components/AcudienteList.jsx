@@ -5,10 +5,7 @@ import { RiGroupFill } from "react-icons/ri";
 import "../assets/styles/components/TeacherList.css";
 import { actionAcudiente } from "../actions/actionAcudiente";
 
-const AcudienteList = ({
-    setIsManagementStudents,
-    setDocIdAcudiente,
-}) => {
+const AcudienteList = ({ setIsManagementStudents, setDocIdAcudiente }) => {
 
     const { acudientes } = useSelector(state => state.acudienteReducer);
 

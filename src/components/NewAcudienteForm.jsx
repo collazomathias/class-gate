@@ -1,12 +1,17 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { action } from "../actions/newAcudienteAction";
+import "../assets/styles/components/LoginForm.css";
+import "../assets/styles/components/RegisterTeacherForm.css";
+import { FaUser, FaLock } from "react-icons/fa";
+import ClassGateLogo from "../assets/imgs/class-gate.png";
+import { MdDriveFileRenameOutline, MdPhoneEnabled, MdPersonAddAlt1 } from "react-icons/md";
 
 export const NewAcudienteForm = () => {
 
     const dispatch = useDispatch();
 
-    const { actionNewAcudiente, actionCloseAlertMessage } = action();
+    const { actionNewAcudiente } = action();
     
     const acudienteHandler = async (event) => {
         event.preventDefault();
@@ -27,21 +32,47 @@ export const NewAcudienteForm = () => {
         dispatch(actionNewAcudiente(newAcudiente));
     };
 
-    return (<>
-        <h2>Registro de acudiente</h2>
-        <form onSubmit={acudienteHandler}>
-            <label htmlFor="acudienteDocumento">Documento de identidad</label>
-            <input required type="text" pattern="[0-9]+" minLength="6" maxLength="12" className="form-control" id="acudienteDocumento" placeholder="Documento de identidad" />
-            <label htmlFor="acudienteNombre">Nombre completo</label>
-            <input required type="text" pattern="[a-zA-Z ]+" minLength="2" maxLength="255" className="form-control" id="acudienteNombre" placeholder="Nombre completo" />
-            <label htmlFor="acudienteCelular">Celular</label>
-            <input required type="tel" pattern="[0-9]+" minLength="10" maxLength="10" className="form-control" id="acudienteCelular" placeholder="Celular" />
-            <label htmlFor="acudienteCorreo">Correo</label>
-            <input required type="email" pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" minLength="2" maxLength="255" className="form-control" id="acudienteCorreo" placeholder="Correo" />
-            <label htmlFor="acudienteDireccion">Dirección</label>
-            <input required type="text" minLength="2" maxLength="255" className="form-control" id="acudienteDireccion" placeholder="Dirección" />
+    return (
+        <>
 
-            <button type="submit" className="btn btn-primary">Registrar</button>
-        </form>
-    </>);
+            <img className="logo" src={ClassGateLogo} alt="" />
+            <form className="login-form-container register-form-container" onSubmit={acudienteHandler}>
+                <div className="title-container">
+                    <h1>Registro de acudiente</h1>
+                </div>
+                <div className="register-form-container-data">
+                    <div>
+                        <label htmlFor="acudienteDocumento">Documento de identidad</label>
+                        <div className="input-container">
+                            <FaUser className="input-icon" />
+                            <input required type="text" pattern="[0-9]+" minLength="6" maxLength="12" className="form-control" id="acudienteDocumento" placeholder="Documento de identidad" />
+                        </div>
+                        <label htmlFor="acudienteNombre">Nombre completo</label>
+                        <div className="input-container">
+                            <FaLock className="input-icon" />
+                            <input required type="text" pattern="[a-zA-Z ]+" minLength="2" maxLength="255" className="form-control" id="acudienteNombre" placeholder="Nombre completo" />
+                        </div>
+                        <label htmlFor="acudienteCelular">Celular</label>
+                        <div className="input-container">
+                            <MdPhoneEnabled className="input-icon icon-size" />
+                            <input required type="tel" pattern="[0-9]+" minLength="10" maxLength="10" className="form-control" id="acudienteCelular" placeholder="Celular" />
+                        </div>
+                    </div>
+                    <div>
+                        <label htmlFor="acudienteDireccion">Dirección</label>
+                        <div className="input-container">
+                            <MdDriveFileRenameOutline className="input-icon icon-size" />
+                            <input required type="text" minLength="2" maxLength="255" className="form-control" id="acudienteDireccion" placeholder="Dirección" />
+                        </div>
+                        <label htmlFor="acudienteCorreo">Correo</label>
+                        <div className="input-container">
+                            <MdDriveFileRenameOutline className="input-icon icon-size" />
+                            <input required type="email" pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" minLength="2" maxLength="255" className="form-control" id="acudienteCorreo" placeholder="Correo" />
+                        </div>
+                    </div>
+                </div>
+                <button type="submit"><MdPersonAddAlt1 className="button-icon button-icon-login" /> Registrarme como acudiente</button>
+            </form>
+        </>
+    );
 }
