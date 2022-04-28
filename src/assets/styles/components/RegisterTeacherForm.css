@@ -1,24 +1,100 @@
-.icon-size {
-    font-size: 50px !important;
+.logo {
+    margin-top: 70px;
+}
+
+.register-teacher-container {
+    width: 800px;
+    height: 550px;
+    background-color: white;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
 }
 
 .register-form-container {
-    width: 700px;
-    max-height: 550px;
-}
-
-.register-form-container-data {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;    
+}
+
+.register-teacher-container button {
+    width: 100%;
+    height: 160px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: #FF7E06;
+    border: none;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    margin-top: 20px;
 }
 
-.register-form-container .title-container h1 {
-    font-size: 40px;
-    margin-bottom: 10px;
-    margin-top: 10px;
+.register-teacher-container button:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
 }
 
-.logo {
-    margin-top: 50px;
+.register-teacher-container button svg {
+    margin-right: 10px;
+    font-size: 50px;
+}
+
+.register-teacher-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FF7E06;
+    font-size: 30px;
+}
+
+.register-form-container input {
+    height: 50px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border: 0.3px solid lightgray;
+    padding-left: 10px;
+    font-size: 20px;
+    color: gray;
+    width: 300px;
+    margin-bottom: 20px;
+    transition: 0.1s ease-in-out;
+}
+
+.register-form-container label {
+    color: gray;
+    font-size: 20px;
+    margin-left: 25px;
+}
+
+.register-form-container input:focus {
+    outline: none;
+    border-right: 5px solid #FF7E06;
+}
+
+.icon-wo-ml {
+    margin-left: 25px !important;
+}
+
+.icon-size {
+    padding: 10px;
+    width: calc(50px - 20px);
+    height: calc(50px - 20px);
+}
+
+.register-acudiente {
+    height: 500px;
+}
+
+.register-acudiente button {
+    height: 80px;
 }

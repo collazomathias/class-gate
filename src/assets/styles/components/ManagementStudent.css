@@ -1,6 +1,6 @@
 .title-table-container {
     width: calc(100% - 10px);
-    height: 52px;
+    height: 50px;
     color: gray;
     font-size: 26px;
     padding-left: 10px;
@@ -10,16 +10,11 @@
 }
 
 .modal-content {
-    height: 550px;
+    height: 600px;
     max-width: 1200px;
 }
 
-.table-container {
-    width: 100%;
-}
-
-.modal-tables-container {
-    height: calc(100% - 50px) !important;
+.table-100 {
     width: 100%;
 }
 
