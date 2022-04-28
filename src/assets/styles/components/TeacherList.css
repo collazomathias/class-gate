@@ -90,3 +90,14 @@
     padding-top: 8px;
     padding-bottom: 8px;
 }
+
+[data-column-id="columnCellphone"].rdt_TableCol {
+    font-size: 26px;
+    background-color: #FF7E06;
+    color: white;
+    font-weight: bold;
+    min-width: 210px;
+    max-width: 350px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}

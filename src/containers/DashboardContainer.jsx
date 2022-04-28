@@ -9,6 +9,8 @@ import { NewStudentForm } from "../components/NewStudentForm.jsx";
 import { StudentList } from "../components/StudentList.jsx";
 import TeacherList from "../components/TeacherList";
 import { MateriaList } from "../components/MateriaList.jsx";
+import AcudienteList from "../components/AcudienteList.jsx";
+import { ManagementStudent } from "../components/ManagementStudent.jsx";
 
 export const DashboardContainer = (props) => {
 
@@ -23,6 +25,8 @@ export const DashboardContainer = (props) => {
 
     const [isManagementStudents, setIsManagementStudents] = useState(false);
     const [managementStudentsGroupData, setManagementStudentsGroupData] = useState(null);
+
+    const [docIdAcudiente, setDocIdAcudiente] = useState(null);
 
     const [isManagementMaterias, setIsManagementMaterias] = useState(false);
     
@@ -64,7 +68,18 @@ export const DashboardContainer = (props) => {
                                         setManagementStudentsGroupData={setManagementStudentsGroupData}
                                     />
                                 </> : null}
-                                { newStudent ? <NewStudentForm /> : null }
+                                { newStudent ? <>
+                                    < AcudienteList 
+                                        setIsManagementStudents={setIsManagementStudents}
+                                        setDocIdAcudiente={setDocIdAcudiente}    
+                                    />
+                                    <ManagementStudent
+                                        setIsManagementStudents={setIsManagementStudents}
+                                        isManagementStudents={isManagementStudents}
+                                        docIdAcudiente={docIdAcudiente}
+                                        setDocIdAcudiente={setDocIdAcudiente}  
+                                    />
+                                </> : null }
                                 {newTeacher ? <>
                                     <TeacherList isManagementMaterias={isManagementMaterias} setIsManagementMaterias={setIsManagementMaterias} />
                                     <MateriaList isManagementMaterias={isManagementMaterias} setIsManagementMaterias={setIsManagementMaterias} />                   
