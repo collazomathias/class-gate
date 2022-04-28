@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect }from "react";
 import { IoMdClose } from "react-icons/io";
 import { FaTrash } from "react-icons/fa";
 import DataTable from "react-data-table-component";
@@ -16,6 +16,7 @@ export const ManagementStudent = ({
 
     const {
         actionSaveStudent,
+        actionAcudienteStudent
     } = actionAcudiente();
 
     const dispatch = useDispatch();

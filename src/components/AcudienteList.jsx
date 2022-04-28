@@ -12,7 +12,7 @@ const AcudienteList = ({
 
     const { acudientes } = useSelector(state => state.acudienteReducer);
 
-    const { actionAcudienteGetAll } = actionAcudiente();
+    const { actionAcudienteGetAll, actionAcudienteStudent } = actionAcudiente();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -52,7 +52,8 @@ const AcudienteList = ({
             cell: row => <div className="option-button-container">
                 <button onClick={() => {
                     setIsManagementStudents(true);
-                    setDocIdAcudiente(row.documentoIdentificacion);
+                    setDocIdAcudiente(row.documentoIdentidad);
+                    dispatch(actionAcudienteStudent(row.documentoIdentidad));
                     }} title="Gestionar estudiantes" className="view-students-button"><RiGroupFill /></button>
             </div>,
             right: true,

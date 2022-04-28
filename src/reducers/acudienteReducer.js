@@ -1,23 +1,6 @@
 const initialState = {
     acudientes: [],
-    students: [        
-        // {
-        //     id: 1,
-        //     nombre: "Juan Perez",
-        //     documentoIdentificacion: "12345678",
-        //     grupo: "A",
-        //     grado: "1",
-        //     estado: true,
-        // },
-        // {
-        //     id: 2,
-        //     nombre: "Camila",
-        //     documentoIdentificacion: "12345679",
-        //     grupo: "A",
-        //     grado: "6",
-        //     estado: true,
-        // },
-],
+    students: [],
 }
 
 export const acudienteReducer = (state = initialState, action) => {
@@ -27,6 +10,8 @@ export const acudienteReducer = (state = initialState, action) => {
             return { ...state, acudientes: action.payload }
         case "studentSaved":
             return { ...state, students: [...state.students, action.payload] }
+        case "studentFromAcudiente":
+            return { ...state, students: action.payload }
         default:
             return state;
     }

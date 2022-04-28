@@ -45,6 +45,31 @@ const actionSaveStudent = (student) => async (dispatch) => {
     }
 }
 
+const actionAcudienteStudent = (acudienteDocId) => async (dispatch) => {
+    console.log(acudienteDocId);
+    try {
+      fetch("https://class-gate.herokuapp.com/allEstudiantesFromAcudiente/"+acudienteDocId, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            dispatch({
+                type: "studentFromAcudiente",
+                payload: data
+            });
+            });
+    } catch (error) {
+    dispatch({
+        type: "alertMessage",
+        payload: error.message
+    });
+    }
+}
+
 export const actionAcudiente = () => {
-    return { actionAcudienteGetAll, actionSaveStudent };
+    return { actionAcudienteGetAll, actionSaveStudent, actionAcudienteStudent };
 }
