@@ -29,6 +29,7 @@ export const DashboardContainer = (props) => {
     const [docIdAcudiente, setDocIdAcudiente] = useState(null);
 
     const [isManagementMaterias, setIsManagementMaterias] = useState(false);
+    const [idMaestro, setIdMaestro] = useState(null);
     
     return (
         <>
@@ -81,8 +82,8 @@ export const DashboardContainer = (props) => {
                                     />
                                 </> : null }
                                 {newTeacher ? <>
-                                    <TeacherList isManagementMaterias={isManagementMaterias} setIsManagementMaterias={setIsManagementMaterias} />
-                                    <MateriaList isManagementMaterias={isManagementMaterias} setIsManagementMaterias={setIsManagementMaterias} />                   
+                                    <TeacherList isManagementMaterias={isManagementMaterias} setIsManagementMaterias={setIsManagementMaterias} setIdMaestro={setIdMaestro} />
+                                    <MateriaList isManagementMaterias={isManagementMaterias} setIsManagementMaterias={setIsManagementMaterias} idMaestro={idMaestro} setIdMaestro={setIdMaestro}/>                   
                                 </> : null}
                             </>
                         ) : null
