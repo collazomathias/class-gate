@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { LoadingPage } from "../components/LoadingPage.jsx";
 import { AlertMessage } from "../components/AlertMessage.jsx";
 import { GroupForm } from "../components/GroupForm.jsx";
@@ -18,7 +18,6 @@ export const DashboardContainer = (props) => {
     const [newTeacher, setNewTeacher] = useState(false);
     //FIN Hooks para mostrar contenidos del menú
 
-
     const [isEditingGroup, setIsEditingGroup] = useState(false);
     const [editGroupData, setEditGroupData] = useState(null);
 
@@ -27,12 +26,6 @@ export const DashboardContainer = (props) => {
 
     const [isManagementMaterias, setIsManagementMaterias] = useState(false);
     
-
-
-
-
-    
-
     return (
         <>
             <LoadingPage />
@@ -71,17 +64,13 @@ export const DashboardContainer = (props) => {
                                         setManagementStudentsGroupData={setManagementStudentsGroupData}
                                     />
                                 </> : null}
-                                { newStudent ? <NewStudentForm/> : null }
-                                {newTeacher ?
-                                    <div>
-                                        <TeacherList isManagementMaterias={isManagementMaterias} setIsManagementMaterias={setIsManagementMaterias} />
-                                        <MateriaList isManagementMaterias={isManagementMaterias} setIsManagementMaterias={setIsManagementMaterias} />
-                                                           
-                                    </div>
-                                    : null}
+                                { newStudent ? <NewStudentForm /> : null }
+                                {newTeacher ? <>
+                                    <TeacherList isManagementMaterias={isManagementMaterias} setIsManagementMaterias={setIsManagementMaterias} />
+                                    <MateriaList isManagementMaterias={isManagementMaterias} setIsManagementMaterias={setIsManagementMaterias} />                   
+                                </> : null}
                             </>
                         ) : null
-
                     }
                     {
                         props.role === "maestro" ? (

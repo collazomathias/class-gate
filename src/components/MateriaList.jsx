@@ -1,11 +1,12 @@
-import React from 'react';
-import DataTable from 'react-data-table-component';
-import { FaTrash } from 'react-icons/fa';
-import { GrAdd } from 'react-icons/gr';
-import { BsArrowLeftRight } from 'react-icons/bs';
+import React from "react";
+import DataTable from "react-data-table-component";
+import { FaTrash } from "react-icons/fa";
+import { IoMdAdd } from "react-icons/io";
+import { BsArrowLeftRight } from "react-icons/bs";
+import { IoMdClose } from "react-icons/io";
+import "../assets/styles/components/MateriaList.css";
 
 export const MateriaList = ({ isManagementMaterias, setIsManagementMaterias }) => {
-
 
 
     const paginationLangConfig = {
@@ -30,10 +31,6 @@ export const MateriaList = ({ isManagementMaterias, setIsManagementMaterias }) =
         { nombreMateria: "Ingles" },
         { nombreMateria: "Filosofia" }
     ]
-
-
-
-
 
     const columns_materias_teacher = [
         {
@@ -76,7 +73,7 @@ export const MateriaList = ({ isManagementMaterias, setIsManagementMaterias }) =
         {
             id: "columnAction",
             cell: row => <div className="option-button-container">
-                <button title="Quitar estudiante" className="add-button"><GrAdd /></button>
+                <button title="Quitar estudiante" className="add-button"><IoMdAdd /></button>
             </div>,
             right: true,
             grow: 1
@@ -85,9 +82,10 @@ export const MateriaList = ({ isManagementMaterias, setIsManagementMaterias }) =
 
     return (
         <div className={isManagementMaterias ? "modal-materia-list" : "modal-materia-list-hidden"}>
-            <div>
-                <h1>Gestión de materias</h1>
-                <div>
+            <div className="modal-content">
+                <span onClick={() => setIsManagementMaterias(false)} className="modal-close-button"><IoMdClose /></span>
+                <h1 className="modal-title">Gestión de materias</h1>
+                <div className="modal-tables-container">
                     <div className="table-container">
                         {
                             materiasOfTeacher.length !== 0 ?
@@ -125,8 +123,8 @@ export const MateriaList = ({ isManagementMaterias, setIsManagementMaterias }) =
                     </div>
 
                 </div>
-                <div>
-                    <button onClick={()=>setIsManagementMaterias(false)} >Guardar cambios</button>
+                <div className="modal-button-container">
+                    <button onClick={() => setIsManagementMaterias(false)} >Guardar cambios</button>
                 </div>
             </div>
 
