@@ -27,7 +27,8 @@ export const DashboardContainer = (props) => {
 
     const [isManagementMaterias, setIsManagementMaterias] = useState(false);
     
-
+    const [isManagementTeachers, setIsManagementTeachers] = useState(false);
+    const [managementTeachersGroupData, setManagementTeachersGroupData] = useState(null);
 
 
 
