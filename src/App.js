@@ -9,6 +9,7 @@ import { LandingPageContainer } from "./containers/LandingPageContainer.jsx";
 import { Navbar } from "./components/Navbar.jsx";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { AcudienteRegisterContainer } from "./containers/AcudienteRegisterContainer.jsx";
+import { RegisterContainer } from "./containers/RegisterContainer.jsx";
 
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
@@ -61,6 +62,7 @@ export function App() {
                 <Route path="/login" element={<LoginContainer />} />
                 <Route path="/dashboard" element={<DashboardContainer role={user ? user.role : null } />} />
                 <Route path="/register-attendant" element={<AcudienteRegisterContainer />} />
+                <Route path="/register-teacher" element={<RegisterContainer />} />
             </Routes>
         </>
     );
