@@ -1,9 +1,8 @@
 const initialState = {
     teachers: []
-
 }
 
-export const teacherReducer = (state = initialState, action) => {
+export const registerReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case "addTeacher":

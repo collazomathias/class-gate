@@ -71,7 +71,6 @@ export const StudentList = ({ isManagementStudents,
     ]
 
     const removeStudentFromGroup = (studentId) => {
-        console.log("Estudiante ID: ", studentId);
         dispatch(actionRemoveStudentFromGroup(studentId, managementStudentsGroupData.groupId));
     }
 

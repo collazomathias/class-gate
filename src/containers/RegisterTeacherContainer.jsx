@@ -1,15 +1,15 @@
 import React from "react";
-import "../assets/styles/containers/LoginContainer.css";
-import { LoginForm } from "../components/LoginForm.jsx";
+import "../assets/styles/containers/RegisterContainer.css";
 import { LoadingPage } from "../components/LoadingPage.jsx";
 import { AlertMessage } from "../components/AlertMessage.jsx";
+import { RegisterTeacherForm } from "../components/RegisterTeacherForm.jsx";
 
-export const LoginContainer = () => {
+export const RegisterTeacherContainer = () => {
     return (
         <div className="login-container">
             <LoadingPage />
             <AlertMessage />
-            <LoginForm />
+            <RegisterTeacherForm />
         </div>
     );
 }

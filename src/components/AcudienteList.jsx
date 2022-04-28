@@ -1,26 +1,25 @@
 import React, { useState, useMemo, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useDispatch, useSelector } from "react-redux";
-import { teacherAction } from "../actions/teacherAction";
-import { BsBook } from "react-icons/bs";
+import { RiGroupFill } from "react-icons/ri";
 import "../assets/styles/components/TeacherList.css";
+import { actionAcudiente } from "../actions/actionAcudiente";
 
-const TeacherList = ({ setIsManagementMaterias, setIdMaestro }) => {
+const AcudienteList = ({ setIsManagementStudents, setDocIdAcudiente }) => {
 
-    const { actionAllMaestro } = teacherAction();
+    const { acudientes } = useSelector(state => state.acudienteReducer);
+
+    const { actionAcudienteGetAll, actionAcudienteStudent } = actionAcudiente();
     const dispatch = useDispatch();
 
-    //arreglo que contiene todos los maestros
-    const arrTeachers = useSelector((state) => state.teacherReducer.allMaestro)
-
     useEffect(() => {
-        dispatch(actionAllMaestro());
-    }, [actionAllMaestro, dispatch]);
+        dispatch(actionAcudienteGetAll());
+    }, [actionAcudienteGetAll, dispatch]);
 
     const columns = [
         {
             id: "columnName",
-            name: "Maestros",
+            name: "Acudientes",
             selector: row => row.nombre,
             sortable: true,
             style: {
@@ -32,9 +31,9 @@ const TeacherList = ({ setIsManagementMaterias, setIdMaestro }) => {
             },
         },
         {
-            id: "columnSpeciality",
-            name: "Especialidad",
-            selector: row => row.especialidad,
+            id: "columnCellphone",
+            name: "Celular",
+            selector: row => row.celular,
             sortable: true,
             style: {
                 fontSize: 20,
@@ -48,7 +47,11 @@ const TeacherList = ({ setIsManagementMaterias, setIdMaestro }) => {
         {
             id: "columnAction",
             cell: row => <div className="option-button-container">
-                <button onClick={() => {setIsManagementMaterias(true); setIdMaestro(row.id)}} title="Gestionar materias" className="view-students-button"><BsBook /></button>
+                <button onClick={() => {
+                    setIsManagementStudents(true);
+                    setDocIdAcudiente(row.documentoIdentidad);
+                    dispatch(actionAcudienteStudent(row.documentoIdentidad));
+                    }} title="Gestionar estudiantes" className="view-students-button"><RiGroupFill /></button>
             </div>,
             right: true,
             style: {
@@ -81,7 +84,7 @@ const TeacherList = ({ setIsManagementMaterias, setIdMaestro }) => {
 
     const [filterText, setFilterText] = useState('');
     const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
-    const filteredItems = arrTeachers.filter(
+    const filteredItems = acudientes.filter(
         item => item.nombre && item.nombre.toLowerCase().includes(filterText.toLowerCase()),
     );
 
@@ -99,7 +102,7 @@ const TeacherList = ({ setIsManagementMaterias, setIdMaestro }) => {
 
     return (
         <div className="teacher-container">
-            <p>Lista de maestros</p>
+            <p>Lista de acudientes</p>
             <div className="teacher-list-container">
                 <DataTable
                     columns={columns}
@@ -107,7 +110,7 @@ const TeacherList = ({ setIsManagementMaterias, setIdMaestro }) => {
                     pagination
                     dense
                     paginationComponentOptions={paginationComponentOptions}
-                    paginationResetDefaultPage={resetPaginationToggle}
+                    paginationResetDefaultPage={resetPaginationToggle} 
                     subHeader
                     subHeaderComponent={subHeaderComponentMemo}
                     persistTableHead
@@ -119,4 +122,4 @@ const TeacherList = ({ setIsManagementMaterias, setIdMaestro }) => {
     )
 }
 
-export default TeacherList;
+export default AcudienteList;

@@ -1,17 +1,15 @@
 import React from "react";
-import "../assets/styles/containers/RegisterContainer.css";
+// import "../assets/styles/containers/RegisterContainer.css";
 import { LoadingPage } from "../components/LoadingPage.jsx";
 import { AlertMessage } from "../components/AlertMessage.jsx";
-import { RegisterTeacherForm } from "../components/RegisterTeacherForm.jsx";
+import { NewAcudienteForm } from "../components/NewAcudienteForm";
 
-export const RegisterContainer = () => {
-
-
+export const RegisterAcudienteContainer = () => {
     return (
         <div className="login-container">
             <LoadingPage />
             <AlertMessage />
-            <RegisterTeacherForm />
+            <NewAcudienteForm />
         </div>
     );
 }
