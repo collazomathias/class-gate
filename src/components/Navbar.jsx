@@ -39,8 +39,8 @@ export const Navbar = (props) => {
                 <div className="navigation-links-container">
                     { location.pathname === "/" ? null : <a href="/"><HiOutlinePresentationChartBar className="button-icon" /> Landing Page</a> }
                     { location.pathname === "/login" ? null : <a href="/login"><AiFillHome className="button-icon" /> Ingresar a la plataforma</a> }
-                    { <a href="/register-teacher"><MdPersonAddAlt1 className="button-icon" /> Registrarme como maestro </a>  }
-                    { <a href="/register-attendant"><MdPersonAddAlt1 className="button-icon" /> Registrarme como acudiente </a>  }
+                    { location.pathname === "/register-teacher" || location.pathname === "/" ? null : <a href="/register-teacher"><MdPersonAddAlt1 className="button-icon" /> Registrarme como maestro </a>  }
+                    { location.pathname === "/register-attendant" || location.pathname === "/" ? null : <a href="/register-attendant"><MdPersonAddAlt1 className="button-icon" /> Registrarme como acudiente </a>  }
                 </div>
             }   
             { 

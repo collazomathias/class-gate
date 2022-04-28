@@ -4,7 +4,7 @@ import { LoadingPage } from "../components/LoadingPage.jsx";
 import { AlertMessage } from "../components/AlertMessage.jsx";
 import { NewAcudienteForm } from "../components/NewAcudienteForm";
 
-export const AcudienteRegisterContainer = () => {
+export const RegisterAcudienteContainer = () => {
     return (
         <div className="login-container">
             <LoadingPage />

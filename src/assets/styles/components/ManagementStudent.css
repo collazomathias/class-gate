@@ -1,0 +1,98 @@
+.title-table-container {
+    width: calc(100% - 10px);
+    height: 52px;
+    color: gray;
+    font-size: 26px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    height: 550px;
+    max-width: 1200px;
+}
+
+.table-container {
+    width: 100%;
+}
+
+.modal-tables-container {
+    height: calc(100% - 50px) !important;
+    width: 100%;
+}
+
+.border-less {
+    border: none;
+    width: 50% !important;
+    margin-right: 20px;
+}
+
+.modal-tables-container .border-less form {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 50px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.label-input-container {
+    width: 100%;
+}
+
+.modal-tables-container .border-less label {
+    font-size: 20px;
+    color: gray;
+    margin-top: 5px;
+}
+
+.modal-tables-container .border-less input {
+    width: 100%;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border: 0.3px solid lightgray;
+    padding-left: 10px; 
+    font-size: 20px;
+    color: gray;
+    transition: 0.1s ease-in-out;
+}
+
+.modal-tables-container .border-less input:focus {
+    outline: none;
+    border-right: 5px solid #FF7E06;
+}
+
+.input-icon-modal {
+    margin-left: 0 !important;
+    padding: 10px !important;
+    width: calc(50px - 20px) !important;
+    height: calc(50px - 20px) !important;
+    height: 50px;
+}
+
+.modal-tables-container .border-less button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FF7E06;
+    width: 100%;
+    height: 50px;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 26px;
+    transition: 0.3s ease-in-out;
+}
+
+.modal-tables-container .border-less button:hover {
+    cursor: pointer;
+    filter: brightness(1.1);
+}
+
+.modal-button-icon {
+    font-size: 36px;
+    margin-right: 10px;
+}

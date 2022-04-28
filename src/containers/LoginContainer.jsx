@@ -5,8 +5,6 @@ import { LoadingPage } from "../components/LoadingPage.jsx";
 import { AlertMessage } from "../components/AlertMessage.jsx";
 
 export const LoginContainer = () => {
-
-
     return (
         <div className="login-container">
             <LoadingPage />
