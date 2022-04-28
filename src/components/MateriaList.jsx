@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"
 import DataTable from "react-data-table-component";
 import { FaTrash } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 import { BsArrowLeftRight } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 import "../assets/styles/components/MateriaList.css";
+import { teacherAction } from "../actions/teacherAction";
 
-export const MateriaList = ({ isManagementMaterias, setIsManagementMaterias }) => {
 
+export const MateriaList = ({ isManagementMaterias, setIsManagementMaterias, idMaestro, setIdMaestro }) => {
+
+    const dispatch = useDispatch();
+
+    const { actionUpdateMateriaMaestro, actionRemoveMateriaMaestro, actionAllMateriasFromMaestro, actionNotMateriasFromMaestro} = teacherAction();
+
+    const { allMateriasFromMaestro, notMateriasFromMaestro } = useSelector(state => state.teacherReducer);
+
+    useEffect(() => {
+        if(idMaestro) dispatch(actionAllMateriasFromMaestro(idMaestro));
+        if(idMaestro) dispatch(actionNotMateriasFromMaestro(idMaestro));
+    }, [actionAllMateriasFromMaestro, actionNotMateriasFromMaestro, dispatch, idMaestro]);
 
     const paginationLangConfig = {
         rowsPerPageText: "Filas por página",
@@ -16,22 +29,7 @@ export const MateriaList = ({ isManagementMaterias, setIsManagementMaterias }) =
         selectAllRowsItemText: "Todos",
     }
 
-    const materiasOfTeacher = [
-        { nombreMateria: "Matematica" },
-        { nombreMateria: "Historia" },
-        { nombreMateria: "Geografia" },
-        { nombreMateria: "Ingles" },
-        { nombreMateria: "Filosofia" }
-    ]
-
-    const notMateriasOfTeacher = [
-        { nombreMateria: "Matematica" },
-        { nombreMateria: "Historia" },
-        { nombreMateria: "Geografia" },
-        { nombreMateria: "Ingles" },
-        { nombreMateria: "Filosofia" }
-    ]
-
+   
     const columns_materias_teacher = [
         {
             name: `Materias del profesor`,
@@ -49,7 +47,7 @@ export const MateriaList = ({ isManagementMaterias, setIsManagementMaterias }) =
         {
             id: "columnAction",
             cell: row => <div className="option-button-container">
-                <button title="Quitar estudiante" className="delete-button"><FaTrash /></button>
+                <button onClick={()=>removeMateriaFromTeacher(row.nombreMateria)} title="Quitar estudiante" className="delete-button"><FaTrash /></button>
             </div>,
             right: true,
             grow: 1,
@@ -73,12 +71,20 @@ export const MateriaList = ({ isManagementMaterias, setIsManagementMaterias }) =
         {
             id: "columnAction",
             cell: row => <div className="option-button-container">
-                <button title="Quitar estudiante" className="add-button"><IoMdAdd /></button>
+                <button onClick={()=>addMateriaToTeacher(row.nombreMateria)} title="Agregar estudiante" className="add-button"><IoMdAdd /></button>
             </div>,
             right: true,
             grow: 1
         }
     ]
+
+    const removeMateriaFromTeacher = (nombreMateria) => {
+        dispatch(actionRemoveMateriaMaestro(idMaestro, nombreMateria));
+    }
+
+    const addMateriaToTeacher= (nombreMateria) => {
+        dispatch(actionUpdateMateriaMaestro(idMaestro, nombreMateria));
+    }
 
     return (
         <div className={isManagementMaterias ? "modal-materia-list" : "modal-materia-list-hidden"}>
@@ -88,10 +94,10 @@ export const MateriaList = ({ isManagementMaterias, setIsManagementMaterias }) =
                 <div className="modal-tables-container">
                     <div className="table-container">
                         {
-                            materiasOfTeacher.length !== 0 ?
+                            allMateriasFromMaestro.length !== 0 ?
                                 <DataTable className="table-responsive"
                                     columns={columns_materias_teacher}
-                                    data={materiasOfTeacher}
+                                    data={allMateriasFromMaestro}
                                     pagination
                                     fixedHeader
                                     fixedHeaderScrollHeight="calc(100% - 50px)"
@@ -106,10 +112,10 @@ export const MateriaList = ({ isManagementMaterias, setIsManagementMaterias }) =
                     <BsArrowLeftRight className="double-arrow-icon" />
                     <div className="table-container">
                         {
-                            notMateriasOfTeacher.length !== 0 ?
+                            notMateriasFromMaestro.length !== 0 ?
                                 <DataTable className="table-responsive"
                                     columns={columns_not_materias_teacher}
-                                    data={notMateriasOfTeacher}
+                                    data={notMateriasFromMaestro}
                                     pagination
                                     fixedHeader
                                     fixedHeaderScrollHeight="calc(100% - 50px)"

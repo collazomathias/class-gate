@@ -1,23 +1,31 @@
 //import { actionTeacherPost } from "../actions/teacherAction"
 
 const initialState = {
-    teachers: [],
-    teacherGetAll: [],
-    teachDocum: []
+
+    allMaestro: [],
+    allMateriasFromMaestro: [],
+    notMateriasFromMaestro: []
+
 }
 
 export const teacherReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case "teacherPost":
-            const teachers = ([...state.teachers, action.payload])
-            return { ...state, teachers: teachers }
+        case "allMaestro":
+            return { ...state, allMaestro: action.payload }
 
-            case "teacherGetAll":
-            return { ...state, teacherGetAll: action.payload }
+        case "allMateriasFromMaestro":
+            return { ...state, allMateriasFromMaestro: action.payload }
 
-            case "teacherGetDoc":
-            return { ...state, teachDocum: action.payload }
+        case "notMateriasFromMaestro":
+            return { ...state, notMateriasFromMaestro: action.payload }
+
+        case "removeMateriaMaestro":
+            return { ...state, notMateriasFromMaestro: [...state.notMateriasFromMaestro, action.payload], allMateriasFromMaestro: state.allMateriasFromMaestro.filter(materia => materia.nombreMateria !== action.payload.nombreMateria) }
+
+        case "updateMateriaMaestro":
+            return { ...state, allMateriasFromMaestro: [...state.allMateriasFromMaestro, action.payload], notMateriasFromMaestro: state.notMateriasFromMaestro.filter(materia => materia.nombreMateria !== action.payload.nombreMateria) }
+
 
         default:
             return state;

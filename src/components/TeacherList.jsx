@@ -1,18 +1,21 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useDispatch, useSelector } from "react-redux";
 import { teacherAction } from "../actions/teacherAction";
 import { BsBook } from "react-icons/bs";
 import "../assets/styles/components/TeacherList.css";
 
-const TeacherList = ({ setIsManagementMaterias }) => {
+const TeacherList = ({ setIsManagementMaterias, setIdMaestro }) => {
 
-    const { actionTeacherGetAll } = teacherAction();
+    const { actionAllMaestro } = teacherAction();
     const dispatch = useDispatch();
 
-    //arreglo que contiene maestros
-    const arrTeachers = useSelector((state) => state.teacherReducer.teacherGetAll)
-    arrTeachers.length === 0 ? dispatch(actionTeacherGetAll()) : <></>
+    //arreglo que contiene todos los maestros
+    const arrTeachers = useSelector((state) => state.teacherReducer.allMaestro)
+
+    useEffect(() => {
+        dispatch(actionAllMaestro());
+    }, [actionAllMaestro, dispatch]);
 
     const columns = [
         {
@@ -45,7 +48,7 @@ const TeacherList = ({ setIsManagementMaterias }) => {
         {
             id: "columnAction",
             cell: row => <div className="option-button-container">
-                <button onClick={() => setIsManagementMaterias(true)} title="Gestionar materias" className="view-students-button"><BsBook /></button>
+                <button onClick={() => {setIsManagementMaterias(true); setIdMaestro(row.id)}} title="Gestionar materias" className="view-students-button"><BsBook /></button>
             </div>,
             right: true,
             style: {
@@ -104,7 +107,7 @@ const TeacherList = ({ setIsManagementMaterias }) => {
                     pagination
                     dense
                     paginationComponentOptions={paginationComponentOptions}
-                    paginationResetDefaultPage={resetPaginationToggle} 
+                    paginationResetDefaultPage={resetPaginationToggle}
                     subHeader
                     subHeaderComponent={subHeaderComponentMemo}
                     persistTableHead
