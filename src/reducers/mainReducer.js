@@ -4,6 +4,7 @@ import { newStudentReducer } from "./newStudentReducer.js";
 import { groupReducer } from "./groupReducer.js";
 import { teacherReducer } from "./teacherReducer.js";
 import { acudienteReducer } from "./acudienteReducer.js";
+import { registerReducer } from "./registerReducer.js";
 
 
 
@@ -13,4 +14,5 @@ export const mainReducer = combineReducers({
     newStudentReducer: newStudentReducer,
     teacherReducer: teacherReducer,
     acudienteReducer: acudienteReducer,
+    registerReducer: registerReducer
 });

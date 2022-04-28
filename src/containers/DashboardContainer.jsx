@@ -5,7 +5,6 @@ import { GroupForm } from "../components/GroupForm.jsx";
 import "../assets/styles/containers/DashboardContainer.css";
 import { DashboardMenu } from "../components/DashboardMenu.jsx";
 import { GroupList } from "../components/GroupList.jsx";
-import { NewStudentForm } from "../components/NewStudentForm.jsx";
 import { StudentList } from "../components/StudentList.jsx";
 import TeacherList from "../components/TeacherList";
 import { MateriaList } from "../components/MateriaList.jsx";
@@ -16,7 +15,7 @@ export const DashboardContainer = (props) => {
 
     //Hooks para mostrar contenidos del menú
     const [newGroup, setNewGroup] = useState(false);
-    const [newStudent, setNewStudent] = useState(false);
+    const [newStudent, setNewStudent] = useState(true);
     const [newTeacher, setNewTeacher] = useState(false);
     //FIN Hooks para mostrar contenidos del menú
 

@@ -5,16 +5,13 @@ const actionAllMaestro = () => async (dispatch) => {
     try {
         await fetch("https://classgate.herokuapp.com/allMaestro", {
             method: "GET",
-            headers: {
-                'Content-Type': 'aplication/json'
-            }
+            headers: { "Content-Type": "aplication/json" }
         })
-            .then(response => response.json())
-            .then(data => dispatch({
-                type: "allMaestro",
-                payload: data
-            }))
-
+        .then(response => response.json())
+        .then(data => dispatch({
+            type: "allMaestro",
+            payload: data
+        }));
     } catch (error) {
         dispatch({
             type: "alertMessage",
@@ -22,6 +19,7 @@ const actionAllMaestro = () => async (dispatch) => {
         });
     }
 }
+
 //put actualizar materias
 const actionUpdateMateriaMaestro = (idMaestro, materia) => async (dispatch) => {
     try {
@@ -29,11 +27,11 @@ const actionUpdateMateriaMaestro = (idMaestro, materia) => async (dispatch) => {
             method: "PUT",
             headers: { "Content-Type": "application/json" }
         })
-            .then(response => response.json())
-            .then(data => dispatch({
-                type: "updateMateriaMaestro",
-                payload: data
-            }));
+        .then(response => response.json())
+        .then(data => dispatch({
+            type: "updateMateriaMaestro",
+            payload: data
+        }));
     } catch (error) {
         dispatch({
             type: "alertMessage",
@@ -49,11 +47,11 @@ const actionRemoveMateriaMaestro = (idMaestro, materia) => async (dispatch) => {
             method: "PUT",
             headers: { "Content-Type": "application/json" }
         })
-            .then(response => response.json())
-            .then(data => dispatch({
-                type: "removeMateriaMaestro",
-                payload: data
-            }));
+        .then(response => response.json())
+        .then(data => dispatch({
+            type: "removeMateriaMaestro",
+            payload: data
+        }));
     } catch (error) {
         dispatch({
             type: "alertMessage",
@@ -67,14 +65,13 @@ const actionRemoveMateriaMaestro = (idMaestro, materia) => async (dispatch) => {
 const actionAllMateriasFromMaestro = (idMaestro) => async (dispatch) => {
     try {
         fetch("https://class-gate.herokuapp.com/allMateriasFromMaestro/" + idMaestro)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                dispatch({
-                    type: "allMateriasFromMaestro",
-                    payload: data
-                })
-            });
+        .then(response => response.json())
+        .then(data => {
+            dispatch({
+                type: "allMateriasFromMaestro",
+                payload: data
+            })
+        });
     } catch (error) {
         dispatch({
             type: "alertMessage",
@@ -87,14 +84,13 @@ const actionAllMateriasFromMaestro = (idMaestro) => async (dispatch) => {
 const actionNotMateriasFromMaestro = (idMaestro) => async (dispatch) => {
     try {
         fetch("https://class-gate.herokuapp.com/notMateriasFromMaestro/" + idMaestro)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                dispatch({
-                    type: "notMateriasFromMaestro",
-                    payload: data
-                })
-            });
+        .then(response => response.json())
+        .then(data => {
+            dispatch({
+                type: "notMateriasFromMaestro",
+                payload: data
+            })
+        });
     } catch (error) {
         dispatch({
             type: "alertMessage",
