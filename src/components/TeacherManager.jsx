@@ -6,15 +6,25 @@ export const TeacherManager = () => {
 
     const dispatch = useDispatch();
 
+    const { group } = useSelector(state => state.teacherManagerReducer);
+
     const {teacherGroupGetAction} = teacherManagerAction();
-
-
 
     useEffect(() => {
         dispatch(teacherGroupGetAction())
     }, []);
 
     return (
-        <h1>Gestión de maestro</h1>
+        <>
+            {group ?
+                <div>
+                    <h1>{`Usted es director del grupo: ${group.nombre}`}</h1>
+                    <button>Información del grupo</button>
+                </div>
+                :
+                <h1>Gestión de maestro</h1>
+            }
+            
+        </>
     );
 }

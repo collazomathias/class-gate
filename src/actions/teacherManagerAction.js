@@ -1,4 +1,4 @@
-const teacherGroupGetAction = (req, res) => (dispatch) => {
+const teacherGroupGetAction = (req, res) => async (dispatch) => {
     fetch("https://class-gate.herokuapp.com/findGrupoFromMaestroDirector/maestro2@gmail.com", {
             method: "GET",
             headers: {
@@ -6,11 +6,19 @@ const teacherGroupGetAction = (req, res) => (dispatch) => {
             }
         })
             .then(res => res.json())
-            .then(res => {
-                console.log(res);
+            .then(response => {
+                dispatch({
+                    type: "getGroup",
+                    payload: response
+                });
             }
             )
-            .catch(err => console.log(err));
+            .catch(err => {
+                dispatch({
+                    type: "alertMessage",
+                    payload: err.message,
+                });
+            });
 }
 
 export const teacherManagerAction = () => {
