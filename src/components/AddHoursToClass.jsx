@@ -7,6 +7,8 @@ import "../assets/styles/components/AddHoursToClass.css";
 
 export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass }) => {
 
+console.log(idGroup)
+
     const { actionSearchMaestroByMateria } = teacherAction();
 
     const { actionAddHorarioClase } = actionGroup();
@@ -14,7 +16,7 @@ export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass
 
     //maestros por materia:
     const maestroByMateria = useSelector((state) => state.teacherReducer.searchMaestroByMateria);
-
+    console.log(maestroByMateria)
     const searchMaestros = (e) => {
         dispatch(actionSearchMaestroByMateria(e.target.value));
     }
@@ -45,7 +47,7 @@ export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass
                 dia: dia.current.value
             }
         )
-
+        alert("horario ingresado correctamente")
     }
 
     const submitHandler = async (event) => {
@@ -53,10 +55,14 @@ export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass
 
         const materia = event.target.elements.inputMateria.value;
         const profesor = event.target.elements.inputProfesor.value;
-        const idProfesor = maestroByMateria.map(profname => profname.nombre === profesor ? profname.id : <></>)
-        console.log(arrDate, idGroup, idProfesor, materia)
-
+        let idProfesor=""
+        maestroByMateria.map(profname => profname.nombre===profesor? idProfesor = profname.id: <></> )
         arrDate.length === 0 ? alert("debe agregar horarios") : dispatch(actionAddHorarioClase(arrDate, idGroup, idProfesor, materia));
+        alert("Datos guardados!!")
+        inputHoraInicial.current.value = "";
+        inputHoraFinal.current.value = "";
+        inputMinutosInicial.current.value = "";
+        inputMinutosFinal.current.value = "";
     }
 
 

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 import { teacherAction } from '../actions/teacherAction';
+import "../assets/styles/components/GroupForm.css";
 
 export const Contact = () => {
-    
+
     const { actionAllMaestro } = teacherAction();
     const dispatch = useDispatch();
 
@@ -38,28 +39,28 @@ export const Contact = () => {
         <>
             {/*             Se deben respetar los id/nombres de las etiquetas 
             ya que las utiliza para identificar los campos para el envio de mail*/}
-            <form onSubmit={sendEmail}>
+            <form className="group-form-container" onSubmit={sendEmail}>
                 <div>
                     <h1>Contacto</h1>
                 </div>
 
                 <label htmlFor="name">Nombre</label>
                 <div>
-                    <input type="text" id='name' name='name' placeholder='Ingrese Nombre' required
+                    <input className="input-container" type="text" id='name' name='name' placeholder='Ingrese Nombre' required
                         minLength="4" maxLength="30" />
                 </div>
                 <label htmlFor="email">Correo</label>
                 <div>
-                    <input type="text" id='email' name='email' placeholder='Ingrese Correo' required />
+                    <input className="input-container" type="text" id='email' name='email' placeholder='Ingrese Correo' required />
                 </div>
                 <label htmlFor="to_name">Seleccione Maestro</label>
-                <div>
-                    <select name="to_name" id="to_name">
-                        {emailsTeachers.map(a => <option>{a}</option>)}
+               
+                    <select  name="to_name" id="to_name">
+                        {emailsTeachers.map(a => <option key={a}>{a}</option>)}
                     </select>
-                </div>
-                <div>
-                    <textarea name="message" id="message" type="text"></textarea>
+                
+                <div className="input-container">
+                    <textarea className="input-container" name="message" id="message" type="text"></textarea>
                 </div>
                 <button type='submit'>Enviar Correo</button>
 

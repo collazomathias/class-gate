@@ -117,8 +117,27 @@ const actionSearchMaestroByMateria = (Materia) => async (dispatch) => {
     }
 }
 
+const addCalification = (correoMaestro, idEstudiante, obj) => async (dispatch) => {
+    try {
+        fetch("https://class-gate.herokuapp.com/addNotaToEstudiante/" + correoMaestro + "/" + idEstudiante, {
+            method: "PUT",
+            body: JSON.stringify(obj),
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.json())
+        .then(data => dispatch({
+            type: "calificacion",
+            payload: data
+        }));
+    } catch (error) {
+        dispatch({
+            type: "alertMessage",
+            payload: error.message
+        });
+    }
+}
 
 
 export const teacherAction = () => {
-    return { actionAllMaestro, actionUpdateMateriaMaestro, actionNotMateriasFromMaestro, actionAllMateriasFromMaestro, actionRemoveMateriaMaestro, actionSearchMaestroByMateria };
+    return { actionAllMaestro, actionUpdateMateriaMaestro, actionNotMateriasFromMaestro, actionAllMateriasFromMaestro, actionRemoveMateriaMaestro, actionSearchMaestroByMateria, addCalification };
 }

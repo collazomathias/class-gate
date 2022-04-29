@@ -13,6 +13,7 @@ import { ManagementStudent } from "../components/ManagementStudent.jsx";
 import { ManagementDirectorGroup } from "../components/ManagementDirectorGroup.jsx";
 import { AddHoursToClass } from "../components/AddHoursToClass.jsx";
 import { HorariosList } from "../components/HorariosList.jsx";
+import { Contact } from "../components/Contact.jsx";
 
 export const DashboardContainer = (props) => {
 
@@ -20,6 +21,7 @@ export const DashboardContainer = (props) => {
     const [newGroup, setNewGroup] = useState(false);
     const [newStudent, setNewStudent] = useState(true);
     const [newTeacher, setNewTeacher] = useState(false);
+    const [contact, setContact] = useState(false);
     //FIN Hooks para mostrar contenidos del menú
 
     const [isEditingGroup, setIsEditingGroup] = useState(false);
@@ -58,6 +60,8 @@ export const DashboardContainer = (props) => {
                     setNewStudent={setNewStudent}
                     newTeacher={newTeacher}
                     setNewTeacher={setNewTeacher}
+                    contact={contact}
+                    setContact={setContact}
                 />
                 <div className="dashboard-actions-container">
                     {
@@ -127,7 +131,12 @@ export const DashboardContainer = (props) => {
                     }
                     {
                         props.role === "acudiente" ? (
-                            <h1>Acudiente</h1>
+                            <>
+                            { contact ?
+                                <Contact />
+                                :null
+                            }
+                            </>
                         ) : null
                     }
                 </div>
