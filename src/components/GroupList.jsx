@@ -1,25 +1,34 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../assets/styles/components/GroupList.css";
+import "../assets/styles/components/GroupDirectorList.css";
 import DataTable from "react-data-table-component";
 import { actionGroup } from "../actions/actionGroup";
 import { FaEdit, FaTrash, FaUserTie } from "react-icons/fa";
 import { RiGroupFill } from "react-icons/ri";
+import { groupDirectorAction } from "../actions/groupDirectorAction";
 
 export const GroupList = ({ setEditGroupData, 
                             setIsEditingGroup,
                             setIsManagementStudents,
-                            setManagementStudentsGroupData }) => {
+                            setManagementStudentsGroupData,
+                            setIsEditingGroupDirector,
+                        }) => {
     
     const dispatch = useDispatch();
 
     const { groups } = useSelector(state => state.groupReducer);
+
+    const { director } = useSelector(state => state.groupDirectorReducer);
     
     const { actionGetGroups, actionDeleteGroup } = actionGroup();
 
+    const { notGroupDirectorGetAction } = groupDirectorAction();
+
     useEffect(() => {
         dispatch(actionGetGroups());
-    }, [actionGetGroups, dispatch]);
+        dispatch(notGroupDirectorGetAction());
+    }, [actionGetGroups, director, dispatch]);
 
     const deleteGroup = (groupId) => {
         dispatch(actionDeleteGroup(groupId));
@@ -46,6 +55,12 @@ export const GroupList = ({ setEditGroupData,
         setIsManagementStudents(true);
     }
 
+    const manageDirectors = (group) => {
+        
+        dispatch(notGroupDirectorGetAction(group));
+        setIsEditingGroupDirector(true);
+    }
+
     const columns = [
         {
             name: "Grupo",
@@ -62,7 +77,7 @@ export const GroupList = ({ setEditGroupData,
         {
             name: "Director",
             id: "columnDirector",
-            selector: row => row.director,
+            selector: row => row.director ? row.director.nombre : "Sin director",
             sortable: true,
             grow: 4,
             style: {
@@ -74,7 +89,7 @@ export const GroupList = ({ setEditGroupData,
         {
             id: "columnAction",
             cell: row => <div className="option-button-container">
-                <button onClick={() => console.log("Ver maestros")} title="Ver los maestros" className="view-students-button"><FaUserTie /></button>
+                <button onClick={() => manageDirectors(row)} title="Gestionar director" className="view-students-button"><FaUserTie /></button>
                 <button onClick={() => manageStudents(row.id, row.nombre, row.grado, row.curso, row.estudiantes)} title="Gestionar estudiantes" className="view-students-button"><RiGroupFill /></button>
                 <button onClick={() => editGroup(row.id, row.nombre, row.grado, row.curso)} title="Editar grupo" className="edit-button"><FaEdit /></button>
                 <button onClick={() => deleteGroup(row.id)} title="Eliminar grupo" className="delete-button"><FaTrash /></button>

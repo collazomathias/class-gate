@@ -10,6 +10,7 @@ import TeacherList from "../components/TeacherList";
 import { MateriaList } from "../components/MateriaList.jsx";
 import AcudienteList from "../components/AcudienteList.jsx";
 import { ManagementStudent } from "../components/ManagementStudent.jsx";
+import { ManagementDirectorGroup } from "../components/ManagementDirectorGroup.jsx";
 
 export const DashboardContainer = (props) => {
 
@@ -33,7 +34,8 @@ export const DashboardContainer = (props) => {
     const [isManagementTeachers, setIsManagementTeachers] = useState(false);
     const [managementTeachersGroupData, setManagementTeachersGroupData] = useState(null);
 
-
+    const [isEditingGroupDirector, setIsEditingGroupDirector] = useState(false);
+    const [idGroupDirector, setGroupDirector] = useState(null);
 
     
 
@@ -67,12 +69,17 @@ export const DashboardContainer = (props) => {
                                         setIsEditingGroup={setIsEditingGroup}
                                         setIsManagementStudents={setIsManagementStudents}
                                         setManagementStudentsGroupData={setManagementStudentsGroupData}
+                                        setIsEditingGroupDirector={setIsEditingGroupDirector}
                                     />
                                     <StudentList
                                         isManagementStudents={isManagementStudents}
                                         managementStudentsGroupData={managementStudentsGroupData}
                                         setIsManagementStudents={setIsManagementStudents}
                                         setManagementStudentsGroupData={setManagementStudentsGroupData}
+                                    />
+                                    <ManagementDirectorGroup
+                                        setIsEditingGroupDirector={setIsEditingGroupDirector}
+                                        isEditingGroupDirector={isEditingGroupDirector}
                                     />
                                 </> : null}
                                 { newStudent ? <>
