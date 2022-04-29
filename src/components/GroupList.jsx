@@ -5,11 +5,16 @@ import DataTable from "react-data-table-component";
 import { actionGroup } from "../actions/actionGroup";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { RiGroupFill } from "react-icons/ri";
+import { AiFillHourglass } from "react-icons/ai";
+import { RiBookletFill } from "react-icons/ri";
 
 export const GroupList = ({ setEditGroupData, 
                             setIsEditingGroup,
                             setIsManagementStudents,
-                            setManagementStudentsGroupData }) => {
+                            setManagementStudentsGroupData,
+                            setIdGroup,
+                            setManageGroupClass,
+                            setSeeGroupClass }) => {
     
     const dispatch = useDispatch();
 
@@ -62,7 +67,7 @@ export const GroupList = ({ setEditGroupData,
         {
             name: "Director",
             id: "columnDirector",
-            selector: row => row.director,
+            selector: row => row.director ? row.director.nombre : "Sin director",
             sortable: true,
             grow: 4,
             style: {
@@ -76,6 +81,8 @@ export const GroupList = ({ setEditGroupData,
             cell: row => <div className="option-button-container">
                 <button onClick={() => manageStudents(row.id, row.nombre, row.grado, row.curso, row.estudiantes)} title="Gestionar estudiantes" className="view-students-button"><RiGroupFill /></button>
                 <button onClick={() => editGroup(row.id, row.nombre, row.grado, row.curso)} title="Editar grupo" className="edit-button"><FaEdit /></button>
+                <button onClick={() => { setIdGroup(row.id); setManageGroupClass(true)} } title="Agregar clase" className="add-button"><AiFillHourglass /></button>
+                <button onClick={() => { setIdGroup(row.id); setSeeGroupClass(true)} } title="Ver clases" className="add-button"><RiBookletFill /></button>
                 <button onClick={() => deleteGroup(row.id)} title="Eliminar grupo" className="delete-button"><FaTrash /></button>
             </div>,
             right: true,
