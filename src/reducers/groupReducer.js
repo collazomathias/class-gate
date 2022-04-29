@@ -2,6 +2,8 @@ const initialState = {
     groups: [],
     groupStudents: [],
     studentsWithOutGroup: [],
+    getAllHorariosGrupos: [],
+    addHorarioClase: []
 }
 
 export const groupReducer = (state = initialState, action) => {
@@ -22,6 +24,10 @@ export const groupReducer = (state = initialState, action) => {
             return { ...state, studentsWithOutGroup: [...state.studentsWithOutGroup, action.payload], groupStudents: state.groupStudents.filter(student => student.id !== action.payload.id) }
         case "addStudentToGroup":
             return { ...state, groupStudents: [...state.groupStudents, action.payload], studentsWithOutGroup: state.studentsWithOutGroup.filter(student => student.id !== action.payload.id) }
+        case "allHorariosGrupos":
+            return { ...state, getAllHorariosGrupos: action.payload }
+        case "horarioClase":
+            return { ...state, addHorarioClase: action.payload }
         default:
             return state;
     }

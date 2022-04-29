@@ -29,6 +29,7 @@ export const RegisterTeacherForm = () => {
         const celular = event.target.elements.inputCelular.value;
         const especialidad = event.target.elements.inputEspecialidad.value;
 
+        
         const teacher = {
             correo: email,
             password: password,
@@ -71,7 +72,7 @@ export const RegisterTeacherForm = () => {
                         <label htmlFor="dir">Documento</label>
                         <div className="input-container">
                             <MdDriveFileRenameOutline className="input-icon icon-size" />
-                            <input type="number" id="inputDocumento" placeholder="Ingrese su documento..." maxLength="255" required />
+                            <input type="number" id="inputDocumento" placeholder="Ingrese su documento..." minLength="10" maxLength="12" required />
                         </div>
                     </div>
                     <div>

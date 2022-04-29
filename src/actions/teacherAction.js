@@ -99,8 +99,26 @@ const actionNotMateriasFromMaestro = (idMaestro) => async (dispatch) => {
     }
 }
 
+const actionSearchMaestroByMateria = (Materia) => async (dispatch) => {
+    try {
+        fetch("https://class-gate.herokuapp.com/searchMaestroByMateria/" + Materia)
+        .then(response => response.json())
+        .then(data => {
+            dispatch({
+                type: "searchMaestroByMateria",
+                payload: data
+            })
+        });
+    } catch (error) {
+        dispatch({
+            type: "alertMessage",
+            payload: error.message
+        });
+    }
+}
+
 
 
 export const teacherAction = () => {
-    return { actionAllMaestro, actionUpdateMateriaMaestro, actionNotMateriasFromMaestro, actionAllMateriasFromMaestro, actionRemoveMateriaMaestro };
+    return { actionAllMaestro, actionUpdateMateriaMaestro, actionNotMateriasFromMaestro, actionAllMateriasFromMaestro, actionRemoveMateriaMaestro, actionSearchMaestroByMateria };
 }
