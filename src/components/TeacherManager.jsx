@@ -29,7 +29,7 @@ export const TeacherManager = ({user, setIsOpenTeacherGroups, isOpenTeacherGroup
    
     const columns_materias_teacher = [
         {
-            name: `Programa de clases`,
+            name: `Materias asignadas`,
             id: "columnMateria",
             selector: row => row.materia.nombreMateria,
             sortable: true,

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IoMdClose } from "react-icons/io";
 import DataTable from "react-data-table-component";
-import { FaPencilAlt } from "react-icons/fa";
+import { RiGroupFill } from "react-icons/ri";
 
 export const TeacherGroupList = ({setIsOpenTeacherGroups, isOpenTeacherGroups, setIsOpenTeacherGroupStudentList}) => {
   // const { acudientes } = useSelector(state => state.acudienteReducer);
@@ -116,7 +116,7 @@ export const TeacherGroupList = ({setIsOpenTeacherGroups, isOpenTeacherGroups, s
             }}
             title="Estudiantes"
             className="view-students-button" >
-            <FaPencilAlt />
+            <RiGroupFill />
           </button>
         </div>
       ),

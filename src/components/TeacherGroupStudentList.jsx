@@ -130,7 +130,7 @@ export const TeacherGroupStudentList = ({setIsOpenTeacherGroupStudentList, isOpe
         >
           <IoMdClose />
         </span>
-        <h1 className="modal-title">Horarios</h1>
+        <h1 className="modal-title">Estudiantes</h1>
         <div className="modal-tables-container">
           <div className="teacher-container">
             <div className="table-container">
