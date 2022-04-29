@@ -14,6 +14,8 @@ import { ManagementDirectorGroup } from "../components/ManagementDirectorGroup.j
 import { TeacherManager } from "../components/TeacherManager.jsx";
 import { AddHoursToClass } from "../components/AddHoursToClass.jsx";
 import { HorariosList } from "../components/HorariosList.jsx";
+import { TeacherGroupList } from "../components/TeacherGroupList.jsx";
+import TeacherGroupStudentList from "../components/TeacherGroupStudentList.jsx";
 
 export const DashboardContainer = (props) => {
 
@@ -45,7 +47,8 @@ export const DashboardContainer = (props) => {
     const [isEditingGroupDirector, setIsEditingGroupDirector] = useState(false);
     const [idGroupDirector, setGroupDirector] = useState(null);
 
-    
+    const [isOpenTeacherGroups, setIsOpenTeacherGroups] = useState(false);
+    const [isOpenTeacherGroupStudentList, setIsOpenTeacherGroupStu  ] = useState(false);
 
     return (
         <>
@@ -126,7 +129,20 @@ export const DashboardContainer = (props) => {
                         props.role === "maestro" ? (
                             <>
                                 {teacherManager ? <>
-                                    <TeacherManager />
+                                    <TeacherManager 
+                                        user={props.user}
+                                        setIsOpenTeacherGroups={setIsOpenTeacherGroups}
+                                        
+                                    />
+                                    <TeacherGroupList 
+                                        setIsOpenTeacherGroups={setIsOpenTeacherGroups}
+                                        isOpenTeacherGroups={isOpenTeacherGroups}
+                                        setIsOpenTeacherGroupStudentList={setIsOpenTeacherGroupStu}
+                                    />
+                                    <TeacherGroupStudentList
+                                        isOpenTeacherGroupStudentList={isOpenTeacherGroupStudentList}
+                                        setIsOpenTeacherGroupStudentList={setIsOpenTeacherGroupStu}
+                                    />
                                 </> : null}
                             </>
                         ) : null

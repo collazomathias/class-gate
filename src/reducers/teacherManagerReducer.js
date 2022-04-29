@@ -1,6 +1,7 @@
 const initialState = {
     group: null,
-    materias: null,
+    materias: [{materia : {nombreMateria: "a"}}],
+    clases: [],
 }
 
 export const teacherManagerReducer = (state = initialState, action) => {
@@ -10,6 +11,8 @@ export const teacherManagerReducer = (state = initialState, action) => {
             return {...state, group: action.payload}
         case "getMateria":
             return {...state, materias: action.payload}
+        case "getClass":
+            return {...state, clases: action.payload}
         default:
             return state;
 

@@ -60,7 +60,7 @@ export function App() {
             <Routes>
                 <Route path="/" element={<LandingPageContainer />} />
                 <Route path="/login" element={<LoginContainer />} />
-                <Route path="/dashboard" element={<DashboardContainer role={user ? user.role : null } />} />
+                <Route path="/dashboard" element={<DashboardContainer role={user ? user.role : null } user={user} />} />
                 <Route path="/register-attendant" element={<RegisterAcudienteContainer />} />
                 <Route path="/register-teacher" element={<RegisterTeacherContainer />} />
             </Routes>
