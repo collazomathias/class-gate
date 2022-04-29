@@ -40,21 +40,8 @@ export const DashboardMenu = ({ role, newGroup, setNewGroup, newStudent, setNewS
                 role === "acudiente" ? (
                     <>
                         <button onClick={() => {
-                            setContact(false);
-
-                        }} className="dashboard-menu-button">Action acudiente 1</button>
-                        <button onClick={() => {
-                            setContact(false);
-
-                        }} className="dashboard-menu-button">Action acudiente 2</button>
-                        <button onClick={() => {
-                            setContact(false);
-
-                        }} className="dashboard-menu-button">Action acudiente 3</button>
-                        <button onClick={() => {
                             setContact(true);
-
-                        }} className="dashboard-menu-button">Contactarse</button>
+                        }} className={ contact ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Contactarse</button>
                     </>
                 ) : null
             }

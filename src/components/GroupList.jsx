@@ -32,7 +32,7 @@ export const GroupList = ({ setEditGroupData,
     useEffect(() => {
         dispatch(actionGetGroups());
         dispatch(notGroupDirectorGetAction());
-    }, [actionGetGroups, director, dispatch]);
+    }, [actionGetGroups, director, dispatch, notGroupDirectorGetAction]);
 
     const deleteGroup = (groupId) => {
         dispatch(actionDeleteGroup(groupId));

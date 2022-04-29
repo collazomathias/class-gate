@@ -21,7 +21,7 @@ export const DashboardContainer = (props) => {
     const [newGroup, setNewGroup] = useState(false);
     const [newStudent, setNewStudent] = useState(true);
     const [newTeacher, setNewTeacher] = useState(false);
-    const [contact, setContact] = useState(false);
+    const [contact, setContact] = useState(true);
     //FIN Hooks para mostrar contenidos del menú
 
     const [isEditingGroup, setIsEditingGroup] = useState(false);
@@ -38,14 +38,8 @@ export const DashboardContainer = (props) => {
     const [ idGroup, setIdGroup ] = useState(null);
     const [ manageGroupClass, setManageGroupClass] = useState(false);
     const [ seeGroupClass, setSeeGroupClass ] = useState(false);
-    
-    const [isManagementTeachers, setIsManagementTeachers] = useState(false);
-    const [managementTeachersGroupData, setManagementTeachersGroupData] = useState(null);
 
     const [isEditingGroupDirector, setIsEditingGroupDirector] = useState(false);
-    const [idGroupDirector, setGroupDirector] = useState(null);
-
-    
 
     return (
         <>
