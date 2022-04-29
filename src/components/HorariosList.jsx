@@ -2,26 +2,26 @@ import React, { useState, useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useDispatch, useSelector } from "react-redux";
 import { actionGroup } from "../actions/actionGroup";
+import "../assets/styles/components/HorariosList.css";
+import { IoMdClose } from "react-icons/io";
+import { RiBookletFill } from "react-icons/ri";
 
-export const HorariosList = ( idGrupo ) => {
-
+export const HorariosList = ({ idGroup, seeGroupClass, setSeeGroupClass }) => {
 
     const dispatch = useDispatch();
 
     const { actionGetAllHorariosGrupos } = actionGroup();
 
     const [horariosClase, setHorariosClase] = useState([]);
+    //todos horarios grupo:
+    const allHorariosGrupos = useSelector((state) => state.groupReducer.getAllHorariosGrupos);
 
 
     useEffect(() => {
-        dispatch(actionGetAllHorariosGrupos(idGrupo));
-    }, [actionGetAllHorariosGrupos, dispatch]);
+        if(idGroup) dispatch(actionGetAllHorariosGrupos(idGroup));
+    }, [actionGetAllHorariosGrupos, dispatch, idGroup]);
 
-    //todos horarios grupo:
-    const allHorariosGrupos = useSelector((state) => state.groupReducer.getAllHorariosGrupos);
-    console.log(allHorariosGrupos)
    
-
     const paginationLangConfig = {
         rowsPerPageText: "Filas por página",
         rangeSeparatorText: "de",
@@ -31,9 +31,9 @@ export const HorariosList = ( idGrupo ) => {
     }
     const columns = [
         {
+            id: "columnMateria",
             name: "Materia",
-            id: "columnStudent",
-            selector: row => row.materia.nombreMateria,
+            selector: row => row.materia ? row.materia.nombreMateria : null,
             sortable: true,
             style: {
                 fontSize: 20,
@@ -43,9 +43,9 @@ export const HorariosList = ( idGrupo ) => {
             }
         },
         {
+            id: "columnMaestro",
             name: "Maestro",
-            id: "columnStudent",
-            selector: row => row.maestro.nombre,
+            selector: row => row.maestro ? row.maestro.nombre : null,
             sortable: true,
             style: {
                 fontSize: 20,
@@ -58,9 +58,9 @@ export const HorariosList = ( idGrupo ) => {
         {
             id: "columnAction",
             cell: row => <div >
-                <button onClick={() => setHorariosClase(row.horarios)} title="Ver horarios clase" >Ver</button>
+                <button onClick={() => setHorariosClase(row.horarios)} title="Ver horarios clase" className="add-button"><RiBookletFill /></button>
             </div>,
-            left: true,
+            right: true,
          
         }
     ]
@@ -68,9 +68,9 @@ export const HorariosList = ( idGrupo ) => {
     
     const columns_horarios = [
         {
+            id: "columnHI",
             name: "Hora Inicio",
-            id: "columnStudent",
-            selector: row => row.horarioInicial,
+            selector: row => row.horarioInicial ? row.horarioInicial : null,
             sortable: true,
             style: {
                 fontSize: 20,
@@ -81,9 +81,9 @@ export const HorariosList = ( idGrupo ) => {
            
         },
         {
+            id: "columnHF",
             name: "Hora Fin",
-            id: "columnStudent",
-            selector: row => row.horarioFinal,
+            selector: row => row.horarioFinal ? row.horarioFinal : null,
             sortable: true,
             style: {
                 fontSize: 20,
@@ -94,9 +94,9 @@ export const HorariosList = ( idGrupo ) => {
           
         },
         {
+            id: "columnDay",
             name: "Dia",
-            id: "columnStudent",
-            selector: row => row.dia,
+            selector: row => row.dia ? row.dia : null,
             sortable: true,
             style: {
                 fontSize: 20,
@@ -110,24 +110,45 @@ export const HorariosList = ( idGrupo ) => {
 
 
     return (<>
-
-        <DataTable
-            title="Movie List - First row expanded"
-            columns={columns}
-            data={allHorariosGrupos}
-            pagination
-            paginationComponentOptions={paginationLangConfig}
-
-        />
-
-        <DataTable
-            title="Movie List - First row expanded"
-            columns={columns_horarios}
-            data={horariosClase}
-            pagination
-            paginationComponentOptions={paginationLangConfig}
-
-        />
+        <div className={seeGroupClass ? "horarios-list-modal-container" : "horarios-list-modal-container-hidden"}>
+            <div className="modal-tables-horario-container">
+                <span onClick={() => setSeeGroupClass(false)} className="modal-close-button"><IoMdClose /></span>
+                <h1 className="modal-horarios-title">Ver horario de clases</h1>        
+                <div className="datatables-container-horario">
+                    { allHorariosGrupos && allHorariosGrupos.length ?
+                    <div className="dt-container"> 
+                    <DataTable
+                        columns={columns}
+                        data={allHorariosGrupos ? allHorariosGrupos : null}
+                        pagination
+                        paginationComponentOptions={paginationLangConfig}
+                        fixedHeader
+                        fixedHeaderScrollHeight="440px"
+                    /> </div> :
+                    <div className="empty-table">
+                        <h1>Clases</h1>
+                        <p>No hay clases agregadas en este grupo.</p>
+                    </div>
+                    }
+                    { horariosClase &&   horariosClase.length ? 
+                    <div className="dt-container">
+                    <DataTable
+                        columns={columns_horarios}
+                        data={horariosClase ? horariosClase : null}
+                        pagination
+                        paginationComponentOptions={paginationLangConfig}
+                        fixedHeader
+                        fixedHeaderScrollHeight="440px"
+                    /> </div> : 
+                    <div className="empty-table dt-container">
+                        <h1>Horarios de clase</h1>
+                        <p>No hay horarios agregados a esta clase.</p>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+        
 
     </>
     )

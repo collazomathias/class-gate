@@ -7,13 +7,17 @@ import { actionGroup } from "../actions/actionGroup";
 import { FaEdit, FaTrash, FaUserTie } from "react-icons/fa";
 import { RiGroupFill } from "react-icons/ri";
 import { groupDirectorAction } from "../actions/groupDirectorAction";
+import { AiFillHourglass } from "react-icons/ai";
+import { RiBookletFill } from "react-icons/ri";
 
 export const GroupList = ({ setEditGroupData, 
                             setIsEditingGroup,
                             setIsManagementStudents,
                             setManagementStudentsGroupData,
                             setIsEditingGroupDirector,
-                        }) => {
+                            setIdGroup,
+                            setManageGroupClass,
+                            setSeeGroupClass }) => {
     
     const dispatch = useDispatch();
 
@@ -92,6 +96,8 @@ export const GroupList = ({ setEditGroupData,
                 <button onClick={() => manageDirectors(row)} title="Gestionar director" className="view-students-button"><FaUserTie /></button>
                 <button onClick={() => manageStudents(row.id, row.nombre, row.grado, row.curso, row.estudiantes)} title="Gestionar estudiantes" className="view-students-button"><RiGroupFill /></button>
                 <button onClick={() => editGroup(row.id, row.nombre, row.grado, row.curso)} title="Editar grupo" className="edit-button"><FaEdit /></button>
+                <button onClick={() => { setIdGroup(row.id); setManageGroupClass(true)} } title="Agregar clase" className="add-button"><AiFillHourglass /></button>
+                <button onClick={() => { setIdGroup(row.id); setSeeGroupClass(true)} } title="Ver clases" className="add-button"><RiBookletFill /></button>
                 <button onClick={() => deleteGroup(row.id)} title="Eliminar grupo" className="delete-button"><FaTrash /></button>
             </div>,
             right: true,
