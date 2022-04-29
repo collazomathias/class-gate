@@ -44,6 +44,10 @@
     font-weight: bold;
 }
 
+.btn-manage-director {
+    margin-right: 10px !important;
+}
+
 .group-list-container nav select:focus {
     outline: 1px solid gray;
 }
