@@ -1,6 +1,6 @@
 const actionAcudienteGetAll = () => async (dispatch) => {
     try {
-        await fetch("https://classgate.herokuapp.com/allAcudiente", {
+        await fetch("https://class-gate.herokuapp.com/allAcudiente", {
             method: "GET",
             headers: { "Content-Type": "aplication/json" }
         })

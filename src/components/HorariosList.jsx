@@ -125,7 +125,7 @@ export const HorariosList = ({ idGroup, seeGroupClass, setSeeGroupClass }) => {
                         fixedHeader
                         fixedHeaderScrollHeight="440px"
                     /> </div> :
-                    <div className="empty-table">
+                    <div className="empty-table dt-container">
                         <h1>Clases</h1>
                         <p>No hay clases agregadas en este grupo.</p>
                     </div>
