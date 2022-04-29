@@ -29,7 +29,7 @@ export const DashboardMenu = ({ role, newGroup, setNewGroup, newStudent, setNewS
             {
                 role === "maestro" ? (
                     <>
-                        <button className="dashboard-menu-button">Action maestro 1</button>
+                        <button className="dashboard-menu-button">Gestión Materias</button>
                         <button className="dashboard-menu-button">Action maestro 2</button>
                         <button className="dashboard-menu-button">Action maestro 3</button>
                         <button className="dashboard-menu-button">Action maestro 4</button>

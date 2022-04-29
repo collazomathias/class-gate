@@ -11,6 +11,7 @@ import { MateriaList } from "../components/MateriaList.jsx";
 import AcudienteList from "../components/AcudienteList.jsx";
 import { ManagementStudent } from "../components/ManagementStudent.jsx";
 import { ManagementDirectorGroup } from "../components/ManagementDirectorGroup.jsx";
+import { TeacherManager } from "../components/TeacherManager.jsx";
 
 export const DashboardContainer = (props) => {
 
@@ -18,6 +19,7 @@ export const DashboardContainer = (props) => {
     const [newGroup, setNewGroup] = useState(false);
     const [newStudent, setNewStudent] = useState(true);
     const [newTeacher, setNewTeacher] = useState(false);
+    const [teacherManager, setTeacherManager] = useState(true);
     //FIN Hooks para mostrar contenidos del menú
 
     const [isEditingGroup, setIsEditingGroup] = useState(false);
@@ -103,7 +105,11 @@ export const DashboardContainer = (props) => {
                     }
                     {
                         props.role === "maestro" ? (
-                            <h1>Maestro</h1>
+                            <>
+                                {teacherManager ? <>
+                                    <TeacherManager />
+                                </> : null}
+                            </>
                         ) : null
                     }
                     {
