@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../assets/styles/components/GroupList.css";
+import "../assets/styles/components/GroupDirectorList.css";
 import DataTable from "react-data-table-component";
 import { actionGroup } from "../actions/actionGroup";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaUserTie } from "react-icons/fa";
 import { RiGroupFill } from "react-icons/ri";
+import { groupDirectorAction } from "../actions/groupDirectorAction";
 import { AiFillHourglass } from "react-icons/ai";
 import { RiBookletFill } from "react-icons/ri";
 
@@ -12,6 +14,7 @@ export const GroupList = ({ setEditGroupData,
                             setIsEditingGroup,
                             setIsManagementStudents,
                             setManagementStudentsGroupData,
+                            setIsEditingGroupDirector,
                             setIdGroup,
                             setManageGroupClass,
                             setSeeGroupClass }) => {
@@ -19,12 +22,17 @@ export const GroupList = ({ setEditGroupData,
     const dispatch = useDispatch();
 
     const { groups } = useSelector(state => state.groupReducer);
+
+    const { director } = useSelector(state => state.groupDirectorReducer);
     
     const { actionGetGroups, actionDeleteGroup } = actionGroup();
 
+    const { notGroupDirectorGetAction } = groupDirectorAction();
+
     useEffect(() => {
         dispatch(actionGetGroups());
-    }, [actionGetGroups, dispatch]);
+        dispatch(notGroupDirectorGetAction());
+    }, [actionGetGroups, director, dispatch]);
 
     const deleteGroup = (groupId) => {
         dispatch(actionDeleteGroup(groupId));
@@ -49,6 +57,12 @@ export const GroupList = ({ setEditGroupData,
             groupStudents: groupStudents
         });
         setIsManagementStudents(true);
+    }
+
+    const manageDirectors = (group) => {
+        
+        dispatch(notGroupDirectorGetAction(group));
+        setIsEditingGroupDirector(true);
     }
 
     const columns = [
@@ -79,6 +93,7 @@ export const GroupList = ({ setEditGroupData,
         {
             id: "columnAction",
             cell: row => <div className="option-button-container">
+                <button onClick={() => manageDirectors(row)} title="Gestionar director" className="view-students-button"><FaUserTie /></button>
                 <button onClick={() => manageStudents(row.id, row.nombre, row.grado, row.curso, row.estudiantes)} title="Gestionar estudiantes" className="view-students-button"><RiGroupFill /></button>
                 <button onClick={() => editGroup(row.id, row.nombre, row.grado, row.curso)} title="Editar grupo" className="edit-button"><FaEdit /></button>
                 <button onClick={() => { setIdGroup(row.id); setManageGroupClass(true)} } title="Agregar clase" className="add-button"><AiFillHourglass /></button>
