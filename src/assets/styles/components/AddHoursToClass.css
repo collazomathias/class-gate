@@ -56,14 +56,19 @@
     outline: none;
 }
 
-.label-input-container {
+.label-input-container-hour {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 }
 
-.label-input-container input {
+.label-input-container-hour label {
+    margin-top: 10px;
+}
+
+.label-input-container-hour input {
     height: 50px;
     width: 250px;
     border-radius: 6px;
@@ -75,7 +80,7 @@
     margin-top: 10px;
 }
 
-.label-input-container input:focus {
+.label-input-container-hour input:focus {
     outline: none;
     border-right: 5px solid #FF7E06;
 }

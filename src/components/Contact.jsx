@@ -6,10 +6,14 @@ import "../assets/styles/components/GroupForm.css";
 import { BsFillPersonFill } from "react-icons/bs";
 import { AiOutlineMail } from "react-icons/ai";
 import "../assets/styles/components/Contact.css";
+import { actionMessage } from "../actions/actionMessage";
 
 export const Contact = () => {
 
     const { actionAllMaestro } = teacherAction();
+
+    const { actionErrorMessage, actionSuccessMessage } = actionMessage();
+
     const dispatch = useDispatch();
 
 
@@ -27,20 +31,19 @@ export const Contact = () => {
     const sendEmail = (e) => {
         e.preventDefault();
         emailjs.sendForm("service_14zwd3g", "template_jyacclo", e.target, "BM4RNr2vJkeOZEPhz")
-            .then(res => {
-                alert("Se envió correctamente el correo!")
-                console.log(res)
-                e.target.reset()
-            }, (error) => {
-                console.log(error.text);
-            });
+        .then(res => {
+            dispatch(actionSuccessMessage("El correo se envió correctamente"));
+            e.target.reset();
+        }, (error) => {
+            dispatch(actionErrorMessage(error.message));
+        });
     }
 
     return (
         <>
             {/*             Se deben respetar los id/nombres de las etiquetas 
             ya que las utiliza para identificar los campos para el envio de mail*/}
-            <form className="group-form-container" onSubmit={sendEmail}>
+            <form className="contact-form-container" onSubmit={sendEmail}>
                 <div>
                     <h1>Contacto</h1>
                 </div>
@@ -61,7 +64,7 @@ export const Contact = () => {
                     {emailsTeachers.map(a => <option key={a}>{a}</option>)}
                 </select>
                 <label htmlFor="to_name">Mensaje</label>
-                <textarea className="text-area" name="message" id="message" type="text"></textarea>
+                <textarea className="text-area" name="message" id="message" type="text" resize="none"></textarea>
                 <button type="submit">Enviar Correo</button>
 
             </form>

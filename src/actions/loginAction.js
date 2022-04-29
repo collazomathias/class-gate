@@ -21,6 +21,12 @@ const actionCloseAlertMessage = () => async(dispatch) => {
     });
 }
 
+const actionCloseSuccessMessage = () => async(dispatch) => {
+    dispatch({
+        type: "closeSuccessMessage"
+    });
+}
+
 export const loginAction = () => {
-    return { actionLogin, actionCloseAlertMessage };
+    return { actionLogin, actionCloseAlertMessage, actionCloseSuccessMessage };
 }

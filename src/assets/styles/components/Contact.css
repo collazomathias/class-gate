@@ -1,10 +1,108 @@
+.contact-form-container {
+    width: 400px;
+    max-height: 510px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+    background-color: white;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.15);
+    color: gray;
+}
+
 .select-maestro-contacto {
     width: 100% !important;
+    height: 50px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 0.3px solid lightgray;
+    font-weight: bold;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.select-maestro-contacto:focus {
+    outline: none;
 }
 
 .text-area {
-    width: 100%;
+    width: calc(100% - 23px);
+    padding: 10px;
     min-height: 60px;
     margin-bottom: 20px;
     border: 0.3px solid lightgray;
+    transition: 0.3s ease-in-out;
+    font-size: 20px;
+    resize: none;
+}
+
+.text-area:focus {
+    outline: none;
+    border: 0.3px solid #FF7E06;
+}
+
+.contact-form-container .group-title-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.contact-form-container .group-title-container h1 {
+    font-size: 40px;
+    color: gray;
+}
+
+.contact-form-container label {
+    width: 350px;
+    font-size: 20px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.contact-form-container .input-container {
+    display: flex;
+}
+
+.contact-form-container input {
+    height: 50px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 0.3px solid lightgray;
+    border-radius: 6px;
+    padding-left: 10px;
+    font-size: 20px;
+    transition: 0.2s ease-in-out;
+    margin-bottom: 20px;
+    border-left: none;
+    transition: 0.2s ease-in-out;
+}
+
+.contact-form-container input:focus {
+    outline: none;
+    border-right: 5px solid #FF7E06;
+}
+
+.contact-form-container button {
+    width: 100%;
+    height: 50px;
+    border-radius: 6px;
+    border: none;
+    background-color: #FF7E06;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease-in-out;
+    padding: 20px;
+}
+
+.contact-form-container button:hover {
+    cursor: pointer;
+    filter:brightness(1.1);
 }
