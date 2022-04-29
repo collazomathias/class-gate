@@ -85,14 +85,10 @@ export const StudentList = ({ isManagementStudents,
         selectAllRowsItemText: "Todos",
     }
 
-    const closeModal = () => {
-        setIsManagementStudents(false);
-    }
-
     return (
         <div className={ isManagementStudents ? "student-list-modal-container" : "student-list-modal-container-hidden"}>
             <div className="modal-content">
-                <span onClick={() => closeModal()} className="modal-close-button"><IoMdClose /></span>
+                <span onClick={() => setIsManagementStudents(false)} className="modal-close-button"><IoMdClose /></span>
                 <h1 className="modal-title">Gestionar estudiantes del grupo</h1>
                 <div className="modal-tables-container">
                     <div className="table-container">
@@ -130,6 +126,9 @@ export const StudentList = ({ isManagementStudents,
                             </div>
                         }
                     </div>
+                </div>
+                <div className="modal-button-container">
+                    <button onClick={() => setIsManagementStudents(false)} >Guardar cambios</button>
                 </div>
             </div>
         </div>

@@ -1,0 +1,91 @@
+.horarios-list-modal-container-hidden {
+    display: none;
+}
+
+.horarios-list-modal-container .modal-horarios-title {
+    margin-bottom: 10px;
+    color: gray;
+}
+
+.horarios-list-modal-container {
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-tables-horario-container {
+    width: 1000px;
+    height: 520px;
+    position: absolute;
+    background-color: white;
+    border-radius: 6px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.datatables-container-horario {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 540px;
+}
+
+.dt-container {
+    width: 48%;
+    border: 0.3px solid lightgray;
+}
+
+[data-column-id="columnMateria"].rdt_TableCol {
+    font-size: 26px;
+    background-color: #FF7E06;
+    color: white;
+    font-weight: bold;
+}
+
+[data-column-id="columnMaestro"].rdt_TableCol {
+    font-size: 26px;
+    background-color: #FF7E06;
+    color: white;
+    font-weight: bold;
+}
+
+[data-column-id="columnHI"].rdt_TableCol {
+    font-size: 26px;
+    background-color: #FF7E06;
+    color: white;
+    font-weight: bold;
+}
+
+[data-column-id="columnHF"].rdt_TableCol {
+    font-size: 26px;
+    background-color: #FF7E06;
+    color: white;
+    font-weight: bold;
+}
+
+[data-column-id="columnDay"].rdt_TableCol {
+    font-size: 26px;
+    background-color: #FF7E06;
+    color: white;
+    font-weight: bold;
+}
+
+.horarios-list-modal-container nav {
+    font-size: 16px !important;
+    color: gray !important;
+    font-weight: bold;
+}
+
+.horarios-list-modal-container nav select:focus {
+    outline: 1px solid gray;
+}

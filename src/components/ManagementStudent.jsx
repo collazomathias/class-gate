@@ -104,7 +104,7 @@ export const ManagementStudent = ({ setIsManagementStudents, isManagementStudent
                             <button type="submit"><MdPersonAddAlt1 className="modal-button-icon" />Agregar</button>
                         </form>
                     </div>
-                    <div className="table-container">
+                    <div className="table-container table-100">
                     {
                         students.length !== 0 ? 
                         <DataTable className="table-responsive"
@@ -112,7 +112,7 @@ export const ManagementStudent = ({ setIsManagementStudents, isManagementStudent
                             data={students}
                             pagination
                             fixedHeader
-                            fixedHeaderScrollHeight="calc(100% - 50px)"
+                            fixedHeaderScrollHeight="calc(100% - 60px)"
                             paginationComponentOptions={paginationLangConfig}
                         /> : 
                         <div className="empty-table">
@@ -121,6 +121,9 @@ export const ManagementStudent = ({ setIsManagementStudents, isManagementStudent
                         </div>
                     }
                     </div>
+                </div>
+                <div className="modal-button-container">
+                    <button onClick={() => setIsManagementStudents(false)} >Guardar cambios</button>
                 </div>
             </div>
         </div>
