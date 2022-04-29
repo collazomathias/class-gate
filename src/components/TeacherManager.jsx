@@ -6,12 +6,15 @@ export const TeacherManager = () => {
 
     const dispatch = useDispatch();
 
-    const { group } = useSelector(state => state.teacherManagerReducer);
+    const { group, materias } = useSelector(state => state.teacherManagerReducer);
 
-    const {teacherGroupGetAction} = teacherManagerAction();
+    const {teacherGroupGetAction, teacherMateriaGetAction} = teacherManagerAction();
+
+    console.log(materias);
 
     useEffect(() => {
         dispatch(teacherGroupGetAction())
+        dispatch(teacherMateriaGetAction())
     }, []);
 
     return (
