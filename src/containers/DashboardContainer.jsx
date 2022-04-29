@@ -16,6 +16,7 @@ import { AddHoursToClass } from "../components/AddHoursToClass.jsx";
 import { HorariosList } from "../components/HorariosList.jsx";
 import { TeacherGroupList } from "../components/TeacherGroupList.jsx";
 import TeacherGroupStudentList from "../components/TeacherGroupStudentList.jsx";
+import { Contact } from "../components/Contact.jsx";
 
 export const DashboardContainer = (props) => {
 
@@ -24,6 +25,7 @@ export const DashboardContainer = (props) => {
     const [newStudent, setNewStudent] = useState(true);
     const [newTeacher, setNewTeacher] = useState(false);
     const [teacherManager, setTeacherManager] = useState(true);
+    const [contact, setContact] = useState(true);
     //FIN Hooks para mostrar contenidos del menú
 
     const [isEditingGroup, setIsEditingGroup] = useState(false);
@@ -40,9 +42,6 @@ export const DashboardContainer = (props) => {
     const [ idGroup, setIdGroup ] = useState(null);
     const [ manageGroupClass, setManageGroupClass] = useState(false);
     const [ seeGroupClass, setSeeGroupClass ] = useState(false);
-    
-    const [isManagementTeachers, setIsManagementTeachers] = useState(false);
-    const [managementTeachersGroupData, setManagementTeachersGroupData] = useState(null);
 
     const [isEditingGroupDirector, setIsEditingGroupDirector] = useState(false);
     const [idGroupDirector, setGroupDirector] = useState(null);
@@ -63,6 +62,8 @@ export const DashboardContainer = (props) => {
                     setNewStudent={setNewStudent}
                     newTeacher={newTeacher}
                     setNewTeacher={setNewTeacher}
+                    contact={contact}
+                    setContact={setContact}
                 />
                 <div className="dashboard-actions-container">
                     {
@@ -149,7 +150,12 @@ export const DashboardContainer = (props) => {
                     }
                     {
                         props.role === "acudiente" ? (
-                            <h1>Acudiente</h1>
+                            <>
+                            { contact ?
+                                <Contact />
+                                :null
+                            }
+                            </>
                         ) : null
                     }
                 </div>

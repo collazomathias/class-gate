@@ -3,7 +3,7 @@
 //getall maestros
 const actionAllMaestro = () => async (dispatch) => {
     try {
-        await fetch("https://classgate.herokuapp.com/allMaestro", {
+        await fetch("https://class-gate.herokuapp.com/allMaestro", {
             method: "GET",
             headers: { "Content-Type": "aplication/json" }
         })
@@ -23,7 +23,7 @@ const actionAllMaestro = () => async (dispatch) => {
 //put actualizar materias
 const actionUpdateMateriaMaestro = (idMaestro, materia) => async (dispatch) => {
     try {
-        fetch("https://classgate.herokuapp.com/updateMateriaMaestro/" + idMaestro + "/" + materia, {
+        fetch("https://class-gate.herokuapp.com/updateMateriaMaestro/" + idMaestro + "/" + materia, {
             method: "PUT",
             headers: { "Content-Type": "application/json" }
         })
@@ -117,8 +117,27 @@ const actionSearchMaestroByMateria = (Materia) => async (dispatch) => {
     }
 }
 
+const addCalification = (correoMaestro, idEstudiante, obj) => async (dispatch) => {
+    try {
+        fetch("https://class-gate.herokuapp.com/addNotaToEstudiante/" + correoMaestro + "/" + idEstudiante, {
+            method: "PUT",
+            body: JSON.stringify(obj),
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.json())
+        .then(data => dispatch({
+            type: "calificacion",
+            payload: data
+        }));
+    } catch (error) {
+        dispatch({
+            type: "alertMessage",
+            payload: error.message
+        });
+    }
+}
 
 
 export const teacherAction = () => {
-    return { actionAllMaestro, actionUpdateMateriaMaestro, actionNotMateriasFromMaestro, actionAllMateriasFromMaestro, actionRemoveMateriaMaestro, actionSearchMaestroByMateria };
+    return { actionAllMaestro, actionUpdateMateriaMaestro, actionNotMateriasFromMaestro, actionAllMateriasFromMaestro, actionRemoveMateriaMaestro, actionSearchMaestroByMateria, addCalification };
 }

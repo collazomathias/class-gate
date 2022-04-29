@@ -5,7 +5,8 @@ const initialState = {
     allMaestro: [],
     allMateriasFromMaestro: [],
     notMateriasFromMaestro: [],
-    searchMaestroByMateria: []
+    searchMaestroByMateria: [],
+    calificacion:[]
 
 }
 
@@ -28,8 +29,10 @@ export const teacherReducer = (state = initialState, action) => {
             return { ...state, allMateriasFromMaestro: [...state.allMateriasFromMaestro, action.payload], notMateriasFromMaestro: state.notMateriasFromMaestro.filter(materia => materia.nombreMateria !== action.payload.nombreMateria) }
 
         case "searchMaestroByMateria":
-            return {  ...state, searchMaestroByMateria: action.payload }
+            return { ...state, searchMaestroByMateria: action.payload }
 
+        case "calificacion":
+            return { ...state, calification: action.payload }
         default:
             return state;
 

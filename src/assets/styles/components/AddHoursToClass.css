@@ -72,6 +72,7 @@
     padding-left: 10px;
     font-size: 22px;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 .label-input-container input:focus {

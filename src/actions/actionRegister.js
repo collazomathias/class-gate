@@ -9,7 +9,7 @@ const actionRegisterTeacher = (auth, teacher) => async (dispatch) => {
         const teacherRegister = await createUserWithEmailAndPassword(auth, teacher.correo, teacher.password);
         const docRef = doc(firestore, `users/${teacherRegister.user.uid}`);
         setDoc(docRef, { email: teacher.correo, role: "maestro" });
-        fetch("https://classgate.herokuapp.com/addMaestro", {
+        fetch("https://class-gate.herokuapp.com/addMaestro", {
             method: "POST",
             body: JSON.stringify(teacher),
             headers: { "Content-Type": "application/json" }

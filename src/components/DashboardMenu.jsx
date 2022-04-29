@@ -1,7 +1,7 @@
 import React from "react";
 import "../assets/styles/components/DashboardMenu.css";
 
-export const DashboardMenu = ({ role, newGroup, setNewGroup, newStudent, setNewStudent, newTeacher, setNewTeacher }) => {
+export const DashboardMenu = ({ role, newGroup, setNewGroup, newStudent, setNewStudent, newTeacher, setNewTeacher, contact, setContact }) => {
     return (
         <div className="dashboard-menu-container">
             {
@@ -11,20 +11,20 @@ export const DashboardMenu = ({ role, newGroup, setNewGroup, newStudent, setNewS
                             setNewStudent(true);
                             setNewGroup(false);
                             setNewTeacher(false);
-                        }} className={newStudent ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Agregar estudiantes</button>  
+                        }} className={newStudent ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Agregar estudiantes</button>
                         <button onClick={() => {
                             setNewGroup(true);
                             setNewStudent(false);
                             setNewTeacher(false);
-                        }} className={newGroup ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Gestionar grupos</button>  
+                        }} className={newGroup ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Gestionar grupos</button>
                         <button onClick={() => {
                             setNewGroup(false);
                             setNewStudent(false);
                             setNewTeacher(true);
-                        }} className={newTeacher ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Gestionar maestros</button>  
+                        }} className={newTeacher ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Gestionar maestros</button>
                     </>
                 ) : null
-            
+
             }
             {
                 role === "maestro" ? (
@@ -39,10 +39,9 @@ export const DashboardMenu = ({ role, newGroup, setNewGroup, newStudent, setNewS
             {
                 role === "acudiente" ? (
                     <>
-                        <button className="dashboard-menu-button">Action acudiente 1</button>
-                        <button className="dashboard-menu-button">Action acudiente 2</button>
-                        <button className="dashboard-menu-button">Action acudiente 3</button>
-                        <button className="dashboard-menu-button">Action acudiente 4</button>
+                        <button onClick={() => {
+                            setContact(true);
+                        }} className={ contact ? "dashboard-menu-button-active" : "dashboard-menu-button"}>Contactarse</button>
                     </>
                 ) : null
             }

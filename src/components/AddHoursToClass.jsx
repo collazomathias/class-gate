@@ -3,18 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { teacherAction } from "../actions/teacherAction";
 import { actionGroup } from "../actions/actionGroup";
 import { IoMdClose } from "react-icons/io";
+import { actionMessage } from "../actions/actionMessage";
 import "../assets/styles/components/AddHoursToClass.css";
 
 export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass }) => {
 
     const { actionSearchMaestroByMateria } = teacherAction();
+    const { actionErrorMessage } = actionMessage();
 
     const { actionAddHorarioClase } = actionGroup();
     const dispatch = useDispatch();
 
     //maestros por materia:
     const maestroByMateria = useSelector((state) => state.teacherReducer.searchMaestroByMateria);
-
     const searchMaestros = (e) => {
         dispatch(actionSearchMaestroByMateria(e.target.value));
     }
@@ -28,13 +29,16 @@ export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass
 
     const addDate = (event) => {
         event.preventDefault();
-
+        if (inputHoraInicial.current.value === "" || inputHoraFinal.current.value ===  "" || inputMinutosInicial.current.value === "" || inputMinutosFinal.current.value === "") {
+            dispatch(actionErrorMessage("Debe ingresar todos los campos correctamente"));
+            return
+        }
         if ((inputHoraInicial.current.value < 0 || inputHoraInicial.current.value > 23) || (inputHoraFinal.current.value < 0 || inputHoraFinal.current.value > 23)) {
-            alert("Ingrese hora hasta 23")
+            dispatch(actionErrorMessage("Debe ingresar una hora entre 00 y 23"));
             return
         }
         if ((inputMinutosInicial.current.value < 0 || inputMinutosInicial.current.value > 59) || (inputMinutosFinal.current.value < 0 || inputMinutosFinal.current.value > 59)) {
-            alert("Ingrese minutos hasta 60")
+            dispatch(actionErrorMessage("Debe ingresar un minuto entre 00 y 59"));
             return
         }
 
@@ -45,7 +49,6 @@ export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass
                 dia: dia.current.value
             }
         )
-
     }
 
     const submitHandler = async (event) => {
@@ -53,10 +56,10 @@ export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass
 
         const materia = event.target.elements.inputMateria.value;
         const profesor = event.target.elements.inputProfesor.value;
-        const idProfesor = maestroByMateria.map(profname => profname.nombre === profesor ? profname.id : <></>)
-        console.log(arrDate, idGroup, idProfesor, materia)
-
-        arrDate.length === 0 ? alert("debe agregar horarios") : dispatch(actionAddHorarioClase(arrDate, idGroup, idProfesor, materia));
+        let idProfesor=""
+        maestroByMateria.map(profname => profname.nombre===profesor? idProfesor = profname.id: <></> )
+        arrDate.length === 0 ? dispatch(actionErrorMessage("Debe agregar horarios a la clase")) : dispatch(actionAddHorarioClase(arrDate, idGroup, idProfesor, materia));
+        event.target.reset();
     }
 
 
