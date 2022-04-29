@@ -14,6 +14,7 @@ import { ManagementDirectorGroup } from "../components/ManagementDirectorGroup.j
 import { AddHoursToClass } from "../components/AddHoursToClass.jsx";
 import { HorariosList } from "../components/HorariosList.jsx";
 import { Contact } from "../components/Contact.jsx";
+import { SuccessMessage } from "../components/SuccessMessage.jsx";
 
 export const DashboardContainer = (props) => {
 
@@ -39,12 +40,17 @@ export const DashboardContainer = (props) => {
     const [ manageGroupClass, setManageGroupClass] = useState(false);
     const [ seeGroupClass, setSeeGroupClass ] = useState(false);
 
-    const [isEditingGroupDirector, setIsEditingGroupDirector] = useState(false);
+    const [ isEditingGroupDirector, setIsEditingGroupDirector ] = useState(false);
+
+    const [ horariosClase, setHorariosClase ] = useState([]);
+
+    const [ listaHorarios, setListaHorarios ] = useState([]);
 
     return (
         <>
             <LoadingPage />
             <AlertMessage />
+            <SuccessMessage />
             <div className="dashboard-container">
                 <DashboardMenu
                     role={props.role}
@@ -77,6 +83,8 @@ export const DashboardContainer = (props) => {
                                         setIdGroup={setIdGroup}
                                         setManageGroupClass={setManageGroupClass}
                                         setSeeGroupClass={setSeeGroupClass}
+                                        setHorariosClase={setHorariosClase}
+                                        setListaHorarios={setListaHorarios}
                                     />
                                     <StudentList
                                         isManagementStudents={isManagementStudents}
@@ -92,11 +100,15 @@ export const DashboardContainer = (props) => {
                                         idGroup={idGroup} 
                                         manageGroupClass={manageGroupClass} 
                                         setManageGroupClass={setManageGroupClass}
+                                        listaHorarios={listaHorarios}
+                                        setListaHorarios={setListaHorarios}
                                     />
                                     <HorariosList 
                                         idGroup={idGroup} 
                                         seeGroupClass={seeGroupClass} 
                                         setSeeGroupClass={setSeeGroupClass}
+                                        setHorariosClase={setHorariosClase}
+                                        horariosClase={horariosClase}
                                     />
                                 </> : null}
                                 { newStudent ? <>

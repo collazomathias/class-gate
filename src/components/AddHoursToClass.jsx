@@ -6,10 +6,10 @@ import { IoMdClose } from "react-icons/io";
 import { actionMessage } from "../actions/actionMessage";
 import "../assets/styles/components/AddHoursToClass.css";
 
-export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass }) => {
+export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass, listaHorarios, setListaHorarios }) => {
 
     const { actionSearchMaestroByMateria } = teacherAction();
-    const { actionErrorMessage } = actionMessage();
+    const { actionErrorMessage, actionSuccessMessage } = actionMessage();
 
     const { actionAddHorarioClase } = actionGroup();
     const dispatch = useDispatch();
@@ -20,7 +20,6 @@ export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass
         dispatch(actionSearchMaestroByMateria(e.target.value));
     }
     //agrego elementos al array para despues mandarlo como objeto
-    let arrDate = [];
     const inputHoraInicial = useRef(null);
     const inputHoraFinal = useRef(null);
     const inputMinutosInicial = useRef(null);
@@ -41,24 +40,44 @@ export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass
             dispatch(actionErrorMessage("Debe ingresar un minuto entre 00 y 59"));
             return
         }
-
-        arrDate.push(
+        listaHorarios.push(
             {
                 horarioInicial: inputHoraInicial.current.value + ":" + inputMinutosInicial.current.value,
                 horarioFinal: inputHoraFinal.current.value + ":" + inputMinutosFinal.current.value,
                 dia: dia.current.value
             }
         )
+        inputHoraInicial.current.value = "";
+        inputHoraFinal.current.value = "";
+        inputMinutosInicial.current.value = "";
+        inputMinutosFinal.current.value = "";
+        inputHoraInicial.current.focus();
+        dispatch(actionSuccessMessage("Horario agregado con éxito"));
     }
 
     const submitHandler = async (event) => {
         event.preventDefault();
-
+        if(event.target.elements.inputMateria.value === "default") {
+            dispatch(actionErrorMessage("Debe elegir una materia"));
+            return;
+        }
+        if(event.target.elements.inputProfesor.value === "") {
+            dispatch(actionErrorMessage("Debe elegir una materia dictada por un profesor"));
+            return;
+        }
         const materia = event.target.elements.inputMateria.value;
         const profesor = event.target.elements.inputProfesor.value;
-        let idProfesor=""
-        maestroByMateria.map(profname => profname.nombre===profesor? idProfesor = profname.id: <></> )
-        arrDate.length === 0 ? dispatch(actionErrorMessage("Debe agregar horarios a la clase")) : dispatch(actionAddHorarioClase(arrDate, idGroup, idProfesor, materia));
+        let idProfesor="";
+        maestroByMateria.map(profname => profname.nombre === profesor ? idProfesor = profname.id : <></> );
+        if(listaHorarios.length === 0) {
+            dispatch(actionErrorMessage("Debe agregar horarios a la clase"));
+            return;
+        } else {
+            dispatch(actionAddHorarioClase(listaHorarios, idGroup, idProfesor, materia));
+            setListaHorarios([]);
+            setManageGroupClass(false)
+            dispatch(actionSuccessMessage("Clase añadida con éxito"));
+        } 
         event.target.reset();
     }
 
@@ -71,6 +90,7 @@ export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass
                 <div className="label-select-container">
                     <label htmlFor="inputMateria">Materia</label>
                     <select onChange={searchMaestros} id='inputMateria' name='inputMateria' >
+                        <option value="default"> Seleccione una materia...</option>
                         <option value="Trigonometria">Trigonometria</option>
                         <option value="Filosofía">Filosofía</option>
                         <option value="Español y Literatura">Español y Literatura</option>
@@ -99,21 +119,21 @@ export const AddHoursToClass = ({ idGroup, manageGroupClass, setManageGroupClass
                         <option value="Domingo">Domingo</option>
                     </select>
                 </div>
-                <div className="label-input-container">
+                <div className="label-input-container-hour">
                     <label htmlFor="Hora">Hora inicial:</label>
-                    <input type="number" ref={inputHoraInicial} maxLength="2" required id='inputHoraInicial' />
+                    <input type="number" ref={inputHoraInicial} maxLength="2" id='inputHoraInicial' />
                 </div>
-                <div className="label-input-container">
+                <div className="label-input-container-hour">
                     <label htmlFor="Minutos">Minutos:</label>
-                    <input type="number" ref={inputMinutosInicial} maxLength="2" required id='inputMinutosInicial' />
+                    <input type="number" ref={inputMinutosInicial} maxLength="2" id='inputMinutosInicial' />
                 </div>
-                <div className="label-input-container">
+                <div className="label-input-container-hour">
                     <label htmlFor="Hora">Hora final:</label>
-                    <input type="number" ref={inputHoraFinal} maxLength="2" required id='inputHoraFinal' />
+                    <input type="number" ref={inputHoraFinal} maxLength="2" id='inputHoraFinal' />
                 </div>
-                <div className="label-input-container">
+                <div className="label-input-container-hour">
                     <label htmlFor="Minutos">Minutos:</label>
-                    <input type="number" ref={inputMinutosFinal} maxLength="2" required id='inputMinutosFinal' />
+                    <input type="number" ref={inputMinutosFinal} maxLength="2" id='inputMinutosFinal' />
                 </div>
                 <div className="modal-clases-buttons-container">
                     <button className="btn-add-hr" onClick={addDate} >Agregar horario</button>

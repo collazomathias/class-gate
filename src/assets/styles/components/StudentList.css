@@ -42,7 +42,7 @@
     background-color: #FF7E06;
     color: white;
     font-weight: bold;
-    min-width: 310px;
+    max-width: 300px;
 }
 
 .empty-table h1 {

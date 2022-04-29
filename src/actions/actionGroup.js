@@ -163,6 +163,7 @@ const actionGetAllHorariosGrupos = (idGrupo) => async(dispatch) => {
 }
 
 const actionAddHorarioClase = (horarios, idGrupo, idProfesor, materia) => async(dispatch) => {
+    console.log(horarios);
     try {
         fetch("https://class-gate.herokuapp.com/addHorarioClase/" + idGrupo + "/"+ idProfesor + "/"+ materia, {
             method: "PUT",

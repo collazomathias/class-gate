@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import DataTable from "react-data-table-component";
 import { useDispatch, useSelector } from "react-redux";
 import { actionGroup } from "../actions/actionGroup";
@@ -6,13 +6,11 @@ import "../assets/styles/components/HorariosList.css";
 import { IoMdClose } from "react-icons/io";
 import { RiBookletFill } from "react-icons/ri";
 
-export const HorariosList = ({ idGroup, seeGroupClass, setSeeGroupClass }) => {
+export const HorariosList = ({ idGroup, seeGroupClass, setSeeGroupClass, setHorariosClase, horariosClase }) => {
 
     const dispatch = useDispatch();
 
     const { actionGetAllHorariosGrupos } = actionGroup();
-
-    const [horariosClase, setHorariosClase] = useState([]);
     //todos horarios grupo:
     const allHorariosGrupos = useSelector((state) => state.groupReducer.getAllHorariosGrupos);
 
@@ -29,6 +27,7 @@ export const HorariosList = ({ idGroup, seeGroupClass, setSeeGroupClass }) => {
         selectAllRowsItemText: "Todos",
 
     }
+
     const columns = [
         {
             id: "columnMateria",

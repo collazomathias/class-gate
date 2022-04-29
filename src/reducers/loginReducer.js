@@ -1,6 +1,7 @@
 const initialState = {
     userLogged: null,
-    alertMessage: ""
+    alertMessage: "",
+    successMessage: ""
 }
 
 export const loginReducer = (state = initialState, action) => {
@@ -11,6 +12,10 @@ export const loginReducer = (state = initialState, action) => {
             return { ...state, alertMessage: action.payload }
         case "closeAlertMessage":
             return { ...state, alertMessage: "" }
+        case "successMessage":
+            return { ...state, successMessage: action.payload }
+        case "closeSuccessMessage":
+            return { ...state, successMessage: "" }
         default: 
             return state;
     }
