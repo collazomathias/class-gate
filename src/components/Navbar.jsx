@@ -58,7 +58,7 @@ export const Navbar = (props) => {
                 <div className="logout-container">
                     <p>Bienvenido</p>
                     <span>{props.user ? props.user.email : null}</span>
-                    <button onClick={() => signOut(auth)}><BiLogOut className="button-icon" /> Cerrar sesión</button>
+                    <button onClick={() => signOut(auth)}><BiLogOut id="btn-cerrar-sesion" className="button-icon" /> Cerrar sesión</button>
                 </div> 
             }
 

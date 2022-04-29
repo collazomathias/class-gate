@@ -33,15 +33,19 @@
     font-weight: bold;
 }
 
+.datatable-container {
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+    min-width: 410px;
+}
+
 .group-list-container nav {
     font-size: 16px !important;
     color: gray !important;
     font-weight: bold;
 }
 
-.datatable-container {
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
-    min-width: 410px;
+.btn-manage-director {
+    margin-right: 10px !important;
 }
 
 .group-list-container nav select:focus {

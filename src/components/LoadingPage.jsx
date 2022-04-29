@@ -12,9 +12,9 @@ export const LoadingPage = () => {
     }, []);
 
     return (
-        <div className={loading ? "loading-page" : "loading-page loading-page-hided"}>
+        loading ? <div className={loading ? "loading-page" : "loading-page loading-page-hided"}>
             <ClockLoader loading={true} size={150} color={"#FF7E06"} />
             <span>Cargando, por favor espera...</span>
-        </div>
+        </div> : null
     );
 }

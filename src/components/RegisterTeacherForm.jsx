@@ -46,29 +46,34 @@ export const RegisterTeacherForm = () => {
     return (
         <>
             <img className="logo" src={ClassGateLogo} alt="" />
-            <form className="login-form-container register-form-container" onSubmit={submitHandler}>
-                <div className="title-container">
+            <form className="register-teacher-container" onSubmit={submitHandler}>
+                <div className="register-teacher-title">
                     <h1>Registro de maestro</h1>
                 </div>
-                <div className="register-form-container-data">
+                <div className="register-form-container">
                     <div>
                         <label htmlFor="inputUsername">Email</label>
                         <div className="input-container">
-                            <FaUser className="input-icon" />
+                            <FaUser className="input-icon icon-wo-ml" />
                             <input id="inputUsername" type="text" placeholder="Ingrese su email..." required />
                         </div>
+                    </div>
+                    <div>
                         <label htmlFor="inputPassword">Contraseña</label>
                         <div className="input-container">
-                            <FaLock className="input-icon" />
-
+                            <FaLock className="input-icon icon-wo-ml" />
                             <input id="inputPassword" type="password" placeholder="Ingrese su contraseña..." required />
                         </div>
+                    </div>
+                    <div>
                         <label htmlFor="name">Nombre</label>
                         <div className="input-container">
-                            <MdDriveFileRenameOutline className="input-icon icon-size" />
+                            <MdDriveFileRenameOutline className="input-icon icon-wo-ml icon-size" />
                             <input type="text" id="inputName" placeholder="Ingrese su nombre..." required
                                 minLength="4" maxLength="30" />
                         </div>
+                    </div>
+                    <div>
                         <label htmlFor="dir">Documento</label>
                         <div className="input-container">
                             <MdDriveFileRenameOutline className="input-icon icon-size" />
@@ -78,22 +83,26 @@ export const RegisterTeacherForm = () => {
                     <div>
                         <label htmlFor="dir">Dirección</label>
                         <div className="input-container">
-                            <MdDriveFileRenameOutline className="input-icon icon-size" />
+                            <MdDriveFileRenameOutline className="input-icon icon-wo-ml icon-size" />
                             <input type="text" id="inputDireccion" placeholder="Ingrese su dirección..." maxLength="255" required />
                         </div>
+                    </div>
+                    <div>
                         <label htmlFor="cel">Celular</label>
                         <div className="input-container">
-                            <MdPhoneEnabled className="input-icon icon-size" />
+                            <MdPhoneEnabled className="input-icon icon-wo-ml icon-size" />
                             <input type="number" id="inputCelular" placeholder="Ingrese su celular..." required />
                         </div>
+                    </div>
+                    <div>
                         <label htmlFor="spec">Especialidad</label>
                         <div className="input-container">
-                            <MdDriveFileRenameOutline className="input-icon icon-size" />
+                            <MdDriveFileRenameOutline className="input-icon icon-wo-ml icon-size" />
                             <input type="text" id="inputEspecialidad" placeholder="Ingrese su especialidad..." required />
                         </div>
                     </div>
                 </div>
-                <button type="submit"><MdPersonAddAlt1 className="button-icon button-icon-login" /> Registrarme como maestro</button>
+                <button type="submit"><MdPersonAddAlt1 /> Registrarme como maestro</button>
             </form>
         </>
 
