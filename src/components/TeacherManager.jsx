@@ -9,14 +9,20 @@ export const TeacherManager = ({user, setIsOpenTeacherGroups, isOpenTeacherGroup
 
     const dispatch = useDispatch();
 
-    const { group, materias, clases } = useSelector(state => state.teacherManagerReducer);
+    const { teacher, group, materias, clases } = useSelector(state => state.teacherManagerReducer);
 
-    const {teacherGroupGetAction, teacherMateriaGetAction, teacherClassGetAction} = teacherManagerAction();
+    const {teacherGroupGetAction, teacherMateriaGetAction, teacherClassGetAction, teacherGetAction} = teacherManagerAction();
 
     useEffect( () => {
-        // dispatch(teacherGroupGetAction(email))
-        // dispatch(teacherMateriaGetAction(email))
-        // dispatch(teacherClassGetAction())
+        async function fetchData() {
+            return dispatch(teacherGetAction(email));
+        }
+        fetchData().then(() => {
+            console.log(teacher.materias);
+            // dispatch(teacherMateriaGetAction(teacher.id))
+            // dispatch(teacherGroupGetAction(email))
+            // dispatch(teacherClassGetAction())
+        });
     }, []);
 
     const paginationLangConfig = {
@@ -31,7 +37,7 @@ export const TeacherManager = ({user, setIsOpenTeacherGroups, isOpenTeacherGroup
         {
             name: `Materias asignadas`,
             id: "columnMateria",
-            selector: row => row.materia.nombreMateria,
+            selector: row => row,
             sortable: true,
             style: {
                 fontSize: 20,
@@ -63,10 +69,10 @@ export const TeacherManager = ({user, setIsOpenTeacherGroups, isOpenTeacherGroup
             }
             <div>
             {
-                materias.length !== 0 ?
+                teacher !== null ?
                     <DataTable className="table-responsive"
                         columns={columns_materias_teacher}
-                        data={materias}
+                        data={teacher.materias}
                         pagination
                         fixedHeader
                         fixedHeaderScrollHeight="calc(100% - 50px)"

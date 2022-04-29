@@ -1,5 +1,27 @@
+const teacherGetAction = (email) => async (dispatch) => {
+    fetch("https://class-gate.herokuapp.com/findMaestroByCorreo/maestroHU8@gmail.com", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+            .then(res => res.json())
+            .then(response => {
+                dispatch({
+                    type: "getTeacher",
+                    payload: response
+                });
+            }
+            )
+            .catch(err => {
+                dispatch({
+                    type: "alertMessage",
+                    payload: err.message,
+                });
+            });
+}
+
 const teacherGroupGetAction = (user) => async (dispatch) => {
-    console.log(user);
     fetch("https://class-gate.herokuapp.com/findGrupoFromMaestroDirector/"+user, {
             method: "GET",
             headers: {
@@ -22,8 +44,8 @@ const teacherGroupGetAction = (user) => async (dispatch) => {
             });
 }
 
-const teacherMateriaGetAction = (user) => async (dispatch) => {
-    fetch("https://class-gate.herokuapp.com/allClasesFromMaestro/"+user, {
+const teacherMateriaGetAction = (id) => async (dispatch) => {
+    fetch("https://class-gate.herokuapp.com/allMateriasFromMaestro/"+id, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -31,10 +53,10 @@ const teacherMateriaGetAction = (user) => async (dispatch) => {
         })
             .then(res => res.json())
             .then(response => {
-                dispatch({
-                    type: "getMateria",
-                    payload: response
-                });
+                // dispatch({
+                //     type: "getMateria",
+                //     payload: response
+                // });
             }
             )
             .catch(err => {
@@ -69,5 +91,5 @@ const teacherClassGetAction = () => async (dispatch) => {
 }
 
 export const teacherManagerAction = () => {
-    return { teacherGroupGetAction, teacherMateriaGetAction, teacherClassGetAction };
+    return { teacherGroupGetAction, teacherMateriaGetAction, teacherClassGetAction, teacherGetAction };
 }
