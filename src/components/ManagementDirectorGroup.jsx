@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { IoMdClose } from "react-icons/io";
 import { FaTrash } from "react-icons/fa";
 import DataTable from "react-data-table-component";
@@ -7,7 +7,6 @@ import {  } from "../actions/actionAcudiente";
 import "../assets/styles/components/ManagementStudent.css";
 import { MdCompareArrows } from "react-icons/md";
 import { groupDirectorAction } from "../actions/groupDirectorAction";
-import { actionGroup } from "../actions/actionGroup";
 
 export const ManagementDirectorGroup = ({ setIsEditingGroupDirector, isEditingGroupDirector }) => {
 
